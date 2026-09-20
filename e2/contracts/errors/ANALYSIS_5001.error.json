@@ -1,0 +1,17 @@
+{
+  "code": "ANALYSIS_5001",
+  "message": "declared-dependency parser crashed while reading Makefile at line 41",
+  "phase": "ANALYZE",
+  "retryable": true,
+  "occurred_at": "2026-09-20T10:21:12Z",
+  "detail": {
+    "analyzer": "makefile-parser",
+    "analyzer_version": "0.9.3",
+    "step": "parse_makefile",
+    "file": "Makefile",
+    "line": 41,
+    "exit_code": 1,
+    "partial_artifacts": [],
+    "build_log_uri": "artifact://pair10/full02/build.log"
+  }
+}
