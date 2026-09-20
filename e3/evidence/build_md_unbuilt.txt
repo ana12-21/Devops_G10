@@ -1,0 +1,54 @@
+# build_md_unbuilt.txt — MD 漏重建证据
+#
+# 场景：fixtures/md-rd (PPT slide 17-21)
+# 命题：Makefile 只声明 main.o: main.c unused.h，未声明 main.c 实际读取的 config.h
+# 期望：改 config.h 的 #define VALUE 后，普通 `make` 不应触发 main.c 重编译，
+#      因此 ./app 应继续输出旧 VALUE（MD：Missing Dependency 的可见症状）
+#
+# 数据来源：work/20260920-135225/md-rd.commands.json + md-rd.observations.json
+# 时间：2026-09-20T13:52:26（与 20260920-134753 复跑完全一致，剔除 ts 字段后）
+
+[step 1] 首次构建（main.c 中 #include "config.h" 已含 VALUE=1）
+  $ mingw32-make app
+  stdout:
+    gcc -O0 -Wall -c main.c -o main.o
+    gcc main.o -o app
+  exit_code: 0
+
+[step 2] 运行 app
+  $ ./app
+  stdout: 1
+  exit_code: 0
+  → 期望 = 1，实际 = 1，PASS
+
+[step 3 — 本文件关键步骤] 改 config.h 的 VALUE = 2，再 make（不 clean）
+  $ sed -i 's/#define VALUE 1/#define VALUE 2/' config.h
+  $ mingw32-make app
+  stdout:
+    gcc main.o -o app
+  exit_code: 0
+  → 注意：stdout 里**没有** `gcc ... -c main.c -o main.o`，因为 config.h 不是 main.o 的依赖，
+    main.c 没有被重编，app 仍然链接旧 main.o → 输出仍是旧 VALUE。
+
+[step 4] 运行 app（期望因 MD 漏重建而仍输出旧值 1）
+  $ ./app
+  stdout: 1
+  exit_code: 0
+  → 期望 = 1（漏重建），实际 = 1，**MD 现象捕获** ✅
+
+## 结论
+
+main.c #include "config.h" 且 config.h 改了 VALUE，但 `make` 没触发 main.c 重编译，
+app 仍输出旧 VALUE。这就是 **MISSING config.h** 在 BuildChecker 输出层的可见症状——
+普通 make 的时间戳检查不会去打开 config.h（因为 Makefile 没声明它），
+所以 config.h 的修改对 main.o 不可见。
+
+oracle 来源：fixtures/md-rd/oracle.json 第 1 条 finding
+  {
+    "type": "MISSING",
+    "target": "main.o",
+    "dependency": "config.h",
+    "evidence": "main.c #includes \"config.h\"; config.h is read at compile time but Makefile only declares main.o: main.c unused.h"
+  }
+
+补救：见 build_md_clean.txt（同项目 clean 后重新构建拾取新 VALUE）。

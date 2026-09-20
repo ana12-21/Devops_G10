@@ -1,0 +1,46 @@
+# build_rd_unused.txt — RD 多余编译证据
+#
+# 场景：fixtures/md-rd
+# 命题：Makefile 声明了 main.o: main.c unused.h，但 main.c **不** #include "unused.h"。
+#      改 unused.h 后，make 应当触发 main.c 重编（多余编译，无实质效果）。
+#
+# 数据来源：work/20260920-135225/md-rd.commands.json + md-rd.observations.json
+# 时间：2026-09-20T13:52:26
+
+[step 1] 改 unused.h 的注释（main.c 不读它，所以这次修改不影响 main.c 实际内容）
+  $ sed -i 's|/\* still unused \*/|/* still unused — comment change forces main.o rebuild via Makefile dep */|' unused.h
+
+[step 2] make（无 clean）
+  $ mingw32-make app
+  stdout:
+    gcc -O0 -Wall -c main.c -o main.o
+    gcc main.o -o app
+  exit_code: 0
+  → 注意：stdout 第一行 `gcc -c main.c -o main.o` **出现了**，但 main.c 没改、config.h 没改，
+    唯一变化是 unused.h 的注释。Make 因 main.o 的依赖（main.c unused.h）中有文件 mtime 更新，
+    触发了多余 cc 调用。
+
+[step 3] （配套）运行 app，确认 stdout 内容不变
+  $ ./app
+  stdout: 2    ← 与 build_md_clean.txt 的 step 3 一致
+  exit_code: 0
+  → app 输出仍是 2（因为 VALUE 未变），但 cc 被多余调用了一次。
+
+## 结论
+
+unused.h 是 Makefile 多声明的依赖，main.c 根本不读它。这种声明有两个坏处：
+1. 改了 unused.h 的任何内容（包括纯注释）都会触发 main.c 重编
+2. 触发后 cc 重新扫描 main.c，但 main.c 没变，重编的是**完全一样的字节**
+
+这就是 **REDUNDANT unused.h** 在 BuildChecker 输出层的可见症状——多余编译。
+
+oracle 来源：fixtures/md-rd/oracle.json 第 2 条 finding
+  {
+    "type": "REDUNDANT",
+    "target": "main.o",
+    "dependency": "unused.h",
+    "evidence": "Makefile declares main.o: main.c unused.h; main.c does not #include \"unused.h\""
+  }
+
+补救：把 Makefile 的 `main.o: main.c unused.h` 改成 `main.o: main.c config.h`，去掉 unused.h 即可。
+（注意：去掉 unused.h 后 MD（MISSING config.h）会暴露，这正是 md-rd 样本同时演示两种 finding 的设计意图。）

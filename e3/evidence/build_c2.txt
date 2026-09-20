@@ -1,0 +1,93 @@
+# build_c2.txt — C2 commit 的 clean + 增量构建日志
+#
+# 场景：fixtures/commits/C2（PPT slide 26）
+# 命题：C2 在 C1 基础上**只改编译命令** CFLAGS: -O0 -Wall → -O0 -Wall -DMODE=7，
+#      源码（main.c / config.h / feature.h）保持 byte-identical。
+#
+#      PPT slide 26 假设 clean build 应输出 19（BASE=10 + FEATURE=2 + MODE=7）。
+#      Windows + MinGW + GCC 12.2 实测 clean build = 12，与 PPT 假设不符，
+#      详见 ADR-003 决策 3 + comparison_table.md "C2 差异根因" 一节。
+#
+# 数据来源：work/20260920-135225/commit-C2.commands.json + commit-C2.observations.json
+# 时间：2026-09-20T13:52:28 ~ 13:52:29
+
+## Commit 信息
+tag        = C2
+sha        = e73f72812a6f60f9e4e18ce21661a2de6eaf654c
+based_on   = C1  (sha = 7b1037d6c755)
+scenario   = E3 EChecker C0/C1/C2 — command change, plain make misses it
+详见 fixtures/commits/C2/.git_info.txt
+
+源码差异（C2 相对 C1）：
+- main.c / feature.h: ** byte-identical to C1 **
+- config.h: ** byte-identical to C1 **（关键：#define MODE  0 含末尾空格，覆盖命令行 -DMODE=7）
+- Makefile: CFLAGS 从 `-O0 -Wall` 改为 `-O0 -Wall -DMODE=7`
+
+## clean build（PPT slide 26 主线）—— ⚠️ 实测 ≠ PPT 假设
+
+[step 1] rm -f main.o main（清空）
+  $ rm -f main.o main
+  stdout: rm -f main.o main  ->  (nothing to remove)
+  exit_code: 0
+
+[step 2] clean build（CFLAGS 多了 -DMODE=7，但 config.h 内的 #define MODE 0 覆盖它）
+  $ mingw32-make main
+  stdout:
+    gcc -O0 -Wall -DMODE=7 -c main.c -o main.o
+    gcc main.o -o main
+  stderr:
+    In file included from main.c:5:
+    config.h:3: warning: "MODE" redefined
+        3 | #define MODE  0
+          |
+    <command-line>: note: this is the location of the previous definition
+  exit_code: 0
+  → stderr 第 2 行起就是关键证据 —— GCC 明确报告 "MODE" redefined，并指出前一定义在 config.h:3。
+
+[step 3] 运行 main
+  $ ./main
+  stdout: BASE=10 FEATURE=2 MODE=0
+  exit_code: 0
+  → 期望（PPT slide 26 假设）= "BASE=10 FEATURE=2 MODE=7"
+  → 实测 = "BASE=10 FEATURE=2 MODE=0"
+  → **与 PPT 不符**，根因 = GCC 源码内 `#define MODE 0` 覆盖命令行 `-DMODE=7`。
+    详见 docs/ADR-003.md 决策 3。
+
+## 增量构建（PPT slide 26 验证点：命令变化是否触发普通重建？）
+
+[step 4] 不 clean，直接 make（Makefile 改了 CFLAGS，但所有源文件 mtime 未变）
+  $ mingw32-make main
+  stdout:
+    gcc main.o -o main
+  exit_code: 0
+  → 注意：stdout **只有重链接**（`gcc main.o -o main`），没有 `gcc -c main.c -o main.o`，
+    因为 main.c / config.h / feature.h 都没变，Make 不触发重编，**只重链接**。
+    这正是 PPT slide 26 想证明的"普通 make 时间戳检查漏掉命令变化"。
+
+[step 5] 增量运行
+  $ ./main
+  stdout: BASE=10 FEATURE=2 MODE=0
+  exit_code: 0
+
+[step 6] 收尾：rm -f main.o main
+  $ rm -f main.o main
+  stdout: rm -f main.o main  ->  removed: main.o
+  exit_code: 0
+
+## 结论
+
+C2 的两条构建线都呈现"命令变化 vs 普通 make"的核心矛盾：
+
+| 维度 | clean build | 增量 build |
+|------|-------------|------------|
+| stdout 是否触发 cc -c | ✅ 触发（main.o 不存在） | ❌ 不触发（mtime 未变） |
+| -DMODE=7 是否生效 | ❌ 被 config.h 内 #define 覆盖 | ❌ 同上 |
+| main 输出 | BASE=10 FEATURE=2 MODE=0 | BASE=10 FEATURE=2 MODE=0 |
+| 与 PPT slide 26 是否一致 | ⚠️ 实测 12 vs PPT 假设 19 | ✅ 实测 12 = PPT 增量预期 12 |
+
+→ 这正是 EChecker 应该报警的两类情况之一（另一类是 MD 漏检）：
+  **"构建命令变了，但普通时间戳检查没触发重编译"**。
+
+oracle 来源：fixtures/commits/C2/.git_info.txt（provenance = INSTRUCTOR_ORACLE）
+实测偏差决策：docs/ADR-003.md 决策 3
+对照表：evidence/comparison_table.md
