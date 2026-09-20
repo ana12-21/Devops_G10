@@ -213,7 +213,7 @@ e3/
 │   └── verify_docker.py               ← Docker 验证（PPT slide 12 提及）
 │
 └── docs/                              ← E3 自己的文档
-    ├── ADR-002.md                     # C0/C1/C2 设计决策（待）
+    ├── ADR-003.md                     # C0/C1/C2 设计决策（待）
     ├── Backlog.md                     # T-101~T-110 E3 任务表（待）
     ├── AI_USAGE.md                    # AI 使用记录（E3 部分）
     └── practice_log.md                # E3 实践日志（待）
@@ -235,7 +235,7 @@ e3/
 | **T-106** | 在每个 commit 上跑增量 + clean build，记录预期输出 | `evidence/build_c0.txt`、`build_c1.txt`、`build_c2.txt` |
 | **T-107** | 写对照表 `evidence/comparison_table.md`（C0/C1/C2 增量 vs clean） | 对照表 |
 | **T-108** | 在 Linux 环境跑 strace，记录 `config.h` 访问 | `evidence/linux-verified/` |
-| **T-109** | 撰写 ADR-002（C0/C1/C2 设计决策） | `docs/ADR-002.md` |
+| **T-109** | 撰写 ADR-003（C0/C1/C2 设计决策） | `docs/ADR-003.md` |
 | **T-110** | 撰写 AI_USAGE（E3 部分）+ 补充 Backlog + practice_log | `docs/*.md` |
 
 ---
@@ -275,7 +275,7 @@ e3/
 - [ ] C0/C1/C2 三个 commit 在 `evidence/build_c{0,1,2}.txt` 中记录增量 vs clean 输出
 - [ ] `evidence/comparison_table.md` 对照表完整
 - [ ] `evidence/linux-verified/` 含 strace 记录（如果环境允许）
-- [ ] `docs/ADR-002.md`、`docs/Backlog.md`、`docs/AI_USAGE.md`、`docs/practice_log.md` 四份齐全
+- [ ] `docs/ADR-003.md`、`docs/Backlog.md`、`docs/AI_USAGE.md`、`docs/practice_log.md` 四份齐全
 
 ### 评审标准（PPT slide 10 相互检查）
 
@@ -301,4 +301,10 @@ e3/
 
 - **E2 是契约设计**：契约格式、错误码、URI 体系。
 - **E3 是测试样本**：MD/RD 报告格式参考 E2 的契约字段（`provenance`、`findings`）。
+- **E2 已产出的两份 ADR（E3 必须对齐）**：
+  - `e2/docs/ADR-001.md` — 异步 Job 模式（四类任务的统一模型，E3 四条线都建在它之上）
+  - `e2/docs/ADR-002.md` — **系统执行错误与检测发现分离**：检测出 `MISSING` / `REDUNDANT` 时
+    任务状态仍为 `SUCCEEDED`，只有平台或工具自身故障（`ENV_3002` / `EXEC_4002` / `ANALYSIS_5001`）
+    才写 `job.error`。**E3 的 EChecker 预期变化直接由它决定**——"发现数 > 0" ≠ 任务失败。
+- **ADR 编号接续**：E2 已占用 ADR-001 / ADR-002，故 E3 首份 ADR 从 **ADR-003** 起编号。
 - E3 完成后，E4-E12 会在此基础上构建完整工具链——E2 的契约会被 EChecker / MDFixer 直接消费。

@@ -17,15 +17,16 @@ DevOps_G10/
 │
 └── e3/                             ← 实验 3（进行中）
     ├── README.md                   ← E3 总览
-    ├── md_samples/  commits/  evidence/  docs/
+    ├── fixtures/                     ← 测试样本（MD/RD · C0/C1/C2 · DRAFT）
+    ├── evidence/  scripts/  docs/
 ```
 
 ## 实验清单
 
-| 实验  | 标题                  | 状态      | 详情                       |
-|-------|-----------------------|-----------|----------------------------|
-| **E2** | 需求与接口契约设计    | ✅ 已完成 | [`e2/README.md`](e2/README.md) |
-| **E3** | 软件演化与维护实验    | 🟡 进行中 | [`e3/README.md`](e3/README.md) |
+| 实验  | 标题                             | 状态      | 详情                       |
+|-------|----------------------------------|-----------|----------------------------|
+| **E2** | 需求与接口契约设计               | ✅ 已完成 | [`e2/README.md`](e2/README.md) |
+| **E3** | 并行测试基线（MD/RD + C0/C1/C2） | 🟡 进行中 | [`e3/README.md`](e3/README.md) |
 
 ## 角色
 
@@ -53,8 +54,10 @@ git log --oneline | head -20
 主要 commit：
 - `E2: 契约样例 + ADR + Backlog + AI_USAGE`
 - `E2: 补齐四类 job 样例 + validate.py + 配对记录`
+- `E2(A组): 补齐 202 创建响应、EChecker 失败样例、ANALYSIS_5001、ERROR_REPORT 样例、反例集合、ADR-002`
 - `docs: 标注作者账号信息 + 补全文件结构树状图`
-- 🆕 `refactor: 把 E2 文件打包到 e2/ 子目录 + 启动 e3/ 骨架`
+- `refactor: 把 E2 文件打包到 e2/ 子目录 + 启动 e3/ 骨架`
+- 🆕 `fix(e3): 重写 README 为真实 E3 任务 + 重构目录为 fixtures/`
 
 
 

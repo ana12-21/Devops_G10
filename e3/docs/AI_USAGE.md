@@ -12,7 +12,7 @@ E3 启动后追加以下章节：
 ### YYYY-MM-DD  E3 项目选定
 ### YYYY-MM-DD  E3 MD 报告撰写
 ### YYYY-MM-DD  E3 RD 报告撰写
-### YYYY-MM-DD  E3 ADR-002 撰写
+### YYYY-MM-DD  E3 ADR-003 撰写
 
 ---
 
@@ -38,4 +38,5 @@ E3 启动后追加以下章节：
 ## 关联文档
 
 - E2 的 AI_USAGE：`e2/docs/AI_USAGE.md`（格式参考）
-- E2 的 ADR：`e2/docs/ADR-001.md`（决策风格参考）
+- E2 的 ADR-001：`e2/docs/ADR-001.md`（决策风格参考）
+- E2 的 ADR-002：`e2/docs/ADR-002.md`（E3 EChecker 线直接依赖的 error / findings 分离决策）
