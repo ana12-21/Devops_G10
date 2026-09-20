@@ -34,8 +34,7 @@ python scripts/render_evidence.py             # 从 work/<ts>/*.json 生成 evid
 python scripts/diff_reproducibility.py        # 两次运行的复现性比对：应 OVERALL: PASS
 ```
 
-> 证据文件里的路径一律相对仓库根，**不含本机绝对路径**；合成 commit 的提交时间被固定，
-> 因此 `.git_info.txt` 里记录的 SHA 在任意机器上重跑都一致，可独立 `git checkout` 验证。
+
 
 ## 实验清单
 
