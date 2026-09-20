@@ -45,7 +45,7 @@ DevOps_G10/
 - GitHub：[hll335](https://github.com/hll335)
 - 邮箱：241880335@smail.nju.edu.cn
 
-## 提交历史（要点）
+## 提交历史
 
 ```bash
 git log --oneline | head -20
