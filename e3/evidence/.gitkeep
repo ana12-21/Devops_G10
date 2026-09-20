@@ -1,0 +1,2 @@
+# 占位文件：build_log 与 diff 输出待写入
+# 删除本文件后正式提交 build_log_<project>.txt / diff_<project>_<c1>_<c2>.txt
