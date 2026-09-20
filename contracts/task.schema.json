@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Job",
+  "description": "统一任务模型——四类服务共用外壳",
+  "type": "object",
+  "required": ["schema_version", "job_id", "job_type", "status"],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0",
+      "description": "契约版本，破坏性变更必须升位"
+    },
+    "job_id": {
+      "type": "string",
+      "pattern": "^job-[a-z0-9]+$",
+      "description": "服务端生成的唯一编号"
+    },
+    "job_type": {
+      "enum": ["DRAFT", "FULL_CHECK", "INCREMENTAL_CHECK", "REPAIR"],
+      "description": "四类任务之一"
+    },
+    "status": {
+      "enum": ["QUEUED", "RUNNING", "SUCCEEDED", "FAILED", "TIMED_OUT", "CANCELLED"]
+    },
+    "trace_id": {
+      "type": "string",
+      "description": "一次平台流程的串联 ID"
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "input":  { "type": "object" },
+    "output": { "type": "object" },
+    "error":  { "type": "object" }
+  }
+}

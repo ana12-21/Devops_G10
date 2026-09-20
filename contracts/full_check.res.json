@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "job_id": "job-full01",
+  "job_type": "FULL_CHECK",
+  "status": "SUCCEEDED",
+  "trace_id": "trace-001",
+  "input": { "_echo": "请求副本或省略" },
+  "output": {
+    "actual_graph_uri":   "artifact://pair10/full01/actual.json",
+    "declared_graph_uri": "artifact://pair10/full01/declared.json",
+    "md_report_uri":      "artifact://pair10/full01/md_report.json",
+    "rd_report_uri":      "artifact://pair10/full01/rd_report.json",
+    "findings": [
+      {
+        "type": "MISSING",
+        "target": "src/main.o",
+        "dependency": "include/config.h",
+        "evidence": {
+          "file": "src/main.c",
+          "line": 12,
+          "snippet": "#include \"config.h\""
+        },
+        "detector": "BUILDCHECKER"
+      }
+    ],
+    "stats": {
+      "missing_count": 1,
+      "redundant_count": 0,
+      "duration_sec": 47
+    }
+  }
+}

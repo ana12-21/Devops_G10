@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "job_id": "job-incr01",
+  "job_type": "INCREMENTAL_CHECK",
+  "status": "SUCCEEDED",
+  "trace_id": "trace-003",
+  "output": {
+    "current_graph_uri": "artifact://pair10/incr01/actual.json",
+    "delta": {
+      "new_findings": [
+        {
+          "type": "MISSING",
+          "target": "src/util.o",
+          "dependency": "include/utils.h",
+          "evidence": { "file": "src/util.c", "line": 5 }
+        }
+      ],
+      "eliminated_findings": [
+        {
+          "type": "REDUNDANT",
+          "target": "src/legacy.o",
+          "dependency": "include/old.h"
+        }
+      ]
+    }
+  }
+}

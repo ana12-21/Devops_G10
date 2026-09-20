@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "job_id": "job-full02",
+  "job_type": "FULL_CHECK",
+  "status": "FAILED",
+  "trace_id": "trace-002",
+  "error": {
+    "code": "ENV_3002",
+    "message": "Docker image build failed",
+    "detail": {
+      "step": "RUN make",
+      "exit_code": 2,
+      "log_uri": "artifact://pair10/full02/build.log"
+    }
+  }
+}
