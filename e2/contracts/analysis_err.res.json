@@ -1,0 +1,30 @@
+{
+  "_comment": "GET /v1/jobs/job-full02 响应 —— A 组 BuildChecker 分析器内部异常（ANALYSIS_5001）",
+  "_scenario": "镜像构建成功、构建日志已产生，但依赖图分析阶段解析器崩溃（如 Makefile 语法超出 parser 支持范围）",
+  "_rule": "ANALYSIS_5001：分析器内部异常。写入 job.error，status=FAILED。",
+  "_contrast": "分析器【崩溃】与检测出【MISSING】是两回事：前者是工具失败，后者是 SUCCEEDED 的合法产出。",
+  "_scope": "A 组",
+  "schema_version": "1.0.0",
+  "job_id": "job-full02",
+  "job_type": "FULL_CHECK",
+  "status": "FAILED",
+  "trace_id": "trace-005",
+  "created_at": "2026-09-20T10:20:00Z",
+  "updated_at": "2026-09-20T10:21:12Z",
+  "error": {
+    "code": "ANALYSIS_5001",
+    "message": "declared-dependency parser crashed while reading Makefile at line 41",
+    "phase": "ANALYZE",
+    "retryable": true,
+    "detail": {
+      "analyzer": "makefile-parser",
+      "analyzer_version": "0.9.3",
+      "step": "parse_makefile",
+      "file": "Makefile",
+      "line": 41,
+      "exit_code": 1,
+      "build_log_uri": "artifact://pair10/full02/build.log",
+      "note": "构建阶段已成功（exit_code=0），失败发生在声明依赖图解析阶段；actual.json 未产出"
+    }
+  }
+}

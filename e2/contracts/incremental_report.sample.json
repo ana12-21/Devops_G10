@@ -1,0 +1,136 @@
+{
+  "_comment": "A 组产出 → B10 MDFixer 消费。EChecker 跨提交增量检测的 ERROR_REPORT。",
+  "_scope": "A 组产出（producer_service=ECHECKER）",
+  "_consumed_by": "B10 MDFixer（只取 delta_status=NEW 且 type=MISSING 的条目）",
+  "_critical": "存在 new_findings ≠ 任务失败。本报告由 status=SUCCEEDED 的 INCREMENTAL_CHECK 产出。",
+  "schema_version": "1.0.0",
+
+  "report_id": "report-incr001",
+  "report_type": "ERROR_REPORT",
+  "producer_job_id": "job-incr01",
+  "producer_service": "ECHECKER",
+  "trace_id": "trace-003",
+  "target_commit": "2222222222222222222222222222222222222222",
+  "baseline_commit": "1111111111111111111111111111111111111111",
+  "configuration_id": "cc-MODE0",
+  "detector": "ECHECKER",
+  "generated_at": "2026-09-20T11:02:10Z",
+  "tool_version": "echecker/0.6.1",
+
+  "findings": [
+    {
+      "finding_id": "F-0001",
+      "type": "MISSING",
+      "target": "src/main.o",
+      "dependency": "include/config.h",
+      "commit": "2222222222222222222222222222222222222222",
+      "detector": "ECHECKER",
+      "location": {
+        "file": "src/main.c",
+        "line": 12,
+        "column": 1,
+        "kind": "INCLUDE",
+        "snippet": "#include \"config.h\""
+      },
+      "evidence_uri": "artifact://pair10/incr01/evidence/F-0001.json",
+      "confidence": 0.98,
+      "first_seen_commit": "1111111111111111111111111111111111111111",
+      "delta_status": "UNCHANGED",
+      "note": "基线中已存在，本次提交未修复"
+    },
+    {
+      "finding_id": "F-0002",
+      "type": "MISSING",
+      "target": "src/util.o",
+      "dependency": "include/utils.h",
+      "commit": "2222222222222222222222222222222222222222",
+      "detector": "ECHECKER",
+      "location": {
+        "file": "src/util.c",
+        "line": 5,
+        "column": 1,
+        "kind": "INCLUDE",
+        "snippet": "#include \"utils.h\""
+      },
+      "evidence_uri": "artifact://pair10/incr01/evidence/F-0002.json",
+      "confidence": 0.96,
+      "first_seen_commit": "2222222222222222222222222222222222222222",
+      "delta_status": "NEW",
+      "fix_strategy": "append-dep-to-prerequisite",
+      "note": "【新增】本次提交引入 utils.h 引用，Makefile 未同步声明"
+    },
+    {
+      "finding_id": "F-0004",
+      "type": "MISSING",
+      "target": "app",
+      "dependency": "-lm",
+      "commit": "2222222222222222222222222222222222222222",
+      "detector": "ECHECKER",
+      "location": {
+        "file": "Makefile",
+        "line": 24,
+        "kind": "LINK_FLAG",
+        "makefile_target": "app",
+        "snippet": "$(CC) $(OBJS) -o $@"
+      },
+      "evidence_uri": "artifact://pair10/incr01/evidence/F-0004.json",
+      "confidence": 0.93,
+      "first_seen_commit": "2222222222222222222222222222222222222222",
+      "delta_status": "NEW",
+      "fix_strategy": "append-ldflag-to-link-rule"
+    },
+    {
+      "finding_id": "F-0101",
+      "type": "REDUNDANT",
+      "target": "src/legacy.o",
+      "dependency": "include/old.h",
+      "commit": "2222222222222222222222222222222222222222",
+      "detector": "ECHECKER",
+      "location": {
+        "file": "Makefile",
+        "line": 30,
+        "kind": "MAKEFILE_PREREQ",
+        "makefile_target": "src/legacy.o",
+        "snippet": "src/legacy.o: src/legacy.c include/old.h"
+      },
+      "evidence_uri": "artifact://pair10/incr01/evidence/F-0101.json",
+      "confidence": 0.86,
+      "first_seen_commit": "1111111111111111111111111111111111111111",
+      "delta_status": "ELIMINATED",
+      "note": "【已消除】本次提交删除了 legacy.c 对 old.h 的声明"
+    }
+  ],
+
+  "delta": {
+    "baseline_report_uri": "artifact://pair10/full01/md_report.json",
+    "baseline_commit": "1111111111111111111111111111111111111111",
+    "current_graph_uri": "artifact://pair10/incr01/actual.json",
+    "new_finding_ids": ["F-0002", "F-0004"],
+    "eliminated_finding_ids": ["F-0101"],
+    "unchanged_finding_ids": ["F-0001"]
+  },
+
+  "summary": {
+    "total": 4,
+    "missing_count": 3,
+    "redundant_count": 1,
+    "actionable_count": 2,
+    "by_detector": {
+      "ECHECKER": 4
+    }
+  },
+
+  "provenance": {
+    "image_ref": "registry.local/pair10/draft01:sha-abc1234",
+    "build_command": "make",
+    "verify_command": "make check",
+    "build_log_uri": "artifact://pair10/incr01/build.log",
+    "actual_graph_uri": "artifact://pair10/incr01/actual.json",
+    "declared_graph_uri": "artifact://pair10/incr01/declared.json"
+  },
+
+  "human_review": {
+    "annotated": false,
+    "note": "全部为 EChecker 机器检测。actionable_count=2，对应 delta.new_finding_ids 中 type=MISSING 的条数。"
+  }
+}
