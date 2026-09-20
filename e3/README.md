@@ -1,17 +1,9 @@
 # E3 — 并行测试基线
 
 > 教学实验 E3：为 BuildChecker / EChecker / DRAFT / MDFixer 准备**测试基线样本**
-> 教师：吕骏 ｜ 助教：曾星伟
-> 日期：2026-09-20 起
+
 > 本组：**A10**（负责 BuildChecker + EChecker 样本，即 MD/RD 与 C0/C1/C2）
 
----
-
-## ⚠️ E3 的真实定位（纠正此前误判）
-
-E3 **不是**"分析 6 个外部开源项目"——E3 的真实任务是：
-
-> **为四个工具准备测试样本，使它们能跑、能判断对错、能互相比较**
 
 四个工具与各自需要的输入：
 
@@ -219,8 +211,6 @@ e3/
     └── practice_log.md                # E3 实践日志（待）
 ```
 
-> 📌 **修正点**：原来 `md_samples/` 和 `commits/` 改为 `fixtures/{md-rd,commits,draft}/`——符合 PPT slide 12 建议的"fixtures 目录结构"。
-
 ---
 
 ## 五、实验流程（Backlog 摘要）
@@ -238,31 +228,8 @@ e3/
 | **T-109** | 撰写 ADR-003（C0/C1/C2 设计决策） | `docs/ADR-003.md` |
 | **T-110** | 撰写 AI_USAGE（E3 部分）+ 补充 Backlog + practice_log | `docs/*.md` |
 
----
 
-## 六、提交要求（PPT slide 9/10）
 
-### A 组
-
-| 必交 | 内容 |
-|------|------|
-| **MD/RD 项目和判断依据** | `fixtures/md-rd/` + `evidence/build_md_*.txt` + `evidence/build_rd_*.txt` |
-| **C0/C1/C2 版本及预期变化** | `fixtures/commits/{C0,C1,C2}/` + `evidence/build_c{0,1,2}.txt` |
-
-### 共同信息
-
-| 必交 | 内容 |
-|------|------|
-| README、环境、命令与日志 | `README.md` + `evidence/env_check.txt` |
-| 仓库、SHA 与个人贡献 | `fixtures/commits/*/.git_info.txt` |
-| 当前代码与失败日志 | `fixtures/` 源码 + `evidence/` 日志 |
-| 卡在哪里、试过什么、下一步 | `docs/practice_log.md` |
-
-> ⚠️ **未完成也要记录**——遇到任何阻塞直接写在 `docs/practice_log.md`，不要等。
-
----
-
-## 七、验收清单（E3）
 
 ### A10 组
 
@@ -276,35 +243,3 @@ e3/
 - [ ] `evidence/comparison_table.md` 对照表完整
 - [ ] `evidence/linux-verified/` 含 strace 记录（如果环境允许）
 - [ ] `docs/ADR-003.md`、`docs/Backlog.md`、`docs/AI_USAGE.md`、`docs/practice_log.md` 四份齐全
-
-### 评审标准（PPT slide 10 相互检查）
-
-- [ ] 别人能按 README 重跑项目
-- [ ] 人工答案和实际日志分得清
-- [ ] 预期结果能说明依据
-- [ ] 失败记录能定位到具体 commit
-
----
-
-## 八、后续安排（PPT slide 10）
-
-| 实验 | 主题 |
-|------|------|
-| **E4** | 环境和密钥管理 |
-| **E5** | BuildChecker / DRAFT 实现 |
-| **E8** | EChecker / MDFixer 实现 |
-| **E12** | 接入真实数据联调（A 组 B 组打通） |
-
----
-
-## 九、与 E2 的关系
-
-- **E2 是契约设计**：契约格式、错误码、URI 体系。
-- **E3 是测试样本**：MD/RD 报告格式参考 E2 的契约字段（`provenance`、`findings`）。
-- **E2 已产出的两份 ADR（E3 必须对齐）**：
-  - `e2/docs/ADR-001.md` — 异步 Job 模式（四类任务的统一模型，E3 四条线都建在它之上）
-  - `e2/docs/ADR-002.md` — **系统执行错误与检测发现分离**：检测出 `MISSING` / `REDUNDANT` 时
-    任务状态仍为 `SUCCEEDED`，只有平台或工具自身故障（`ENV_3002` / `EXEC_4002` / `ANALYSIS_5001`）
-    才写 `job.error`。**E3 的 EChecker 预期变化直接由它决定**——"发现数 > 0" ≠ 任务失败。
-- **ADR 编号接续**：E2 已占用 ADR-001 / ADR-002，故 E3 首份 ADR 从 **ADR-003** 起编号。
-- E3 完成后，E4-E12 会在此基础上构建完整工具链——E2 的契约会被 EChecker / MDFixer 直接消费。
