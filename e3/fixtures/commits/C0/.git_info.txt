@@ -1,6 +1,6 @@
 # C0 — declared correctly (PPT slide 24)
 tag        = C0
-sha        = 84c3fcf26a6d0746e645aae2f1b7bde8f050130d
+sha        = 7795df52783dac25e6ca08246a2c166431b54ccc
 based_on   = synthetic commit (INSTRUCTOR_SYNTHESIZED)
 scenario   = E3 EChecker C0/C1/C2 baseline
 provenance = INSTRUCTOR_SYNTHESIZED

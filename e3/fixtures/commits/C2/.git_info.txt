@@ -1,6 +1,6 @@
 # C2 — only changed compile command (PPT slide 26)
 tag        = C2
-sha        = fd5bf5cba7645527e15b9278c241c08407a69ac2
+sha        = 188ecd7327b805ccb9fe6c2b2a39999b3e892311
 based_on   = C1  (see fixtures/commits/C1/.git_info.txt)
 parent_sha = (none — C2 is an independent git repo, see ADR-003 decision 1)
 scenario   = E3 EChecker C0/C1/C2 — command change, plain make misses it

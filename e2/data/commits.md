@@ -12,9 +12,9 @@ E3 采用**本仓库内的合成提交**而不是外部开源项目，理由见 
 |--------------|----|
 | 仓库地址     | https://github.com/ana12-21/Devops_G10 |
 | 样本路径     | `e3/fixtures/commits/{C0,C1,C2}/` |
-| C0 完整 SHA  | `84c3fcf26a6d0746e645aae2f1b7bde8f050130d`（声明正确，BuildChecker 用） |
-| C1 完整 SHA  | `d98ecd6c37e36444a3e92da4034cebaedd4ce363`（新增 include，EChecker 增量用） |
-| C2 完整 SHA  | `fd5bf5cba7645527e15b9278c241c08407a69ac2`（只改编译命令） |
+| C0 完整 SHA  | `7795df52783dac25e6ca08246a2c166431b54ccc`（声明正确，BuildChecker 用） |
+| C1 完整 SHA  | `195717d47a4f32ef48aebda8d90055f896b11e21`（新增 include，EChecker 增量用） |
+| C2 完整 SHA  | `188ecd7327b805ccb9fe6c2b2a39999b3e892311`（只改编译命令） |
 | tag 名       | `C0` / `C1` / `C2` |
 
 ## 怎么拿到这三组 SHA 对应的代码
@@ -27,9 +27,9 @@ git clone https://github.com/ana12-21/Devops_G10
 cd Devops_G10
 python e3/scripts/run_lab.py          # 重建 C0/C1/C2 三个带 tag 的仓库
 
-git -C e3/fixtures/commits/C0 rev-parse HEAD   # 应等于 84c3fcf...（上表 C0）
-git -C e3/fixtures/commits/C1 rev-parse HEAD   # 应等于 d98ecd6...（上表 C1）
-git -C e3/fixtures/commits/C2 rev-parse HEAD   # 应等于 fd5bf5c...（上表 C2）
+git -C e3/fixtures/commits/C0 rev-parse HEAD   # 应等于 7795df5...（上表 C0）
+git -C e3/fixtures/commits/C1 rev-parse HEAD   # 应等于 195717d...（上表 C1）
+git -C e3/fixtures/commits/C2 rev-parse HEAD   # 应等于 188ecd7...（上表 C2）
 ```
 
 **为什么重建后 SHA 一定一样**：`run_lab.py` 给三个合成 commit 固定了作者与提交时间

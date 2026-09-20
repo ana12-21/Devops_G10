@@ -1,6 +1,6 @@
 # C1 — added #include "feature.h", Makefile NOT updated (PPT slide 25)
 tag        = C1
-sha        = d98ecd6c37e36444a3e92da4034cebaedd4ce363
+sha        = 195717d47a4f32ef48aebda8d90055f896b11e21
 based_on   = C0  (see fixtures/commits/C0/.git_info.txt)
 parent_sha = (none — C1 is an independent git repo, see ADR-003 decision 1)
 scenario   = E3 EChecker C0/C1/C2 — first MD introduced
