@@ -1,0 +1,16 @@
+{
+  "code": "ENV_3002",
+  "message": "Docker image build failed: step 'RUN make' exited with code 2",
+  "phase": "ENV_PREPARE",
+  "retryable": true,
+  "occurred_at": "2026-09-20T10:20:12Z",
+  "detail": {
+    "step": "RUN make",
+    "dockerfile_line": 14,
+    "exit_code": 2,
+    "command": "make",
+    "image_ref": "registry.local/pair10/draft02:sha-7f3a1c9",
+    "build_log_uri": "artifact://pair10/full02/build.log",
+    "failed_target": "src/main.o"
+  }
+}

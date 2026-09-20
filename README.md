@@ -2,10 +2,9 @@
 
 > 南京大学苏州校区 2026 秋季 · DevOps 课程 · 10A 组
 
-## 仓库用途
+## 仓库结构
 
 
-每个实验独立成子目录，互不干扰：
 
 ```
 DevOps_G10/
@@ -34,8 +33,7 @@ python scripts/render_evidence.py             # 从 work/<ts>/*.json 生成 evid
 python scripts/diff_reproducibility.py        # 两次运行的复现性比对：应 OVERALL: PASS
 ```
 
-> 证据文件里的路径一律相对仓库根，**不含本机绝对路径**；合成 commit 的提交时间被固定，
-> 因此 `.git_info.txt` 里记录的 SHA 在任意机器上重跑都一致，可独立 `git checkout` 验证。
+
 
 ## 实验清单
 
@@ -62,9 +60,6 @@ python scripts/diff_reproducibility.py        # 两次运行的复现性比对�
 - 邮箱：241880335@smail.nju.edu.cn
 
 ## 贡献分工
-
-> 依据仓库实际的 `git shortlog -sn` 统计（两人都在本仓库留痕）。
-> 未单独留痕但有参与的工作：E2 三轮配对练习的讨论、E3 样本数值的人工核对（见各实验 `docs/practice_log.md`）。
 
 | 成员 | GitHub | 提交数 | 主要提交内容（按 git 记录归集） |
 |------|--------|--------|--------------------------------|

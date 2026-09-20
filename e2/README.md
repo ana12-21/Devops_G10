@@ -1,8 +1,5 @@
 # E2 — 需求与接口契约设计
 
-> 教学实验 E2 全部交付物
-> 教师：吕骏 ｜ 助教：曾星伟
-> 日期：2026-09-20 苏州课堂
 
 ## 角色
 
@@ -45,21 +42,3 @@ e2/
     └── validate.py                   # 契约校验脚本（--all / --negative）
 ```
 
-## 验收清单（E2）
-
-- [x] `task.schema.json` 在 validate.py 下通过
-- [x] 6 个 JSON 样例字段完整
-- [x] 错误码至少覆盖 6 类
-- [x] ADR / Backlog / AI_USAGE 三份文档齐全
-- [ ] 与 B10 组的契约确认：目前只有三轮配对练习的文字记录（`docs/practice_log.md`），**尚未在 GitHub 的 Issue / PR 上留痕**
-      （本仓库 Issues = 0、Pull requests = 0；`practice_log.md` 中 B10 的仓库地址也仍是占位，需补齐）
-
-## 历史
-
-> 2026-09-20 重构说明
-> 原本 `contracts/`、`data/`、`docs/`、`scripts/` 平铺在仓库根目录。
-> 在 E3 启动时重构为 `e2/` 子目录（**git 自动检测 23 个文件 100% rename，历史完整保留**）。
-> 可通过 `git log --follow <file>` 验证，例如：
-> ```bash
-> git log --follow e2/contracts/task.schema.json
-> ```

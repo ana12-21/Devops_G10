@@ -1,0 +1,15 @@
+{
+  "code": "EXEC_4002",
+  "message": "job exceeded deadline of 600s and was terminated",
+  "phase": "BUILD",
+  "retryable": true,
+  "occurred_at": "2026-09-20T12:10:00Z",
+  "detail": {
+    "deadline_sec": 600,
+    "elapsed_sec": 604,
+    "iterations_used": 3,
+    "last_completed_step": "make src/parse.o",
+    "attempt_log_uri": "artifact://pair10/repair02/attempt.log",
+    "partial_output": false
+  }
+}
