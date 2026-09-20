@@ -1,0 +1,29 @@
+{
+  "scenario": "md-rd",
+  "observations": [
+    {
+      "step": "first build",
+      "output": "1",
+      "expected": "1",
+      "verifies": "md-rd demo initial build"
+    },
+    {
+      "step": "edit config.h VALUE=2; make; ./app",
+      "output": "1",
+      "expected": "1 (漏重建 - config.h 未声明为 main.o 的依赖)",
+      "verifies": "MISSING config.h (MD)"
+    },
+    {
+      "step": "make clean && make && ./app",
+      "output": "2",
+      "expected": "2 (完整重建拾取新 VALUE)",
+      "verifies": "完整重建可观察到新值, 与漏重建对比"
+    },
+    {
+      "step": "edit unused.h comment; make",
+      "stdout": "gcc -O0 -Wall -c main.c -o main.o\ngcc main.o -o app\n",
+      "expected": "cc -c main.c -o main.o 重新执行 (多余编译)",
+      "verifies": "REDUNDANT unused.h (RD)"
+    }
+  ]
+}

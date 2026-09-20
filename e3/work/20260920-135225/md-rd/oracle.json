@@ -1,0 +1,19 @@
+{
+  "provenance": "INSTRUCTOR_ORACLE",
+  "scenario": "md-rd (PPT slide 17-22)",
+  "project": "fixtures/md-rd",
+  "findings": [
+    {
+      "type": "MISSING",
+      "target": "main.o",
+      "dependency": "config.h",
+      "evidence": "main.c #includes \"config.h\"; config.h is read at compile time but Makefile only declares main.o: main.c unused.h"
+    },
+    {
+      "type": "REDUNDANT",
+      "target": "main.o",
+      "dependency": "unused.h",
+      "evidence": "Makefile declares main.o: main.c unused.h; main.c does not #include \"unused.h\""
+    }
+  ]
+}

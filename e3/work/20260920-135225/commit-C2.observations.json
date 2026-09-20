@@ -1,0 +1,17 @@
+{
+  "scenario": "commit-C2",
+  "observations": [
+    {
+      "step": "clean build + run",
+      "output": "BASE=10 FEATURE=2 MODE=0",
+      "expected": "BASE=10 FEATURE=2 MODE=0",
+      "verifies": "C2 clean baseline | NOTE: PPT slide 26 says clean=19 (MODE=7) but config.h's #define MODE 0 overrides -DMODE=7; clean build yields the same MODE=0 as the incremental build."
+    },
+    {
+      "step": "second make without clean (incremental)",
+      "output": "BASE=10 FEATURE=2 MODE=0",
+      "expected": "BASE=10 FEATURE=2 MODE=0",
+      "verifies": "C2 命令变化未触发普通重建"
+    }
+  ]
+}

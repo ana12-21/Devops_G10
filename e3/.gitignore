@@ -1,0 +1,12 @@
+# 编译产物（work/ 下每个时间戳目录都跑过 make，留着 .exe 没意义）
+work/**/*.exe
+work/**/*.o
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# 编辑器临时
+*.swp
+.vscode/
+.idea/

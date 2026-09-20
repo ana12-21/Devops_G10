@@ -1,0 +1,12 @@
+# C2 — only changed compile command (PPT slide 26)
+tag        = C2
+sha        = e73f72812a6f60f9e4e18ce21661a2de6eaf654c
+based_on   = C1  (see fixtures/commits/C1/.git_info.txt)
+parent_sha = <C1 sha>
+scenario   = E3 EChecker C0/C1/C2 — command change, plain make misses it
+provenance = INSTRUCTOR_ORACLE
+
+# Synthetic commit: source files (main.c / config.h / feature.h) are
+# byte-identical to C1; only Makefile changes:
+#   CFLAGS = -O0 -Wall         ->  -O0 -Wall -DMODE=7
+# After `scripts/run_lab.py` runs, sha above becomes the real C2 tag hash.

@@ -1,0 +1,11 @@
+{
+  "scenario": "commit-C1",
+  "observations": [
+    {
+      "step": "clean build + run",
+      "output": "BASE=10 FEATURE=2 MODE=0",
+      "expected": "BASE=10 FEATURE=2 MODE=0",
+      "verifies": "C1 clean baseline"
+    }
+  ]
+}
