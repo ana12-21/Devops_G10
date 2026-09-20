@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "job_id": "job-draft02",
+  "job_type": "DRAFT",
+  "status": "FAILED",
+  "trace_id": "trace-011",
+  "input": { "_echo": "请求副本或省略" },
+  "error": {
+    "code": "ENV_3002",
+    "message": "Docker image build failed",
+    "detail": {
+      "step": "RUN apt-get install -y libfoo-dev",
+      "exit_code": 100,
+      "log_uri": "artifact://pair10/draft02/build.log"
+    }
+  }
+}

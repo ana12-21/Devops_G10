@@ -1,0 +1,19 @@
+{
+  "job_type": "DRAFT",
+  "input": {
+    "repository": {
+      "url": "git@github.com:<OWNER>/<PROJECT>.git",
+      "commit": "<C0_FULL_40_SHA>"
+    },
+    "build": {
+      "command": "make",
+      "verify_command": "make check"
+    },
+    "max_iterations": 5,
+    "deadline_sec": 1800,
+    "options": {
+      "base_image": "ubuntu:22.04",
+      "keep_intermediate_images": false
+    }
+  }
+}

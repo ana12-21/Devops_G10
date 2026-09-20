@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "job_id": "job-full01",
+  "job_type": "FULL_CHECK",
+  "status": "RUNNING",
+  "trace_id": "trace-001",
+  "created_at": "2026-09-20T10:00:00Z",
+  "updated_at": "2026-09-20T10:00:47Z",
+  "input": { "_echo": "请求副本或省略" },
+  "output": {
+    "progress": {
+      "phase": "building",
+      "step": "make src/main.o",
+      "percent": 62
+    },
+    "stats": {
+      "duration_sec": 47
+    }
+  }
+}

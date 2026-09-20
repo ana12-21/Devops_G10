@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "job_id": "job-repair01",
+  "job_type": "REPAIR",
+  "status": "SUCCEEDED",
+  "trace_id": "trace-020",
+  "input": { "_echo": "请求副本或省略" },
+  "output": {
+    "git_patch_uri": "artifact://pair10/repair01/fix.patch",
+    "patch_meta": {
+      "files_changed": ["Makefile"],
+      "lines_added": 3,
+      "lines_removed": 0,
+      "style": "tab-indent"
+    },
+    "applied_findings": [
+      {
+        "type": "MISSING",
+        "target": "src/main.o",
+        "dependency": "include/config.h",
+        "fix_strategy": "append-dep-to-prerequisite"
+      }
+    ],
+    "rejected_candidates": [],
+    "recheck": {
+      "build_log_uri": "artifact://pair10/repair01/build.log",
+      "build_exit_code": 0,
+      "verify_log_uri": "artifact://pair10/repair01/verify.log",
+      "verify_exit_code": 0
+    },
+    "stats": {
+      "duration_sec": 58,
+      "candidates_generated": 1,
+      "candidates_rejected": 0
+    }
+  }
+}
