@@ -1,0 +1,104 @@
+# build_md-rd.txt - md-rd 场景的完整命令与输出
+#
+# 命题：PPT slide 18-21：MD（改 config.h 后普通 make 不重建）与 RD（改 unused.h 触发多余编译）两个场景。
+#
+# 数据来源：work/20260920-144518/md-rd.commands.json + md-rd.observations.json
+# 本文件由 scripts/render_evidence.py 从上述 JSON 生成，不要手工编辑。
+
+## 命令序列（9 条）
+
+[step 1]
+  $ make app
+    make_bin : mingw32-make.EXE
+    cwd      : e3/work/20260920-144518/md-rd
+    exit_code: 0
+    stdout   :
+      gcc -O0 -Wall -c main.c -o main.o
+      gcc main.o -o app
+    ts       : 2026-09-20T14:45:18
+
+[step 2]
+  $ app
+    actual   : e3/work/20260920-144518/md-rd/app.exe
+    cwd      : e3/work/20260920-144518/md-rd
+    exit_code: 0
+    stdout   :
+      1
+    ts       : 2026-09-20T14:45:18
+
+[step 3]
+  $ make app
+    make_bin : mingw32-make.EXE
+    cwd      : e3/work/20260920-144518/md-rd
+    exit_code: 0
+    stdout   :
+      gcc main.o -o app
+    ts       : 2026-09-20T14:45:18
+
+[step 4]
+  $ app
+    actual   : e3/work/20260920-144518/md-rd/app.exe
+    cwd      : e3/work/20260920-144518/md-rd
+    exit_code: 0
+    stdout   :
+      1
+    ts       : 2026-09-20T14:45:18
+
+[step 5]
+  $ make clean
+    make_bin : mingw32-make.EXE
+    cwd      : e3/work/20260920-144518/md-rd
+    exit_code: 0
+    stdout   :
+      rm -f main.o app
+    ts       : 2026-09-20T14:45:18
+
+[step 6]
+  $ make app
+    make_bin : mingw32-make.EXE
+    cwd      : e3/work/20260920-144518/md-rd
+    exit_code: 0
+    stdout   :
+      gcc -O0 -Wall -c main.c -o main.o
+      gcc main.o -o app
+    ts       : 2026-09-20T14:45:19
+
+[step 7]
+  $ app
+    actual   : e3/work/20260920-144518/md-rd/app.exe
+    cwd      : e3/work/20260920-144518/md-rd
+    exit_code: 0
+    stdout   :
+      2
+    ts       : 2026-09-20T14:45:19
+
+[step 8]
+  $ make app
+    make_bin : mingw32-make.EXE
+    cwd      : e3/work/20260920-144518/md-rd
+    exit_code: 0
+    stdout   :
+      gcc -O0 -Wall -c main.c -o main.o
+      gcc main.o -o app
+    ts       : 2026-09-20T14:45:19
+
+[step 9]
+  $ make clean
+    make_bin : mingw32-make.EXE
+    cwd      : e3/work/20260920-144518/md-rd
+    exit_code: 0
+    stdout   :
+      rm -f main.o app
+    ts       : 2026-09-20T14:45:19
+
+## 观察结论（4 条）
+
+| # | 步骤 | 实测输出 | 预期 | 说明 |
+|---|------|----------|------|------|
+| 1 | first build | `1` | `1` | md-rd demo initial build |
+| 2 | edit config.h VALUE=2; make; ./app | `1` | `1 (漏重建 - config.h 未声明为 main.o 的依赖)` | MISSING config.h (MD) |
+| 3 | make clean && make && ./app | `2` | `2 (完整重建拾取新 VALUE)` | 完整重建可观察到新值, 与漏重建对比 |
+| 4 | edit unused.h comment; make | `gcc -O0 -Wall -c main.c -o main.o
+gcc main.o -o app
+` | `cc -c main.c -o main.o 重新执行 (多余编译)` | REDUNDANT unused.h (RD) |
+

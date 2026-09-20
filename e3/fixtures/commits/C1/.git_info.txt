@@ -1,12 +1,13 @@
 # C1 — added #include "feature.h", Makefile NOT updated (PPT slide 25)
 tag        = C1
-sha        = 7b1037d6c755cd5e1b6b828e0f6c61426dc21635
+sha        = d98ecd6c37e36444a3e92da4034cebaedd4ce363
 based_on   = C0  (see fixtures/commits/C0/.git_info.txt)
-parent_sha = <C0 sha>
+parent_sha = (none — C1 is an independent git repo, see ADR-003 decision 1)
 scenario   = E3 EChecker C0/C1/C2 — first MD introduced
-provenance = INSTRUCTOR_ORACLE
+provenance = INSTRUCTOR_SYNTHESIZED
 
 # Synthetic commit: main.c adds '#include "feature.h"';
 # new file feature.h contains '#define FEATURE 2';
 # Makefile is unchanged from C0 (does NOT declare feature.h).
-# After `scripts/run_lab.py` runs, sha above becomes the real C1 tag hash.
+# `scripts/run_lab.py` writes the real C1 tag hash into the `sha` line above;
+# the hash is reproducible because the commit date is fixed.

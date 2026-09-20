@@ -1,0 +1,37 @@
+# evidence/env_check.txt
+#
+# E3 A10 - Step 1 (PPT slide 7: 记录 commit 和工具版本)
+# 采集日期：2026-09-20
+#
+# 采集命令（版本类）：
+#   git --version ; mingw32-make --version ; gcc --version ; python --version
+#   Get-CimInstance Win32_OperatingSystem / Win32_Processor
+#
+# 关于路径：本文件只记录版本与工具名，不记录绝对安装路径——所有证据文件
+# 中的路径均相对仓库根，换机器复跑不会因为安装位置不同而对不上。
+# 关于 strace：strace 是 Linux 专属工具，本机为 Windows 宿主机且无可用容器，
+# 因此 evidence/linux-verified/ 未产出（Backlog T-108 记为“不在本机范围”）。
+
+[os]
+Caption      : Microsoft Windows 11 专业版
+Version      : 10.0.26200
+Architecture : AMD64
+
+[cpu]
+Model        : 11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz
+
+[toolchain]
+git          : git version 2.38.0.windows.1
+make         : GNU Make 4.3
+               (MinGW-w64 发行版，与 gcc 同目录；脚本通过 PATH 优先使用它)
+gcc          : gcc.exe (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders) 12.2.0
+python       : Python 3.13.5
+
+[recipe shell]
+sh.exe       : found (Git for Windows: usr/bin/sh.exe)
+rm.exe       : found (Git for Windows: usr/bin/rm.exe)
+               两者都在时，Makefile 的 clean 配方 (rm -f) 会被 make 真正执行；
+               缺失时 scripts/run_lab.py 会直接删除产物并在记录里标注 note。
+
+[note]
+本项目未使用容器，基线生成在 Windows + MinGW-w64 上完成。

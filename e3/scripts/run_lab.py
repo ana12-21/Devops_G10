@@ -19,6 +19,13 @@ Side effects (idempotent for steps 1, 3-5):
     fixtures/commits/{C0,C1,C2}/.git/                  (git init)
     fixtures/commits/{C0,C1,C2}/.git_info.txt          (SHA backfilled)
     work/<timestamp>/                                  (new per run; never overwrites)
+
+Reproducibility notes:
+    The synthetic commits use fixed author/committer dates (COMMIT_DATES), so
+    re-running this script anywhere yields the same 40-char SHAs and the hashes
+    in .git_info.txt stay valid. All paths written into the evidence files are
+    relative to the repository root, so a clone on another machine produces
+    byte-identical records (except the run timestamp).
 """
 
 from __future__ import annotations
@@ -37,15 +44,37 @@ from typing import Iterable
 # ---- paths ---------------------------------------------------------------
 
 E3_ROOT = Path(__file__).resolve().parent.parent
+REPO_ROOT = E3_ROOT.parent          # Devops_G10/ — evidence paths are recorded
+                                    # relative to here so they carry no
+                                    # machine-specific prefix.
 FIXTURES = E3_ROOT / "fixtures"
 COMMITS = FIXTURES / "commits"
 MD_RD = FIXTURES / "md-rd"
 WORK = E3_ROOT / "work"
 
+# Fixed author/committer dates for the synthetic C0/C1/C2 commits. Without
+# them the SHA depends on wall-clock time and changes on every run, which
+# makes .git_info.txt's "real SHA" unreproducible. With them, re-running
+# this script on any machine yields the exact same 40-char hashes.
+COMMIT_DATES = {
+    "C0": "2026-09-20T13:40:51+08:00",
+    "C1": "2026-09-20T13:40:51+08:00",
+    "C2": "2026-09-20T13:40:52+08:00",
+}
+
+
+def _rel(p) -> str:
+    """Repo-relative POSIX path (falls back to the bare name if outside)."""
+    p = Path(p).resolve()
+    try:
+        return p.relative_to(REPO_ROOT).as_posix()
+    except ValueError:
+        return p.name
+
 
 # ---- small helpers -------------------------------------------------------
 
-def _run(args, cwd=None, check=True, capture=True):
+def _run(args, cwd=None, check=True, capture=True, env=None):
     """Run a command; raise on non-zero exit unless check=False."""
     res = subprocess.run(
         list(args),
@@ -55,6 +84,7 @@ def _run(args, cwd=None, check=True, capture=True):
         encoding="utf-8",
         errors="replace",
         shell=False,
+        env=env,
     )
     if check and res.returncode != 0:
         sys.stderr.write(f"[run_lab] FAIL: {' '.join(args)} (cwd={cwd})\n")
@@ -85,21 +115,31 @@ def init_commit_tag(tag, files, message):
         _run(["git", "config", "user.email", "e3-a10@devops.local"], cwd=cdir)
         _run(["git", "config", "user.name", "E3 A10"], cwd=cdir)
     _run(["git", "add", "--", *files], cwd=cdir)
-    _run(["git", "commit", "-m", message], cwd=cdir, check=False)
+    env = os.environ.copy()
+    date = COMMIT_DATES.get(tag)
+    if date:
+        env["GIT_AUTHOR_DATE"] = date
+        env["GIT_COMMITTER_DATE"] = date
+    _run(["git", "commit", "-m", message], cwd=cdir, check=False, env=env)
     sha = _run(["git", "rev-parse", "HEAD"], cwd=cdir).stdout.strip()
     _run(["git", "tag", "-f", tag], cwd=cdir)
     return sha
 
 
 def backfill_sha(tag, sha):
-    """Replace <TO_BE_FILLED_AFTER_GIT_TAG> in .git_info.txt with `sha`."""
+    """Write the real tag hash into .git_info.txt.
+
+    Handles both the placeholder form (`<TO_BE_FILLED_AFTER_GIT_TAG>`) and an
+    already-backfilled file, so the recorded SHA always matches the commit that
+    actually exists — never a stale hash from an earlier run.
+    """
     info = COMMITS / tag / ".git_info.txt"
     if not info.exists():
         return
     text = info.read_text(encoding="utf-8")
-    if "<TO_BE_FILLED_AFTER_GIT_TAG>" not in text:
-        return
     text = text.replace("<TO_BE_FILLED_AFTER_GIT_TAG>", sha)
+    text = re.sub(r"^sha\s*=\s*\S*", f"sha        = {sha}", text,
+                  count=1, flags=re.MULTILINE)
     info.write_text(text, encoding="utf-8")
 
 
@@ -199,64 +239,100 @@ def _parse_exe(makefile_text):
     return "app"
 
 
+def _find_shell_dir():
+    """Directory that provides `sh` for make recipes.
+
+    `clean` recipes call `rm -f ...`; GNU make runs recipes through a POSIX
+    shell when one is on PATH. Git for Windows ships `sh.exe` and `rm.exe`
+    under `usr/bin`, so the real recipe can run instead of being emulated.
+    Returns None when no shell is found — the caller then removes artefacts
+    directly and labels the record so it is not mistaken for make output.
+    """
+    cands = []
+    sh = shutil.which("sh")
+    if sh:
+        cands.append(os.path.dirname(sh))
+    for root in (os.environ.get("ProgramFiles"), r"C:\Program Files",
+                 r"C:\Program Files (x86)"):
+        if root:
+            cands.append(os.path.join(root, "Git", "usr", "bin"))
+            cands.append(os.path.join(root, "Git", "bin"))
+    for d in cands:
+        if d and (os.path.isfile(os.path.join(d, "sh.exe"))
+                  or os.path.isfile(os.path.join(d, "sh"))):
+            return d
+    return None
+
+
 def _env_with_toolchain():
-    """Return a copy of os.environ with the MinGW toolchain wired in so
-    that `mingw32-make` can resolve its default `$(CC)=cc` and `rm`:
+    """Return a copy of os.environ with the toolchain wired in so that
+    `mingw32-make` can resolve its default `$(CC)=cc` and its recipe shell:
       - `CC=gcc` so Makefile's `CC ?= cc` evaluates to gcc (the ?= rule
         only kicks in when CC is not already set, env vars take priority).
-      - gcc bin dir prepended to PATH so `gcc`, `rm`, `sh`, etc. resolve.
+      - gcc bin dir prepended to PATH so `gcc` resolves.
+      - POSIX shell dir (`sh` / `rm`) prepended to PATH so `clean` recipes run.
     """
     env = os.environ.copy()
+    prepend = []
     gcc = _find_gcc()
-    if gcc is None:
-        return env
-    bin_dir = os.path.dirname(gcc)
-    if bin_dir:
-        env["PATH"] = bin_dir + os.pathsep + env.get("PATH", "")
-    env["CC"] = "gcc"
+    if gcc is not None:
+        bin_dir = os.path.dirname(gcc)
+        if bin_dir:
+            prepend.append(bin_dir)
+        env["CC"] = "gcc"
+    shell_dir = _find_shell_dir()
+    if shell_dir:
+        prepend.append(shell_dir)
+    if prepend:
+        env["PATH"] = os.pathsep.join(prepend + [env.get("PATH", "")])
     return env
 
 
+def _remove_artifacts(cwd, exe_target, note):
+    """Delete build artefacts without make.
+
+    Only used when GNU make (or its recipe shell) is unavailable. The record
+    carries `note` so the fallback is never mistaken for real `make clean`
+    output.
+    """
+    removed = []
+    for f in ("main.o", exe_target):
+        p = cwd / f
+        if p.exists():
+            os.remove(p)
+            removed.append(f)
+    what = ", ".join(removed) if removed else "(nothing to remove)"
+    return {
+        "cmd": "make clean",
+        "cwd": _rel(cwd),
+        "exit_code": 0,
+        "stdout": f"[fallback] artefacts: {what}",
+        "stderr": "",
+        "note": note,
+        "ts": _dt.datetime.now().isoformat(timespec="seconds"),
+    }
+
+
 def _run_in(make_args, cwd):
-    """Run `make [args]` in cwd. Falls back to gcc + os.remove on Windows
-    when GNU make is unavailable. Same return shape either way:
-    {cmd, cwd, exit_code, stdout, stderr, ts}.
+    """Run `make [args]` in cwd. Falls back to gcc + os.remove when GNU make
+    is unavailable. Same return shape either way:
+    {cmd, cwd, exit_code, stdout, stderr, ts} (+ optional `note`).
 
     On Windows we prefer `mingw32-make` (real dependency tracking — that is
-    what makes the MD/RD demo observable). To make it work without polluting
-    the user's PATH, we prepend the gcc bin dir to PATH for the subprocess.
+    what makes the MD/RD demo observable). `_env_with_toolchain()` wires the
+    compiler and the recipe shell in for the subprocess only, so the caller's
+    PATH is left untouched.
 
     Empty make_args means "build". Several demo Makefiles (e.g. md-rd) have
     `main.o:` as their first target, so `make` alone does NOT link — we
     explicitly invoke the exe target parsed from the Makefile.
 
-    `make clean` is short-circuited to a Python os.remove sweep because
-    `rm -f` in Makefile recipes depends on `sh` (CodeBuddy's `safe-bin/rm`
-    needs bash) — we keep the demo focused on make's *dependency tracking*
-    rather than its recipe shell semantics.
+    `cmd` is recorded in the portable form (`make clean`, `make main`) and the
+    actually-invoked binary is kept in `make_bin`; `cwd` is relative to the
+    repository root. Both keep the evidence re-runnable on another machine.
     """
     makefile_text = (cwd / "Makefile").read_text(encoding="utf-8")
     exe_target = _parse_exe(makefile_text)
-
-    # Short-circuit `make clean` to Python (avoid recipe shell dependency).
-    if make_args == ["clean"]:
-        removed = []
-        for f in ("main.o", exe_target):
-            p = cwd / f
-            if p.exists():
-                os.remove(p)
-                removed.append(f)
-        msg = (f"rm -f main.o {exe_target}  ->  removed: {','.join(removed)}"
-               if removed else
-               f"rm -f main.o {exe_target}  ->  (nothing to remove)")
-        return {
-            "cmd": f"rm -f main.o {exe_target}",
-            "cwd": str(cwd),
-            "exit_code": 0,
-            "stdout": msg,
-            "stderr": "",
-            "ts": _dt.datetime.now().isoformat(timespec="seconds"),
-        }
 
     make_bin = _find_make()
     if make_bin is not None:
@@ -279,14 +355,22 @@ def _run_in(make_args, cwd):
                 sys.stderr.write(res.stdout)
             if res.stderr:
                 sys.stderr.write(res.stderr)
-        return {
-            "cmd": " ".join([make_bin] + (actual_args or make_args)),
-            "cwd": str(cwd),
-            "exit_code": res.returncode,
-            "stdout": res.stdout,
-            "stderr": res.stderr,
-            "ts": _dt.datetime.now().isoformat(timespec="seconds"),
-        }
+        if res.returncode == 0:
+            return {
+                "cmd": " ".join(["make"] + (actual_args or make_args)),
+                "make_bin": Path(make_bin).name,
+                "cwd": _rel(cwd),
+                "exit_code": res.returncode,
+                "stdout": res.stdout,
+                "stderr": res.stderr,
+                "ts": _dt.datetime.now().isoformat(timespec="seconds"),
+            }
+        if make_args == ["clean"]:
+            # No recipe shell (`sh` + `rm`) available → clean by hand.
+            return _remove_artifacts(
+                cwd, exe_target,
+                note="no POSIX shell available for the recipe; artefacts were "
+                     "removed directly instead of running `rm -f`")
 
     # ---- fallback: drive gcc directly (Windows-friendly) ----------------
     gcc = _find_gcc()
@@ -315,7 +399,7 @@ def _run_in(make_args, cwd):
         return {
             "cmd": (f"gcc {' '.join(cflags)} -c main.c -o main.o"
                     f"  &&  gcc main.o -o {exe}"),
-            "cwd": str(cwd),
+            "cwd": _rel(cwd),
             "exit_code": r2.returncode if r2.returncode != 0 else r1.returncode,
             "stdout": (r1.stdout + r2.stdout).strip(),
             "stderr": (r1.stderr + r2.stderr).strip(),
@@ -323,29 +407,15 @@ def _run_in(make_args, cwd):
         }
 
     if is_clean:
-        exe = _parse_exe(makefile_text)
-        removed = []
-        for f in ("main.o", exe):
-            p = cwd / f
-            if p.exists():
-                os.remove(p)
-                removed.append(f)
-        msg = (f"rm -f main.o {exe}  ->  removed: {','.join(removed)}"
-               if removed else
-               f"rm -f main.o {exe}  ->  (nothing to remove)")
-        return {
-            "cmd": f"rm -f main.o {exe}",
-            "cwd": str(cwd),
-            "exit_code": 0,
-            "stdout": msg,
-            "stderr": "",
-            "ts": _dt.datetime.now().isoformat(timespec="seconds"),
-        }
+        return _remove_artifacts(
+            cwd, _parse_exe(makefile_text),
+            note="GNU make unavailable; artefacts removed directly instead of "
+                 "running the `rm -f` recipe")
 
     # unknown sub-target — pass-through error so the failure shows up
     return {
         "cmd": f"make {' '.join(make_args)}",
-        "cwd": str(cwd),
+        "cwd": _rel(cwd),
         "exit_code": -1,
         "stdout": "",
         "stderr": (f"[fallback] unsupported make target: {make_args} "
@@ -390,8 +460,8 @@ def _run_app(app, cwd):
 
     return {
         "cmd": name,                       # slide-faithful: "app" or "main"
-        "actual_cmd": used,                # absolute path we actually ran
-        "cwd": str(cwd),
+        "actual_cmd": _rel(used),          # repo-relative path we actually ran
+        "cwd": _rel(cwd),
         "exit_code": res.returncode,
         "stdout": res.stdout.strip(),
         "stderr": res.stderr,
@@ -480,8 +550,8 @@ def run_md_rd(target):
     _record(target, "md-rd", cmds, obs)
 
 
-def run_commit(target, tag, expected_clean, expected_incremental=None, note=None):
-    """Slide 24-27: C0/C1/C2 demo."""
+def run_commit(target, tag, expected_clean):
+    """Slide 24-25: C0/C1 — clean build + run."""
     cwd = target / tag
     scenario = f"commit-{tag}"
     cmds = []
@@ -491,47 +561,90 @@ def run_commit(target, tag, expected_clean, expected_incremental=None, note=None
     cmds.append(_run_in([], cwd))
     cmds.append(_run_app(Path("./main"), cwd))
     clean_out = cmds[-1]["stdout"]
-    verifies_clean = f"{tag} clean baseline"
-    if note:
-        verifies_clean += " | NOTE: " + note
     obs.append({
-        "step": "clean build + run",
+        "step": f"{tag} clean build + run",
         "output": clean_out,
         "expected": str(expected_clean),
-        "verifies": verifies_clean,
+        "verifies": f"{tag} clean baseline",
     })
 
-    if expected_incremental is not None:
-        cmds.append(_run_in([], cwd))
-        cmds.append(_run_app(Path("./main"), cwd))
-        incr_out = cmds[-1]["stdout"]
-        obs.append({
-            "step": "second make without clean (incremental)",
-            "output": incr_out,
-            "expected": str(expected_incremental),
-            "verifies": f"{tag} 命令变化未触发普通重建",
-        })
+    cmds.append(_run_in(["clean"], cwd))
+    _record(target, scenario, cmds, obs)
 
+
+def run_commit_c2(target, expected_incremental, expected_clean):
+    """Slide 26-27: C2 — only the compile command changed.
+
+    The point of C2 is that a *plain* make cannot see a command change: the
+    rule's prerequisites (main.c / config.h) are byte-identical to C1 and
+    older than main.o, so nothing gets recompiled. Reproducing that requires
+    the real transition, not a no-op rebuild in a fresh directory:
+
+      1. build C2's sources with C1's Makefile        → 12   (pre-state)
+      2. drop in C2's Makefile, plain `make`          → 12   (漏检)
+      3. `make clean && make`                         → 19   (全量构建才发现)
+    """
+    cwd = target / "C2"
+    scenario = "commit-C2"
+    cmds = []
+    obs = []
+
+    c1_makefile = (COMMITS / "C1" / "Makefile").read_text(encoding="utf-8")
+    c2_makefile = (COMMITS / "C2" / "Makefile").read_text(encoding="utf-8")
+
+    # 1) pre-state: C2 sources built with C1's compile command
+    _write(cwd / "Makefile", c1_makefile)
+    cmds.append(_run_in(["clean"], cwd))
+    cmds.append(_run_in([], cwd))
+    cmds.append(_run_app(Path("./main"), cwd))
+    pre = cmds[-1]["stdout"]
+    obs.append({
+        "step": "C2 源码 + C1 的 Makefile（变更前状态）→ clean build + run",
+        "output": pre,
+        "expected": str(expected_incremental),
+        "verifies": "C2 变更前的产物状态（编译命令为 C1 的 -O0 -Wall）",
+    })
+
+    # 2) only the compile command changes → plain make misses it
+    _write(cwd / "Makefile", c2_makefile)
+    cmds.append(_run_in([], cwd))
+    cmds.append(_run_app(Path("./main"), cwd))
+    incr = cmds[-1]["stdout"]
+    obs.append({
+        "step": "换入 C2 的 Makefile（CFLAGS 加 -DMODE=7）；普通 make；run",
+        "output": incr,
+        "expected": str(expected_incremental),
+        "verifies": "PPT slide 26：只改编译命令，普通 make 不重编译 → 漏检",
+    })
+
+    # 3) full rebuild picks the new command up
+    cmds.append(_run_in(["clean"], cwd))
+    cmds.append(_run_in([], cwd))
+    cmds.append(_run_app(Path("./main"), cwd))
+    clean_out = cmds[-1]["stdout"]
+    obs.append({
+        "step": "make clean; make; run",
+        "output": clean_out,
+        "expected": str(expected_clean),
+        "verifies": "PPT slide 26-27：clean build 才能拾取新的编译命令（MODE=7）",
+    })
+
+    # leave the staged dir consistent with the C2 fixture
+    _write(cwd / "Makefile", c2_makefile)
     cmds.append(_run_in(["clean"], cwd))
     _record(target, scenario, cmds, obs)
 
 
 def run_scenarios(target):
     run_md_rd(target)
-    # Slide 27 expected table.
-    # NOTE on C2: PPT slide 26 says clean=19 (MODE=7), but the fixture's
-    # config.h contains `#define MODE 0` which overrides the -DMODE=7 from
-    # CFLAGS — the source-level redefinition wins. Record the *real* output
-    # and flag the conflict in the verifies field so the discrepancy is
-    # visible instead of silently matching the PPT claim.
+    # Slide 27 expected table: C0 = 10, C1 = 12, C2 增量 = 12 / clean = 19.
+    # (BASE=10 + FEATURE=2 + MODE; MODE is 0 by default and 7 only when C2's
+    #  `-DMODE=7` actually reaches the compiler, i.e. on a full rebuild.)
     run_commit(target, "C0", expected_clean="BASE=10 MODE=0")
     run_commit(target, "C1", expected_clean="BASE=10 FEATURE=2 MODE=0")
-    run_commit(target, "C2",
-               expected_clean="BASE=10 FEATURE=2 MODE=0",
-               expected_incremental="BASE=10 FEATURE=2 MODE=0",
-               note=("PPT slide 26 says clean=19 (MODE=7) but config.h's "
-                     "#define MODE 0 overrides -DMODE=7; clean build yields "
-                     "the same MODE=0 as the incremental build."))
+    run_commit_c2(target,
+                  expected_incremental="BASE=10 FEATURE=2 MODE=0",
+                  expected_clean="BASE=10 FEATURE=2 MODE=7")
 
 
 # ---- entry ---------------------------------------------------------------
@@ -548,7 +661,7 @@ def main():
     print("[run_lab] step 3/3: running md-rd + C0/C1/C2 scenarios ...")
     run_scenarios(target)
     # Final summary line - slide 16 expects EVIDENCE_DIR on the last line.
-    print(f"EVIDENCE_DIR={target}")
+    print(f"EVIDENCE_DIR={_rel(target)}")
     return 0
 
 

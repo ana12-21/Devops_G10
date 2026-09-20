@@ -1,0 +1,86 @@
+{
+  "scenario": "md-rd",
+  "commands": [
+    {
+      "cmd": "make app",
+      "make_bin": "mingw32-make.EXE",
+      "cwd": "e3/work/20260920-144512/md-rd",
+      "exit_code": 0,
+      "stdout": "gcc -O0 -Wall -c main.c -o main.o\ngcc main.o -o app\n",
+      "stderr": "",
+      "ts": "2026-09-20T14:45:12"
+    },
+    {
+      "cmd": "app",
+      "actual_cmd": "e3/work/20260920-144512/md-rd/app.exe",
+      "cwd": "e3/work/20260920-144512/md-rd",
+      "exit_code": 0,
+      "stdout": "1",
+      "stderr": "",
+      "ts": "2026-09-20T14:45:12"
+    },
+    {
+      "cmd": "make app",
+      "make_bin": "mingw32-make.EXE",
+      "cwd": "e3/work/20260920-144512/md-rd",
+      "exit_code": 0,
+      "stdout": "gcc main.o -o app\n",
+      "stderr": "",
+      "ts": "2026-09-20T14:45:13"
+    },
+    {
+      "cmd": "app",
+      "actual_cmd": "e3/work/20260920-144512/md-rd/app.exe",
+      "cwd": "e3/work/20260920-144512/md-rd",
+      "exit_code": 0,
+      "stdout": "1",
+      "stderr": "",
+      "ts": "2026-09-20T14:45:13"
+    },
+    {
+      "cmd": "make clean",
+      "make_bin": "mingw32-make.EXE",
+      "cwd": "e3/work/20260920-144512/md-rd",
+      "exit_code": 0,
+      "stdout": "rm -f main.o app\n",
+      "stderr": "",
+      "ts": "2026-09-20T14:45:13"
+    },
+    {
+      "cmd": "make app",
+      "make_bin": "mingw32-make.EXE",
+      "cwd": "e3/work/20260920-144512/md-rd",
+      "exit_code": 0,
+      "stdout": "gcc -O0 -Wall -c main.c -o main.o\ngcc main.o -o app\n",
+      "stderr": "",
+      "ts": "2026-09-20T14:45:13"
+    },
+    {
+      "cmd": "app",
+      "actual_cmd": "e3/work/20260920-144512/md-rd/app.exe",
+      "cwd": "e3/work/20260920-144512/md-rd",
+      "exit_code": 0,
+      "stdout": "2",
+      "stderr": "",
+      "ts": "2026-09-20T14:45:13"
+    },
+    {
+      "cmd": "make app",
+      "make_bin": "mingw32-make.EXE",
+      "cwd": "e3/work/20260920-144512/md-rd",
+      "exit_code": 0,
+      "stdout": "gcc -O0 -Wall -c main.c -o main.o\ngcc main.o -o app\n",
+      "stderr": "",
+      "ts": "2026-09-20T14:45:13"
+    },
+    {
+      "cmd": "make clean",
+      "make_bin": "mingw32-make.EXE",
+      "cwd": "e3/work/20260920-144512/md-rd",
+      "exit_code": 0,
+      "stdout": "rm -f main.o app\n",
+      "stderr": "",
+      "ts": "2026-09-20T14:45:13"
+    }
+  ]
+}

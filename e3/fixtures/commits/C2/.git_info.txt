@@ -1,12 +1,13 @@
 # C2 — only changed compile command (PPT slide 26)
 tag        = C2
-sha        = e73f72812a6f60f9e4e18ce21661a2de6eaf654c
+sha        = fd5bf5cba7645527e15b9278c241c08407a69ac2
 based_on   = C1  (see fixtures/commits/C1/.git_info.txt)
-parent_sha = <C1 sha>
+parent_sha = (none — C2 is an independent git repo, see ADR-003 decision 1)
 scenario   = E3 EChecker C0/C1/C2 — command change, plain make misses it
-provenance = INSTRUCTOR_ORACLE
+provenance = INSTRUCTOR_SYNTHESIZED
 
 # Synthetic commit: source files (main.c / config.h / feature.h) are
 # byte-identical to C1; only Makefile changes:
 #   CFLAGS = -O0 -Wall         ->  -O0 -Wall -DMODE=7
-# After `scripts/run_lab.py` runs, sha above becomes the real C2 tag hash.
+# `scripts/run_lab.py` writes the real C2 tag hash into the `sha` line above;
+# the hash is reproducible because the commit date is fixed.

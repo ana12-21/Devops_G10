@@ -1,0 +1,23 @@
+{
+  "scenario": "commit-C2",
+  "observations": [
+    {
+      "step": "C2 源码 + C1 的 Makefile（变更前状态）→ clean build + run",
+      "output": "BASE=10 FEATURE=2 MODE=0",
+      "expected": "BASE=10 FEATURE=2 MODE=0",
+      "verifies": "C2 变更前的产物状态（编译命令为 C1 的 -O0 -Wall）"
+    },
+    {
+      "step": "换入 C2 的 Makefile（CFLAGS 加 -DMODE=7）；普通 make；run",
+      "output": "BASE=10 FEATURE=2 MODE=0",
+      "expected": "BASE=10 FEATURE=2 MODE=0",
+      "verifies": "PPT slide 26：只改编译命令，普通 make 不重编译 → 漏检"
+    },
+    {
+      "step": "make clean; make; run",
+      "output": "BASE=10 FEATURE=2 MODE=7",
+      "expected": "BASE=10 FEATURE=2 MODE=7",
+      "verifies": "PPT slide 26-27：clean build 才能拾取新的编译命令（MODE=7）"
+    }
+  ]
+}

@@ -99,6 +99,10 @@ int main(void) {
 // config.h
 #define BASE 10
 
+#ifndef MODE          // C0/C1/C2 统一用这个写法：C2 靠 -DMODE=7 覆盖默认值，
+#define MODE  0       // 裸 #define 会盖掉命令行宏，样本就退化了（见 ADR-003 决策 3）
+#endif
+
 // C1 才会出现
 // feature.h
 // #define FEATURE 2
@@ -118,36 +122,24 @@ main.o: main.c config.h
 
 ---
 
-## 三、DRAFT 样本（B10 准备的参考样本）
+## 三、DRAFT 样本（B10 负责，**本仓库尚未收到**）
 
-DRAFT 项目（`fixtures/draft/`）：
+`fixtures/draft/` 目前**只有 `.gitkeep`**——DRAFT 样本由 B10 提供，截至本次提交仍未推上来。
+A10 的 E3 交付（md-rd + C0/C1/C2）不依赖它，所以不阻塞；等 B10 提交后再补这一节。
 
-```c
-// main.c
-#include <stdio.h>
-int main(void) {
-    printf("hello E3\n");
-    return 0;
-}
-```
+B10 需要提供的内容（据 E3 PPT Slide 29-38）：
 
-```makefile
-# Makefile
-all:
-    cc -o hello main.c
+| 产物 | 用途 |
+|------|------|
+| `fixtures/draft/{main.c,Makefile,README.md}` | 正常可构建的 DRAFT 项目 |
+| `fixtures/draft/Dockerfile.broken` | 失败候选（镜像内无 `gcc` / `make`）→ 非零退出码 |
 
-clean:
-    rm -f hello
-```
-
-两层成功判据：
+两层成功判据（B10 交付后按此验收）：
 
 | 层级 | 检查 | 预期 |
 |------|------|------|
-| **第一层：编译通过** | `make` 退出码为 0 | `hello` 可执行文件生成 |
-| **第二层：功能验证** | `./hello` 退出码为 0 | 输出 `hello E3` |
-
-失败候选（B10 提供）：`Dockerfile.broken`（无 `gcc`/`make`）→ 非零退出码。
+| **第一层：编译通过** | `make` 退出码为 0 | 可执行文件生成 |
+| **第二层：功能验证** | 运行退出码为 0 | 输出预期字符串 |
 
 ---
 
@@ -185,30 +177,31 @@ e3/
 │   │       ├── Makefile
 │   │       └── .git_info.txt
 │   │
-│   └── draft/                         ← DRAFT 样本（B10 准备，A10 参考）
-│       ├── main.c
-│       ├── Makefile
-│       └── README.md
+│   └── draft/                         ← DRAFT 样本（B10 负责；目前只有 .gitkeep）
 │
-├── evidence/                          ← 命令日志
-│   ├── env_check.txt                  ← 环境版本（git/make/cc/python3 + strace）
-│   ├── build_c0.txt                   ← C0 增量 + clean 构建日志
-│   ├── build_md_unbuilt.txt           ← MD 漏重建日志（仍输出旧值）
-│   ├── build_md_clean.txt             ← MD clean build 日志（输出新值）
-│   ├── build_rd_unused.txt            ← RD 多余编译日志
-│   ├── build_c1.txt                   ← C1 增量 + clean 构建日志
-│   ├── build_c2.txt                   ← C2 增量 + clean 构建日志
+├── evidence/                          ← 命令日志（由 scripts/render_evidence.py 从 work/ 生成）
+│   ├── env_check.txt                  ← 环境版本（OS / CPU / git / make / gcc / python / recipe shell）
+│   ├── build_md-rd.txt                ← md-rd 三步：MD 漏重建 → clean 生效 → RD 多余编译
+│   ├── build_c0.txt                   ← C0 clean 构建日志
+│   ├── build_c1.txt                   ← C1 clean 构建日志
+│   ├── build_c2.txt                   ← C2 真实迁移：增量 12 → clean 19
 │   └── comparison_table.md            ← 增量 vs clean 对照表
 │
 ├── scripts/                           ← 跑数据 / 验证脚本
 │   ├── run_lab.py                     ← 主入口（PPT slide 17 提及）
-│   └── verify_docker.py               ← Docker 验证（PPT slide 12 提及）
+│   ├── render_evidence.py             ← 从 work/<ts>/*.json 生成 evidence/*.txt
+│   └── diff_reproducibility.py        ← 两次运行的复现性比对
+│
+├── work/                              ← 每次运行的原始证据（时间戳目录，只增不改）
+│   ├── <YYYYMMDD-HHMMSS>/*.json       ← 命令序列 + 观察结论（机读）
+│   ├── reproducibility_rerun.log      ← 第二次运行的完整输出
+│   └── reproducibility_diff.log       ← 两次运行剔除 ts 后的比对结果
 │
 └── docs/                              ← E3 自己的文档
-    ├── ADR-003.md                     # C0/C1/C2 设计决策（待）
-    ├── Backlog.md                     # T-101~T-110 E3 任务表（待）
+    ├── ADR-003.md                     # C0/C1/C2 设计决策
+    ├── Backlog.md                     # T-101~T-116 E3 任务表
     ├── AI_USAGE.md                    # AI 使用记录（E3 部分）
-    └── practice_log.md                # E3 实践日志（待）
+    └── practice_log.md                # E3 实践日志
 ```
 
 ---
@@ -219,27 +212,30 @@ e3/
 |------|------|------|
 | **T-101** | 选定 1 个 MD 样本项目（GNU Make + C），写 `fixtures/md-rd/` | 完整可跑的小项目 |
 | **T-102** | 写人工答案 `fixtures/md-rd/oracle.json` | INSTRUCTOR_ORACLE 标记 |
-| **T-103** | 验证 MD 现象：改头文件不重建，clean build 才生效 | `evidence/build_md_*.txt` |
-| **T-104** | 验证 RD 现象：改 unused 头文件触发多余 cc | `evidence/build_rd_*.txt` |
+| **T-103** | 验证 MD 现象：改头文件不重建，clean build 才生效 | `evidence/build_md-rd.txt` |
+| **T-104** | 验证 RD 现象：改 unused 头文件触发多余 cc | `evidence/build_md-rd.txt` |
 | **T-105** | git tag C0（声明正确）→ git tag C1（新增 include）→ git tag C2（只改命令） | `fixtures/commits/C0,C1,C2/.git_info.txt` |
 | **T-106** | 在每个 commit 上跑增量 + clean build，记录预期输出 | `evidence/build_c0.txt`、`build_c1.txt`、`build_c2.txt` |
 | **T-107** | 写对照表 `evidence/comparison_table.md`（C0/C1/C2 增量 vs clean） | 对照表 |
-| **T-108** | 在 Linux 环境跑 strace，记录 `config.h` 访问 | `evidence/linux-verified/` |
+| **T-108** | 在 Linux 环境跑 strace，记录 `config.h` 访问 | `evidence/linux-verified/`（➖ 本机无容器） |
 | **T-109** | 撰写 ADR-003（C0/C1/C2 设计决策） | `docs/ADR-003.md` |
 | **T-110** | 撰写 AI_USAGE（E3 部分）+ 补充 Backlog + practice_log | `docs/*.md` |
+| **T-113~T-116** | 复核后补齐：环境证据、证据生成脚本、SHA 可复现、路径相对化 | `evidence/env_check.txt`、`scripts/render_evidence.py` |
 
 
 
 
 ### A10 组
 
-- [ ] `fixtures/md-rd/` 项目完整（main.c / config.h / unused.h / Makefile / oracle.json）
-- [ ] oracle.json 含 2 条 finding（1 MISSING + 1 REDUNDANT），`provenance = INSTRUCTOR_ORACLE`
-- [ ] `evidence/build_md_unbuilt.txt` 证明改 config.h 后 `make` 输出旧值
-- [ ] `evidence/build_md_clean.txt` 证明 clean build 后输出新值
-- [ ] `evidence/build_rd_unused.txt` 证明改 unused.h 触发 cc -c
-- [ ] `fixtures/commits/C0/C1/C2/` 各含 `.git_info.txt`（真实 tag + SHA）
-- [ ] C0/C1/C2 三个 commit 在 `evidence/build_c{0,1,2}.txt` 中记录增量 vs clean 输出
-- [ ] `evidence/comparison_table.md` 对照表完整
-- [ ] `evidence/linux-verified/` 含 strace 记录（如果环境允许）
-- [ ] `docs/ADR-003.md`、`docs/Backlog.md`、`docs/AI_USAGE.md`、`docs/practice_log.md` 四份齐全
+- [x] `fixtures/md-rd/` 项目完整（main.c / config.h / unused.h / Makefile / oracle.json）
+- [x] oracle.json 含 2 条 finding（1 MISSING + 1 REDUNDANT），`provenance = INSTRUCTOR_ORACLE`
+- [x] `evidence/build_md-rd.txt` 证明改 config.h 后 `make` 输出旧值、clean build 后输出新值
+- [x] `evidence/build_md-rd.txt` 证明改 unused.h 触发 `gcc -c main.c -o main.o`
+- [x] `fixtures/commits/C0/C1/C2/` 各含 `.git_info.txt`（真实 tag + SHA，且 SHA 可复现）
+- [x] C0/C1/C2 三个 commit 在 `evidence/build_c{0,1,2}.txt` 中记录增量 vs clean 输出
+- [x] `evidence/comparison_table.md` 对照表完整（C2 增量 12 / clean 19，与 PPT 一致）
+- [x] `evidence/env_check.txt` 记录 OS / CPU / 工具链版本
+- [x] `work/` 存两次运行证据，`work/reproducibility_diff.log` = `OVERALL: PASS`
+- [x] `docs/ADR-003.md`、`docs/Backlog.md`、`docs/AI_USAGE.md`、`docs/practice_log.md` 四份齐全
+- [ ] `evidence/linux-verified/` 含 strace 记录 —— 本机无 Linux 容器，列为可选（T-108）
+- [ ] `fixtures/draft/` DRAFT 样本 —— 由 B10 提供，尚未提交

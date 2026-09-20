@@ -1,0 +1,21 @@
+# reproducibility_diff.log
+# generated: 2026-09-20T14:45:22
+# method:
+#   1) recursively strip the 'ts' fields
+#   2) replace run-timestamp directory names with <TS> inside
+#      string values ('cwd' / 'actual_cmd')
+#   3) json.dumps(sort_keys=True, ensure_ascii=False) byte-compare
+# dirs compared: work/20260920-144512  vs  work/20260920-144518
+
+file                                          left   right  status
+------------------------------------------------------------------
+commit-C0.commands.json                        599     599  PASS
+commit-C1.commands.json                        609     609  PASS
+commit-C2.commands.json                       1331    1331  PASS
+md-rd.commands.json                           1304    1304  PASS
+commit-C0.observations.json                    158     158  PASS
+commit-C1.observations.json                    178     178  PASS
+commit-C2.observations.json                    572     572  PASS
+md-rd.observations.json                        573     573  PASS
+------------------------------------------------------------------
+OVERALL: PASS  (8 files checked)

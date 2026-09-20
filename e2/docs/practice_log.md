@@ -6,7 +6,7 @@
 ## 配对信息
 
 - A10：ana12-21 / Devops_G10（本仓库，依赖检测方向）
-- B10：`<TODO: B10 仓库地址>`
+- B10：**待补**——B10 尚未提供仓库地址；补齐后把地址写在这里，并在 GitHub 的 Issue / PR 上留一条契约确认记录（目前本仓库 Issues = 0、Pull requests = 0）
 - 渠道：GitHub PR / Issue
 
 ---

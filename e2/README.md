@@ -16,7 +16,7 @@
 E2 课堂契约交付物：
 
 - `contracts/` — 四类任务的请求 / 响应 / 错误 / 产物样例
-- `data/` — C0/C1/C2 占位（E3 待补 SHA）
+- `data/` — C0/C1/C2 的 40 位 SHA 与仓库地址（已回填）
 - `docs/` — ADR、Backlog、AI 使用记录、配对练习
 - `scripts/` — 契约校验脚本 `validate.py`
 
@@ -40,7 +40,7 @@ e2/
 │   ├── AI_USAGE.md                   # AI 建议使用记录
 │   └── practice_log.md               # T-009 A10↔B10 三轮配对记录
 ├── data/
-│   └── commits.md                    # T-006 数据占位（E3 待补 SHA）
+│   └── commits.md                    # T-006：C0/C1/C2 完整 SHA + 仓库地址 + 取得方式
 └── scripts/
     └── validate.py                   # 契约校验脚本（--all / --negative）
 ```
@@ -51,7 +51,8 @@ e2/
 - [x] 6 个 JSON 样例字段完整
 - [x] 错误码至少覆盖 6 类
 - [x] ADR / Backlog / AI_USAGE 三份文档齐全
-- [x] 与 B10 组在 PR / Issue 上互相确认契约（`docs/practice_log.md`）
+- [ ] 与 B10 组的契约确认：目前只有三轮配对练习的文字记录（`docs/practice_log.md`），**尚未在 GitHub 的 Issue / PR 上留痕**
+      （本仓库 Issues = 0、Pull requests = 0；`practice_log.md` 中 B10 的仓库地址也仍是占位，需补齐）
 
 ## 历史
 

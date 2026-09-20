@@ -1,62 +1,52 @@
-# build_c1.txt — C1 commit 的 clean + 增量构建日志
+# build_c1.txt - commit-C1 场景的完整命令与输出
 #
-# 场景：fixtures/commits/C1（PPT slide 25）
-# 命题：C1 在 C0 基础上新增 #include "feature.h"，但 Makefile 未声明 feature.h
-#      （MD：main.o 缺 feature.h）。clean build 输出 BASE=10 FEATURE=2 MODE=0。
+# 命题：PPT slide 25：main.c 新增 #include "feature.h"，Makefile 未同步宣告。clean build 应输出 12（BASE=10 + FEATURE=2）。预期发现：main.o 缺 feature.h 依赖。
 #
-# 数据来源：work/20260920-135225/commit-C1.commands.json + commit-C1.observations.json
-# 时间：2026-09-20T13:52:28
+# 数据来源：work/20260920-144518/commit-C1.commands.json + commit-C1.observations.json
+# 本文件由 scripts/render_evidence.py 从上述 JSON 生成，不要手工编辑。
 
-## Commit 信息
-tag        = C1
-sha        = 7b1037d6c755cd5e1b6b828e0f6c61426dc21635
-based_on   = C0  (sha = 3d5bb6c4728e)
-scenario   = E3 EChecker C0/C1/C2 — first MD introduced
-详见 fixtures/commits/C1/.git_info.txt
+## 命令序列（4 条）
 
-源码差异（C1 相对 C0）：
-- main.c: 新增 `#include "feature.h"`（FEATURE 宏由此引入）
-- feature.h (新文件): #define FEATURE 2
-- Makefile: 保持 C0 不变（仍是 main.o: main.c config.h）—— **故意漏声明 feature.h，制造 MD**
-- config.h: 不变
+[step 1]
+  $ make clean
+    make_bin : mingw32-make.EXE
+    cwd      : e3/work/20260920-144518/C1
+    exit_code: 0
+    stdout   :
+      rm -f main.o main
+    ts       : 2026-09-20T14:45:20
 
-## clean build（PPT slide 25 主线）
+[step 2]
+  $ make main
+    make_bin : mingw32-make.EXE
+    cwd      : e3/work/20260920-144518/C1
+    exit_code: 0
+    stdout   :
+      gcc -O0 -Wall -c main.c -o main.o
+      gcc main.o -o main
+    ts       : 2026-09-20T14:45:20
 
-[step 1] rm -f main.o main（清空）
-  $ rm -f main.o main
-  stdout: rm -f main.o main  ->  (nothing to remove)
-  exit_code: 0
+[step 3]
+  $ main
+    actual   : e3/work/20260920-144518/C1/main.exe
+    cwd      : e3/work/20260920-144518/C1
+    exit_code: 0
+    stdout   :
+      BASE=10 FEATURE=2 MODE=0
+    ts       : 2026-09-20T14:45:20
 
-[step 2] clean build（Makefile 没声明 feature.h，但 main.c 读了它）
-  $ mingw32-make main
-  stdout:
-    gcc -O0 -Wall -c main.c -o main.o
-    gcc main.o -o main
-  exit_code: 0
-  → GCC 自动按 include 路径找到 feature.h，编译仍成功；这只是 MD 的**可见症状**未触发。
+[step 4]
+  $ make clean
+    make_bin : mingw32-make.EXE
+    cwd      : e3/work/20260920-144518/C1
+    exit_code: 0
+    stdout   :
+      rm -f main.o main
+    ts       : 2026-09-20T14:45:20
 
-[step 3] 运行 main
-  $ ./main
-  stdout: BASE=10 FEATURE=2 MODE=0
-  exit_code: 0
-  → 期望 = "BASE=10 FEATURE=2 MODE=0"，实际 = "BASE=10 FEATURE=2 MODE=0"，**PASS** ✅
+## 观察结论（1 条）
 
-## MD 暴露方法（slide 25 主线演示）
+| # | 步骤 | 实测输出 | 预期 | 说明 |
+|---|------|----------|------|------|
+| 1 | C1 clean build + run | `BASE=10 FEATURE=2 MODE=0` | `BASE=10 FEATURE=2 MODE=0` | C1 clean baseline |
 
-要看到 MD 的可见症状，需要在 C1 的源码基础上**改 feature.h 的 FEATURE 宏值**：
-- 改 `#define FEATURE 2` → `#define FEATURE 9`
-- `make` 不会重编 main.c（Makefile 没声明 feature.h）
-- `./main` 仍输出 FEATURE=2（漏重建）
-
-本 evidence 不重复该步骤，因为 build_md_unbuilt.txt 已经用 md-rd 样本演示了相同的 MD 现象。
-C1 与 md-rd 的 MD 区别仅在路径：C1 是 `main.o -> feature.h`，md-rd 是 `main.o -> config.h`，
-两者都验证了"普通 make 的隐式依赖漏检"。
-
-## 结论
-
-C1 在 Makefile 没改、只改源码的前提下，引入了 MISSING：
-- 声明正确性：被破坏（main.o 缺 feature.h 声明）
-- clean build 输出：符合 PPT slide 25 预期（12）
-- 增量构建的 MD 症状：与 md-rd 同型，详见 build_md_unbuilt.txt
-
-oracle 来源：fixtures/commits/C1/.git_info.txt（provenance = INSTRUCTOR_ORACLE）

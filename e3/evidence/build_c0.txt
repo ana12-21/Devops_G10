@@ -1,49 +1,52 @@
-# build_c0.txt — C0 commit 的 clean + 增量构建日志
+# build_c0.txt - commit-C0 场景的完整命令与输出
 #
-# 场景：fixtures/commits/C0（PPT slide 24）
-# 命题：C0 = 声明正确的 baseline（main.o: main.c config.h）。
-#      clean build 输出 BASE=10 MODE=0，PPT slide 24 预期 = 10。
+# 命题：PPT slide 24：声明正确的初始提交。clean build 应输出 10（BASE=10）。
 #
-# 数据来源：work/20260920-135225/commit-C0.commands.json + commit-C0.observations.json
-# 时间：2026-09-20T13:52:27（与 20260920-134753 复跑完全一致，剔除 ts 后）
+# 数据来源：work/20260920-144518/commit-C0.commands.json + commit-C0.observations.json
+# 本文件由 scripts/render_evidence.py 从上述 JSON 生成，不要手工编辑。
 
-## Commit 信息
-tag        = C0
-sha        = 3d5bb6c4728ea31994ca4543948100351bd1560d
-based_on   = synthetic commit (INSTRUCTOR_SYNTHESIZED)
-scenario   = E3 EChecker C0/C1/C2 baseline
-详见 fixtures/commits/C0/.git_info.txt
+## 命令序列（4 条）
 
-源码：
-- main.c: #include "config.h"，printf("BASE=%d FEATURE=%d MODE=%d\n", BASE, FEATURE, MODE);
-- config.h: #define BASE 10  （FEATURE 与 MODE 未定义 → printf 输出 "MODE=0" 是 GCC 默认）
-- Makefile: main.o: main.c config.h  ← 声明正确，无 MD/RD
+[step 1]
+  $ make clean
+    make_bin : mingw32-make.EXE
+    cwd      : e3/work/20260920-144518/C0
+    exit_code: 0
+    stdout   :
+      rm -f main.o main
+    ts       : 2026-09-20T14:45:19
 
-## clean build（PPT slide 24 主线）
+[step 2]
+  $ make main
+    make_bin : mingw32-make.EXE
+    cwd      : e3/work/20260920-144518/C0
+    exit_code: 0
+    stdout   :
+      gcc -O0 -Wall -c main.c -o main.o
+      gcc main.o -o main
+    ts       : 2026-09-20T14:45:20
 
-[step 1] rm -f main.o main（清空）
-  $ rm -f main.o main
-  stdout: rm -f main.o main  ->  (nothing to remove)
-  exit_code: 0
+[step 3]
+  $ main
+    actual   : e3/work/20260920-144518/C0/main.exe
+    cwd      : e3/work/20260920-144518/C0
+    exit_code: 0
+    stdout   :
+      BASE=10 MODE=0
+    ts       : 2026-09-20T14:45:20
 
-[step 2] clean build
-  $ mingw32-make main
-  stdout:
-    gcc -O0 -Wall -c main.c -o main.o
-    gcc main.o -o main
-  exit_code: 0
+[step 4]
+  $ make clean
+    make_bin : mingw32-make.EXE
+    cwd      : e3/work/20260920-144518/C0
+    exit_code: 0
+    stdout   :
+      rm -f main.o main
+    ts       : 2026-09-20T14:45:20
 
-[step 3] 运行 main
-  $ ./main
-  stdout: BASE=10 MODE=0
-  exit_code: 0
-  → 期望 = "BASE=10 MODE=0"，实际 = "BASE=10 MODE=0"，**PASS** ✅
+## 观察结论（1 条）
 
-## 结论
+| # | 步骤 | 实测输出 | 预期 | 说明 |
+|---|------|----------|------|------|
+| 1 | C0 clean build + run | `BASE=10 MODE=0` | `BASE=10 MODE=0` | C0 clean baseline |
 
-C0 是声明正确的 baseline：
-- main.c 读取 config.h，Makefile 把 config.h 声明为 main.o 的依赖 → 无 MISSING
-- Makefile 没有声明多余头文件 → 无 REDUNDANT
-- clean build 输出符合 PPT slide 24 预期
-
-oracle 来源：fixtures/commits/C0/.git_info.txt（provenance = INSTRUCTOR_ORACLE）

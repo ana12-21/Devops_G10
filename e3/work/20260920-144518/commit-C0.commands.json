@@ -1,0 +1,41 @@
+{
+  "scenario": "commit-C0",
+  "commands": [
+    {
+      "cmd": "make clean",
+      "make_bin": "mingw32-make.EXE",
+      "cwd": "e3/work/20260920-144518/C0",
+      "exit_code": 0,
+      "stdout": "rm -f main.o main\n",
+      "stderr": "",
+      "ts": "2026-09-20T14:45:19"
+    },
+    {
+      "cmd": "make main",
+      "make_bin": "mingw32-make.EXE",
+      "cwd": "e3/work/20260920-144518/C0",
+      "exit_code": 0,
+      "stdout": "gcc -O0 -Wall -c main.c -o main.o\ngcc main.o -o main\n",
+      "stderr": "",
+      "ts": "2026-09-20T14:45:20"
+    },
+    {
+      "cmd": "main",
+      "actual_cmd": "e3/work/20260920-144518/C0/main.exe",
+      "cwd": "e3/work/20260920-144518/C0",
+      "exit_code": 0,
+      "stdout": "BASE=10 MODE=0",
+      "stderr": "",
+      "ts": "2026-09-20T14:45:20"
+    },
+    {
+      "cmd": "make clean",
+      "make_bin": "mingw32-make.EXE",
+      "cwd": "e3/work/20260920-144518/C0",
+      "exit_code": 0,
+      "stdout": "rm -f main.o main\n",
+      "stderr": "",
+      "ts": "2026-09-20T14:45:20"
+    }
+  ]
+}

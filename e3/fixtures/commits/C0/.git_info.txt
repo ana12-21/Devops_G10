@@ -1,11 +1,13 @@
 # C0 — declared correctly (PPT slide 24)
 tag        = C0
-sha        = 3d5bb6c4728ea31994ca4543948100351bd1560d
+sha        = 84c3fcf26a6d0746e645aae2f1b7bde8f050130d
 based_on   = synthetic commit (INSTRUCTOR_SYNTHESIZED)
 scenario   = E3 EChecker C0/C1/C2 baseline
-provenance = INSTRUCTOR_ORACLE
+provenance = INSTRUCTOR_SYNTHESIZED
 
 # This is a synthetic commit created for the E3 EChecker baseline:
 # main.c reads only config.h; Makefile correctly declares main.o: main.c config.h.
-# After running `scripts/run_lab.py` the SHA above will be filled with
-# the real hash produced by `git tag C0` in fixtures/commits/.
+# `scripts/run_lab.py` initialises the repo, commits and tags it, then writes
+# the resulting hash into this file. Commit dates are fixed (see COMMIT_DATES
+# in run_lab.py), so the hash above is reproducible on any machine rather than
+# being a one-off value from a single run.
