@@ -1,0 +1,40 @@
+{
+  "_comment": "GET /v1/jobs/job-incr02 响应 —— A 组 EChecker 拒绝：增量请求缺 baseline",
+  "_scenario": "客户端提交 INCREMENTAL_CHECK，但 input.baseline 缺失或 baseline.actual_graph_uri 为空",
+  "_rule": "BASELINE_2001：baseline 缺失或 commit 与历史不符。任务在 VALIDATE 阶段即失败，不进入 RUNNING。",
+  "_contrast": "这是【系统执行错误】，写入 job.error；与 MISSING/REDUNDANT 这类检测发现完全不同。",
+  "_scope": "A 组",
+  "schema_version": "1.0.0",
+  "job_id": "job-incr02",
+  "job_type": "INCREMENTAL_CHECK",
+  "status": "FAILED",
+  "trace_id": "trace-004",
+  "created_at": "2026-09-20T11:10:00Z",
+  "updated_at": "2026-09-20T11:10:01Z",
+  "error": {
+    "code": "BASELINE_2001",
+    "message": "incremental check requires input.baseline; no baseline commit or actual graph was provided",
+    "phase": "VALIDATE",
+    "retryable": false,
+    "detail": {
+      "missing_field": "input.baseline",
+      "required_fields": [
+        "input.baseline.commit",
+        "input.baseline.configuration_id",
+        "input.baseline.actual_graph_uri"
+      ],
+      "hint": "先跑一次 FULL_CHECK 取得 actual.json，再把它作为 baseline.actual_graph_uri 提交",
+      "previous_full_check_job_id": "job-full01"
+    }
+  },
+  "_rejected_input": {
+    "job_type": "INCREMENTAL_CHECK",
+    "input": {
+      "repository": {
+        "url": "git@github.com:<OWNER>/<PROJECT>.git",
+        "commit": "2222222222222222222222222222222222222222"
+      },
+      "build": { "command": "make", "project_root": "./" }
+    }
+  }
+}

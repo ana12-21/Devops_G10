@@ -1,0 +1,143 @@
+{
+  "_comment": "A 组产出 → B10 MDFixer 消费。BuildChecker 全量检测的 ERROR_REPORT（MD + RD 合并）。",
+  "_scope": "A 组产出（producer_service=BUILDCHECKER）",
+  "_consumed_by": "B10 MDFixer（POST /v1/repair-jobs 的 input.md_report_uri 指向本文件；B 组只应消费 type=MISSING）",
+  "_critical": "findings 非空 ≠ 任务失败。本报告由 status=SUCCEEDED 的 FULL_CHECK 产出，job.error 为空。",
+  "_fields_for_consumer": ["type", "target", "dependency", "commit", "detector", "location", "evidence_uri"],
+  "schema_version": "1.0.0",
+
+  "report_id": "report-md001",
+  "report_type": "ERROR_REPORT",
+  "producer_job_id": "job-full01",
+  "producer_service": "BUILDCHECKER",
+  "trace_id": "trace-001",
+  "target_commit": "1111111111111111111111111111111111111111",
+  "configuration_id": "cc-MODE0",
+  "detector": "BUILDCHECKER",
+  "generated_at": "2026-09-20T10:00:47Z",
+  "tool_version": "buildchecker/0.9.3",
+
+  "findings": [
+    {
+      "finding_id": "F-0001",
+      "type": "MISSING",
+      "target": "src/main.o",
+      "dependency": "include/config.h",
+      "commit": "1111111111111111111111111111111111111111",
+      "detector": "BUILDCHECKER",
+      "location": {
+        "file": "src/main.c",
+        "line": 12,
+        "column": 1,
+        "kind": "INCLUDE",
+        "snippet": "#include \"config.h\""
+      },
+      "evidence_uri": "artifact://pair10/full01/evidence/F-0001.json",
+      "confidence": 0.98,
+      "fix_strategy": "append-dep-to-prerequisite",
+      "note": "main.o 编译期实际读取 include/config.h，但 Makefile 的 main.o 规则未声明该先决条件"
+    },
+    {
+      "finding_id": "F-0002",
+      "type": "MISSING",
+      "target": "app",
+      "dependency": "-lm",
+      "commit": "1111111111111111111111111111111111111111",
+      "detector": "BUILDCHECKER",
+      "location": {
+        "file": "Makefile",
+        "line": 24,
+        "kind": "LINK_FLAG",
+        "makefile_target": "app",
+        "snippet": "$(CC) $(OBJS) -o $@"
+      },
+      "evidence_uri": "artifact://pair10/full01/evidence/F-0002.json",
+      "confidence": 0.91,
+      "fix_strategy": "append-ldflag-to-link-rule",
+      "note": "链接期使用 libm 符号（sqrt/pow），LDLIBS 未含 -lm"
+    },
+    {
+      "finding_id": "F-0003",
+      "type": "MISSING",
+      "target": "src/parse.o",
+      "dependency": "include/token.h",
+      "commit": "1111111111111111111111111111111111111111",
+      "detector": "INSTRUCTOR_ORACLE",
+      "location": {
+        "file": "src/parse.c",
+        "line": 31,
+        "column": 1,
+        "kind": "MANUAL",
+        "snippet": "#include \"token.h\""
+      },
+      "evidence_uri": "artifact://pair10/full01/evidence/F-0003.manual.json",
+      "confidence": 1.0,
+      "fix_strategy": "append-dep-to-prerequisite",
+      "note": "【人工样本】由助教人工阅读 Makefile 后标注；必须显式标 detector=INSTRUCTOR_ORACLE，不得混入机器统计"
+    },
+    {
+      "finding_id": "F-0101",
+      "type": "REDUNDANT",
+      "target": "src/legacy.o",
+      "dependency": "include/old.h",
+      "commit": "1111111111111111111111111111111111111111",
+      "detector": "BUILDCHECKER",
+      "location": {
+        "file": "Makefile",
+        "line": 30,
+        "kind": "MAKEFILE_PREREQ",
+        "makefile_target": "src/legacy.o",
+        "snippet": "src/legacy.o: src/legacy.c include/old.h"
+      },
+      "evidence_uri": "artifact://pair10/full01/evidence/F-0101.json",
+      "confidence": 0.88,
+      "note": "声明了 include/old.h 作为先决条件，但 cc-MODE0 下 legacy.c 的条件编译分支未启用该头文件。REDUNDANT 不进修复路径。"
+    },
+    {
+      "finding_id": "F-0102",
+      "type": "REDUNDANT",
+      "target": "app",
+      "dependency": "-lpthread",
+      "commit": "1111111111111111111111111111111111111111",
+      "detector": "BUILDCHECKER",
+      "location": {
+        "file": "Makefile",
+        "line": 8,
+        "kind": "LINK_FLAG",
+        "makefile_target": "LDLIBS",
+        "snippet": "LDLIBS += -lpthread"
+      },
+      "evidence_uri": "artifact://pair10/full01/evidence/F-0102.json",
+      "confidence": 0.76,
+      "note": "cc-MODE0 未启用多线程路径，链接期未出现 pthread 符号引用"
+    }
+  ],
+
+  "summary": {
+    "total": 5,
+    "missing_count": 3,
+    "redundant_count": 2,
+    "actionable_count": 3,
+    "by_detector": {
+      "BUILDCHECKER": 4,
+      "INSTRUCTOR_ORACLE": 1
+    }
+  },
+
+  "provenance": {
+    "image_ref": "registry.local/pair10/draft01:sha-abc1234",
+    "build_command": "make",
+    "verify_command": "make check",
+    "build_log_uri": "artifact://pair10/full01/build.log",
+    "actual_graph_uri": "artifact://pair10/full01/actual.json",
+    "declared_graph_uri": "artifact://pair10/full01/declared.json"
+  },
+
+  "human_review": {
+    "annotated": true,
+    "annotator": "助教（课程基准样本）",
+    "annotated_at": "2026-09-19T16:20:00Z",
+    "method": "manual-makefile-read",
+    "note": "F-0003 为人工来源条目，其余为 BuildChecker 机器检测。人工条目的 detector 必须为 INSTRUCTOR_ORACLE 以示区分。"
+  }
+}

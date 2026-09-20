@@ -1,0 +1,15 @@
+{
+  "_comment": "反例 1：A 组 FULL_CHECK 请求，job_type 写成 ABC",
+  "_expected": "被拒绝",
+  "_error_code": "SCHEMA_1001",
+  "_reason": "task.schema.json 中 job_type 为 enum [DRAFT, FULL_CHECK, INCREMENTAL_CHECK, REPAIR]，ABC 不在枚举内；服务端不得猜测意图或降级处理",
+  "job_type": "ABC",
+  "input": {
+    "repository": {
+      "url": "git@github.com:<OWNER>/<PROJECT>.git",
+      "commit": "<C0_FULL_40_SHA>"
+    },
+    "build": { "command": "make", "project_root": "./" },
+    "configuration_id": "cc-MODE0"
+  }
+}
