@@ -2,11 +2,9 @@
 
 > 南京大学苏州校区 2026 秋季 · DevOps 课程 · Pair10 · A 组
 > 教师：吕骏 ｜ 助教：曾星伟
-> 组长：秦林炜（GitHub: [ana12-21](https://github.com/ana12-21)）
 
 ## 仓库用途
 
-本仓库汇总 Pair10 在 DevOps 课程中完成的**所有教学实验**。
 
 每个实验独立成子目录，互不干扰：
 
@@ -55,9 +53,6 @@ git log --oneline | head -20
 - `docs: 标注作者账号信息 + 补全文件结构树状图`
 - 🆕 `refactor: 把 E2 文件打包到 e2/ 子目录 + 启动 e3/ 骨架`
 
-## 验收入口
 
-- **E2 验收**：进入 `e2/` 目录，查看 `README.md` 的"验收清单"小节
-- **E3 验收**：进入 `e3/` 目录，查看 `README.md` 的"验收清单"小节
 
 > 各实验的 ADR / Backlog / AI_USAGE / practice_log 等文档都位于各自子目录的 `docs/` 下，**互不混淆**。
