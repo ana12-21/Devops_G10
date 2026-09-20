@@ -40,6 +40,10 @@ DevOps_G10/
 - GitHub：[ana12-21](https://github.com/ana12-21)
 - 邮箱：221900015@smail.nju.edu.cn / 3353794280@qq.com
 
+- 何刘磊
+- GitHub：[hll335](https://github.com/hll335)
+- 邮箱：241880335@smail.nju.edu.cn
+
 ## 提交历史（要点）
 
 ```bash
