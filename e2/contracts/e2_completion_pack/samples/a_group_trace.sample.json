@@ -1,0 +1,199 @@
+{
+  "schema_version": "1.0.0",
+  "trace_id": "trace-a10pack01",
+  "pair_id": "pair10",
+  "repository": {
+    "url": "git@github.com:ana12-21/Devops_G10.git",
+    "c0": "1111111111111111111111111111111111111111",
+    "c1": "2222222222222222222222222222222222222222"
+  },
+  "configuration_id": "cc-MODE0",
+  "jobs": [
+    {
+      "schema_version": "1.0.0",
+      "job_id": "job-full01",
+      "job_type": "FULL_CHECK",
+      "status": "SUCCEEDED",
+      "trace_id": "trace-a10pack01",
+      "input": {
+        "repository": {
+          "url": "git@github.com:ana12-21/Devops_G10.git",
+          "commit": "1111111111111111111111111111111111111111"
+        },
+        "configuration_id": "cc-MODE0",
+        "build": {
+          "command": "make",
+          "project_root": "./"
+        }
+      },
+      "output": {
+        "artifacts": [
+          {
+            "artifact_id": "actual-001",
+            "type": "ACTUAL_GRAPH",
+            "uri": "artifact://pair10/job-full01/actual.json",
+            "media_type": "application/json",
+            "producer_job_id": "job-full01",
+            "target_commit": "1111111111111111111111111111111111111111",
+            "configuration_id": "cc-MODE0"
+          },
+          {
+            "artifact_id": "declared-001",
+            "type": "DECLARED_GRAPH",
+            "uri": "artifact://pair10/job-full01/declared.json",
+            "media_type": "application/json",
+            "producer_job_id": "job-full01",
+            "target_commit": "1111111111111111111111111111111111111111",
+            "configuration_id": "cc-MODE0"
+          },
+          {
+            "artifact_id": "report-001",
+            "type": "ERROR_REPORT",
+            "uri": "artifact://pair10/job-full01/error_report.json",
+            "media_type": "application/json",
+            "producer_job_id": "job-full01",
+            "target_commit": "1111111111111111111111111111111111111111",
+            "configuration_id": "cc-MODE0"
+          }
+        ],
+        "findings": [
+          {
+            "finding_id": "F-0001",
+            "type": "MISSING",
+            "target": "src/main.o",
+            "dependency": "include/config.h",
+            "commit": "1111111111111111111111111111111111111111",
+            "detector": "BUILDCHECKER",
+            "location": {
+              "file": "src/main.c",
+              "line": 12,
+              "kind": "INCLUDE",
+              "snippet": "#include \"config.h\""
+            },
+            "evidence_uri": "artifact://pair10/job-full01/evidence/F-0001.json",
+            "confidence": 0.98
+          },
+          {
+            "finding_id": "F-0101",
+            "type": "REDUNDANT",
+            "target": "src/legacy.o",
+            "dependency": "include/old.h",
+            "commit": "1111111111111111111111111111111111111111",
+            "detector": "BUILDCHECKER",
+            "location": {
+              "file": "Makefile",
+              "line": 30,
+              "kind": "MAKEFILE_PREREQ",
+              "makefile_target": "src/legacy.o"
+            },
+            "evidence_uri": "artifact://pair10/job-full01/evidence/F-0101.json",
+            "confidence": 0.88
+          }
+        ],
+        "stats": {
+          "missing_count": 1,
+          "redundant_count": 1,
+          "duration_sec": 47
+        }
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "job_id": "job-incr01",
+      "job_type": "INCREMENTAL_CHECK",
+      "status": "SUCCEEDED",
+      "trace_id": "trace-a10pack01",
+      "input": {
+        "repository": {
+          "url": "git@github.com:ana12-21/Devops_G10.git",
+          "commit": "2222222222222222222222222222222222222222"
+        },
+        "baseline": {
+          "commit": "1111111111111111111111111111111111111111",
+          "configuration_id": "cc-MODE0",
+          "actual_graph_uri": "artifact://pair10/job-full01/actual.json",
+          "producer_job_id": "job-full01"
+        },
+        "build": {
+          "command": "make",
+          "project_root": "./"
+        }
+      },
+      "output": {
+        "artifacts": [
+          {
+            "artifact_id": "actual-002",
+            "type": "ACTUAL_GRAPH",
+            "uri": "artifact://pair10/job-incr01/actual.json",
+            "media_type": "application/json",
+            "producer_job_id": "job-incr01",
+            "target_commit": "2222222222222222222222222222222222222222",
+            "configuration_id": "cc-MODE0"
+          },
+          {
+            "artifact_id": "report-002",
+            "type": "ERROR_REPORT",
+            "uri": "artifact://pair10/job-incr01/error_report.json",
+            "media_type": "application/json",
+            "producer_job_id": "job-incr01",
+            "target_commit": "2222222222222222222222222222222222222222",
+            "configuration_id": "cc-MODE0"
+          }
+        ],
+        "delta": {
+          "new_findings": [
+            {
+              "finding_id": "F-0002",
+              "type": "MISSING",
+              "target": "src/util.o",
+              "dependency": "include/utils.h",
+              "commit": "2222222222222222222222222222222222222222",
+              "detector": "ECHECKER",
+              "delta_status": "NEW",
+              "location": {
+                "file": "src/util.c",
+                "line": 5,
+                "kind": "INCLUDE",
+                "snippet": "#include \"utils.h\""
+              },
+              "evidence_uri": "artifact://pair10/job-incr01/evidence/F-0002.json",
+              "confidence": 0.96
+            }
+          ],
+          "eliminated_findings": [
+            {
+              "finding_id": "F-0101",
+              "type": "REDUNDANT",
+              "target": "src/legacy.o",
+              "dependency": "include/old.h",
+              "commit": "2222222222222222222222222222222222222222",
+              "detector": "ECHECKER",
+              "delta_status": "ELIMINATED",
+              "location": {
+                "file": "Makefile",
+                "line": 30,
+                "kind": "MAKEFILE_PREREQ",
+                "makefile_target": "src/legacy.o"
+              },
+              "evidence_uri": "artifact://pair10/job-incr01/evidence/F-0101.json",
+              "confidence": 0.86
+            }
+          ],
+          "updated_actual_graph_uri": "artifact://pair10/job-incr01/actual.json"
+        },
+        "stats": {
+          "new_count": 1,
+          "eliminated_count": 1,
+          "duration_sec": 16
+        }
+      }
+    }
+  ],
+  "acceptance": {
+    "full_check_has_actual_and_declared_graphs": true,
+    "incremental_baseline_matches": true,
+    "md_is_not_system_failure": true,
+    "all_findings_bind_to_checked_commit": true
+  }
+}
+

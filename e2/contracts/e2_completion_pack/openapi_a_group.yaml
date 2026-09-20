@@ -1,0 +1,185 @@
+openapi: 3.0.3
+info:
+  title: E2 A-group job contract
+  version: 1.0.0
+  description: A-group OpenAPI fragment for BuildChecker and EChecker only.
+paths:
+  /v1/full-check-jobs:
+    post:
+      summary: Create a BuildChecker full check job
+      operationId: createFullCheckJob
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FullCheckRequest'
+      responses:
+        '202':
+          description: Job accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatedJob'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorJob'
+  /v1/incremental-check-jobs:
+    post:
+      summary: Create an EChecker incremental check job
+      operationId: createIncrementalCheckJob
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IncrementalCheckRequest'
+      responses:
+        '202':
+          description: Job accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatedJob'
+        '400':
+          description: Missing or mismatched baseline
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorJob'
+  /v1/jobs/{job_id}:
+    get:
+      summary: Query an A-group job by ID
+      operationId: getJob
+      parameters:
+        - name: job_id
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^job-[a-z0-9]+$'
+      responses:
+        '200':
+          description: Current job state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorJob'
+components:
+  schemas:
+    Repository:
+      type: object
+      required: [url, commit]
+      properties:
+        url:
+          type: string
+        commit:
+          type: string
+          pattern: '^[0-9a-f]{40}$'
+    Build:
+      type: object
+      required: [command, project_root]
+      properties:
+        command:
+          type: string
+        project_root:
+          type: string
+    FullCheckRequest:
+      type: object
+      required: [job_type, input]
+      properties:
+        job_type:
+          enum: [FULL_CHECK]
+        input:
+          type: object
+          required: [repository, build, configuration_id]
+          properties:
+            repository:
+              $ref: '#/components/schemas/Repository'
+            build:
+              $ref: '#/components/schemas/Build'
+            configuration_id:
+              type: string
+    IncrementalCheckRequest:
+      type: object
+      required: [job_type, input]
+      properties:
+        job_type:
+          enum: [INCREMENTAL_CHECK]
+        input:
+          type: object
+          required: [repository, baseline, build]
+          properties:
+            repository:
+              $ref: '#/components/schemas/Repository'
+            baseline:
+              type: object
+              required: [commit, configuration_id, actual_graph_uri]
+              properties:
+                commit:
+                  type: string
+                  pattern: '^[0-9a-f]{40}$'
+                configuration_id:
+                  type: string
+                actual_graph_uri:
+                  type: string
+                  pattern: '^artifact://'
+            build:
+              $ref: '#/components/schemas/Build'
+    CreatedJob:
+      type: object
+      required: [schema_version, job_id, job_type, status, trace_id]
+      properties:
+        schema_version:
+          enum: ['1.0.0']
+        job_id:
+          type: string
+        job_type:
+          enum: [FULL_CHECK, INCREMENTAL_CHECK]
+        status:
+          enum: [QUEUED]
+        trace_id:
+          type: string
+    Job:
+      type: object
+      required: [schema_version, job_id, job_type, status, trace_id]
+      properties:
+        schema_version:
+          enum: ['1.0.0']
+        job_id:
+          type: string
+        job_type:
+          enum: [FULL_CHECK, INCREMENTAL_CHECK]
+        status:
+          enum: [QUEUED, RUNNING, SUCCEEDED, FAILED, TIMED_OUT, CANCELLED]
+        trace_id:
+          type: string
+        input:
+          type: object
+        output:
+          type: object
+        error:
+          $ref: '#/components/schemas/Error'
+    Error:
+      type: object
+      required: [code, message]
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        detail:
+          type: object
+    ErrorJob:
+      allOf:
+        - $ref: '#/components/schemas/Job'
+
