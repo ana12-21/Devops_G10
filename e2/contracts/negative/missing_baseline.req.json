@@ -1,0 +1,15 @@
+{
+  "_comment": "反例 2：A 组 INCREMENTAL_CHECK 请求，删除了 input.baseline",
+  "_expected": "被拒绝",
+  "_error_code": "BASELINE_2001",
+  "_reason": "增量检测的语义是『相对某个历史基线求差』。缺 baseline 则无法定义 new_findings / eliminated_findings，结果不可解释。EChecker 必须拒绝，不得退化为全量检测。",
+  "job_type": "INCREMENTAL_CHECK",
+  "input": {
+    "repository": {
+      "url": "git@github.com:<OWNER>/<PROJECT>.git",
+      "commit": "<C1_FULL_40_SHA>"
+    },
+    "build": { "command": "make", "project_root": "./" },
+    "run_config": { "configuration_id": "cc-MODE0" }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "_comment": "POST /v1/full-check-jobs → 202 Accepted（A 组 BuildChecker 创建响应）",
+  "_contract": "创建响应只回 job_id 与 QUEUED，不回 output；客户端随后用 GET /v1/jobs/{job_id} 轮询",
+  "_scope": "A 组",
+  "schema_version": "1.0.0",
+  "job_id": "job-full01",
+  "job_type": "FULL_CHECK",
+  "status": "QUEUED",
+  "trace_id": "trace-001",
+  "idempotency_key": "pair10-full-C0FULL40SHA-ccMODE0",
+  "created_at": "2026-09-20T10:00:00Z",
+  "updated_at": "2026-09-20T10:00:00Z"
+}
