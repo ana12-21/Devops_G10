@@ -105,8 +105,8 @@
 
     "artifact": {
       "type": "object",
-      "description": "产物引用。sha256 将于后续提交提为必需（B10 Issue 第 6 条）。",
-      "required": ["artifact_id", "type", "uri", "media_type", "producer_job_id"],
+      "description": "产物引用。sha256 必需（B10 Issue 第 6 条）：能出现在 artifacts[] 里的每一项都是已完整产出的产物，因此总能给出哈希；未完成/失败的产物不登记入数组，故不存在“无哈希可填”的情况。",
+      "required": ["artifact_id", "type", "uri", "media_type", "producer_job_id", "sha256"],
       "additionalProperties": true,
       "properties": {
         "artifact_id":     { "type": "string", "minLength": 1 },
@@ -121,7 +121,11 @@
         "uri":             { "$ref": "#/definitions/artifactUri" },
         "media_type":      { "type": "string", "minLength": 1 },
         "producer_job_id": { "type": "string", "pattern": "^job-[a-z0-9]+$" },
-        "sha256":          { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "description": "产物文件字节流的 SHA-256（小写十六进制）。消费者在读取产物前应校验；不匹配则拒绝消费。"
+        },
         "size_bytes":      { "type": "integer", "minimum": 0 },
         "target_commit":   { "$ref": "#/definitions/sha40" },
         "configuration_id": { "type": "string" }

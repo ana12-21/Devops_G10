@@ -33,6 +33,7 @@
             "type": "ACTUAL_GRAPH",
             "uri": "artifact://pair10/job-full01/actual.json",
             "media_type": "application/json",
+            "sha256": "78535350a0c2be68f7e5fd8f52f12824443e8c33ab3b5ae3ae85f7250e2558e6",
             "producer_job_id": "job-full01",
             "target_commit": "1111111111111111111111111111111111111111",
             "configuration_id": "cc-MODE0"
@@ -42,6 +43,7 @@
             "type": "DECLARED_GRAPH",
             "uri": "artifact://pair10/job-full01/declared.json",
             "media_type": "application/json",
+            "sha256": "b92891e6d6ee64fcc1e0cc34d114a04d67db494d53dd2a0036bc8835d17e753a",
             "producer_job_id": "job-full01",
             "target_commit": "1111111111111111111111111111111111111111",
             "configuration_id": "cc-MODE0"
@@ -51,6 +53,7 @@
             "type": "ERROR_REPORT",
             "uri": "artifact://pair10/job-full01/error_report.json",
             "media_type": "application/json",
+            "sha256": "50c12692b3de6ccf50a3931828017559cd27e2f3e9a829d9f35585f8c20993cc",
             "producer_job_id": "job-full01",
             "target_commit": "1111111111111111111111111111111111111111",
             "configuration_id": "cc-MODE0"
@@ -126,6 +129,7 @@
             "type": "ACTUAL_GRAPH",
             "uri": "artifact://pair10/job-incr01/actual.json",
             "media_type": "application/json",
+            "sha256": "5d0939adc0c96f6bda7570bd92a1d2aba499ad0d010a72883d8989f25f1d7ed9",
             "producer_job_id": "job-incr01",
             "target_commit": "2222222222222222222222222222222222222222",
             "configuration_id": "cc-MODE0"
@@ -135,6 +139,7 @@
             "type": "ERROR_REPORT",
             "uri": "artifact://pair10/job-incr01/error_report.json",
             "media_type": "application/json",
+            "sha256": "796cb83c6058db0e224beef7aeebb93fb954c4e759cafaff3301dd100443a40f",
             "producer_job_id": "job-incr01",
             "target_commit": "2222222222222222222222222222222222222222",
             "configuration_id": "cc-MODE0"
