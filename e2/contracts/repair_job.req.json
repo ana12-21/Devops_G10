@@ -5,8 +5,8 @@
       "url": "git@github.com:<OWNER>/<PROJECT>.git",
       "commit": "<C0_FULL_40_SHA>"
     },
-    "md_report_uri": "artifact://pair10/full01/md_report.json",
-    "makefile_uri": "artifact://pair10/full01/Makefile",
+    "md_report_uri": "artifact://pair10/job-full01/md_report.json",
+    "makefile_uri": "artifact://pair10/job-full01/Makefile",
     "build": {
       "command": "make",
       "verify_command": "make check"

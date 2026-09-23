@@ -8,26 +8,26 @@
   "updated_at": "2026-09-20T09:35:12Z",
   "input": { "_echo": "请求副本或省略" },
   "output": {
-    "dockerfile_uri": "artifact://pair10/draft01/Dockerfile",
+    "dockerfile_uri": "artifact://pair10/job-draft01/Dockerfile",
     "image_ref": "registry.local/pair10/draft01:sha-<7chars>",
     "iterations": [
       {
         "round": 1,
         "action": "ADD gcc make",
-        "build_log_uri": "artifact://pair10/draft01/iter1.log",
+        "build_log_uri": "artifact://pair10/job-draft01/iter1.log",
         "verify_result": "FAIL: missing libfoo headers"
       },
       {
         "round": 2,
         "action": "ADD libfoo-dev",
-        "build_log_uri": "artifact://pair10/draft01/iter2.log",
+        "build_log_uri": "artifact://pair10/job-draft01/iter2.log",
         "verify_result": "PASS"
       }
     ],
     "final_verify": {
       "command": "make check",
       "exit_code": 0,
-      "log_uri": "artifact://pair10/draft01/verify.log"
+      "log_uri": "artifact://pair10/job-draft01/verify.log"
     },
     "stats": {
       "iterations_used": 2,

@@ -50,7 +50,7 @@
         },
         "uri": {
           "type": "string",
-          "pattern": "^artifact://pair[0-9]+/[a-z0-9-]+/.+"
+          "pattern": "^artifact://pair[0-9]+/job-[a-z0-9]+/.+"
         },
         "media_type": { "type": "string" },
         "producer_job_id": {

@@ -8,10 +8,10 @@
   "updated_at": "2026-09-20T10:00:47Z",
   "input": { "_echo": "请求副本或省略" },
   "output": {
-    "actual_graph_uri":   "artifact://pair10/full01/actual.json",
-    "declared_graph_uri": "artifact://pair10/full01/declared.json",
-    "md_report_uri":      "artifact://pair10/full01/md_report.json",
-    "rd_report_uri":      "artifact://pair10/full01/rd_report.json",
+    "actual_graph_uri":   "artifact://pair10/job-full01/actual.json",
+    "declared_graph_uri": "artifact://pair10/job-full01/declared.json",
+    "md_report_uri":      "artifact://pair10/job-full01/md_report.json",
+    "rd_report_uri":      "artifact://pair10/job-full01/rd_report.json",
     "findings": [
       {
         "type": "MISSING",

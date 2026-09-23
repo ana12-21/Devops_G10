@@ -32,7 +32,7 @@
         "kind": "INCLUDE",
         "snippet": "#include \"config.h\""
       },
-      "evidence_uri": "artifact://pair10/full01/evidence/F-0001.json",
+      "evidence_uri": "artifact://pair10/job-full01/evidence/F-0001.json",
       "confidence": 0.98,
       "fix_strategy": "append-dep-to-prerequisite",
       "note": "main.o 编译期实际读取 include/config.h，但 Makefile 的 main.o 规则未声明该先决条件"
@@ -51,7 +51,7 @@
         "makefile_target": "app",
         "snippet": "$(CC) $(OBJS) -o $@"
       },
-      "evidence_uri": "artifact://pair10/full01/evidence/F-0002.json",
+      "evidence_uri": "artifact://pair10/job-full01/evidence/F-0002.json",
       "confidence": 0.91,
       "fix_strategy": "append-ldflag-to-link-rule",
       "note": "链接期使用 libm 符号（sqrt/pow），LDLIBS 未含 -lm"
@@ -70,7 +70,7 @@
         "kind": "MANUAL",
         "snippet": "#include \"token.h\""
       },
-      "evidence_uri": "artifact://pair10/full01/evidence/F-0003.manual.json",
+      "evidence_uri": "artifact://pair10/job-full01/evidence/F-0003.manual.json",
       "confidence": 1.0,
       "fix_strategy": "append-dep-to-prerequisite",
       "note": "【人工样本】由助教人工阅读 Makefile 后标注；必须显式标 detector=INSTRUCTOR_ORACLE，不得混入机器统计"
@@ -89,7 +89,7 @@
         "makefile_target": "src/legacy.o",
         "snippet": "src/legacy.o: src/legacy.c include/old.h"
       },
-      "evidence_uri": "artifact://pair10/full01/evidence/F-0101.json",
+      "evidence_uri": "artifact://pair10/job-full01/evidence/F-0101.json",
       "confidence": 0.88,
       "note": "声明了 include/old.h 作为先决条件，但 cc-MODE0 下 legacy.c 的条件编译分支未启用该头文件。REDUNDANT 不进修复路径。"
     },
@@ -107,7 +107,7 @@
         "makefile_target": "LDLIBS",
         "snippet": "LDLIBS += -lpthread"
       },
-      "evidence_uri": "artifact://pair10/full01/evidence/F-0102.json",
+      "evidence_uri": "artifact://pair10/job-full01/evidence/F-0102.json",
       "confidence": 0.76,
       "note": "cc-MODE0 未启用多线程路径，链接期未出现 pthread 符号引用"
     }
@@ -128,9 +128,9 @@
     "image_ref": "registry.local/pair10/draft01:sha-abc1234",
     "build_command": "make",
     "verify_command": "make check",
-    "build_log_uri": "artifact://pair10/full01/build.log",
-    "actual_graph_uri": "artifact://pair10/full01/actual.json",
-    "declared_graph_uri": "artifact://pair10/full01/declared.json"
+    "build_log_uri": "artifact://pair10/job-full01/build.log",
+    "actual_graph_uri": "artifact://pair10/job-full01/actual.json",
+    "declared_graph_uri": "artifact://pair10/job-full01/declared.json"
   },
 
   "human_review": {

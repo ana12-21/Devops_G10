@@ -49,7 +49,7 @@
     "exit_code": 2,
     "command": "make",
     "image_ref": "registry.local/pair10/draft02:sha-7f3a1c9",
-    "build_log_uri": "artifact://pair10/full02/build.log",
+    "build_log_uri": "artifact://pair10/job-full02/build.log",
     "failed_target": "src/main.o"
   }
 }
@@ -97,7 +97,7 @@
     "elapsed_sec": 604,
     "iterations_used": 3,
     "last_completed_step": "make src/parse.o",
-    "attempt_log_uri": "artifact://pair10/repair02/attempt.log",
+    "attempt_log_uri": "artifact://pair10/job-repair02/attempt.log",
     "partial_output": false
   }
 }
@@ -144,7 +144,7 @@
     "line": 41,
     "exit_code": 1,
     "partial_artifacts": [],
-    "build_log_uri": "artifact://pair10/full02/build.log"
+    "build_log_uri": "artifact://pair10/job-full02/build.log"
   }
 }
 ```

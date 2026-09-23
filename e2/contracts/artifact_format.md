@@ -10,9 +10,14 @@ artifact://<pair_id>/<job_id>/<relative_path>
 - `job_id`: 产生该产物的任务编号，**必须带 `job-` 前缀**
 - `relative_path`: 产物在工作区里的相对路径
 
-> ⚠️ 本文档早先的示例写作 `artifact://pair10/full01/actual.json`，与上面的模式串不符
-> （`full01` 不是 `job_id`）。现已统一为 `artifact://pair10/job-full01/actual.json`，
-> 对应 B10 Issue 第 7 条。`task.schema.json` 的 `artifactUri` 模式串会强制这一点。
+> ⚠️ **修订说明**：本文档早先的示例省略了 `job-` 前缀（形如 `.../pair10/full01/actual.json`），
+> 与上面的模式串自相矛盾——`full01` 并不是一个合法的 `job_id`（真正的 `job_id` 是 `job-full01`）。
+> 现已统一为 `.../pair10/job-full01/actual.json`，对应 B10 Issue 第 7 条。
+> `task.schema.json` 的 `artifactUri` 模式串会强制这一点。
+>
+> 约定：`relative_path` 以 **`<job_id>/<filename>`** 开头，例如
+> `artifact://pair10/job-draft01/Dockerfile`。同一 `job_id` 下的多个产物共享该前缀，
+> 需要分层时再追加子目录（如 `.../job-full01/evidence/F-0001.json`）。
 
 ## Artifact 元数据
 

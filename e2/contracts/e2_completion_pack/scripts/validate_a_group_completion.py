@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SAMPLES = ROOT / "samples"
 SHA40 = re.compile(r"^[0-9a-f]{40}$")
 JOB_ID = re.compile(r"^job-[a-z0-9]+$")
-ARTIFACT = re.compile(r"^artifact://pair[0-9]+/[a-z0-9-]+/.+")
+ARTIFACT = re.compile(r"^artifact://pair[0-9]+/job-[a-z0-9]+/.+")
 
 
 def load(name):

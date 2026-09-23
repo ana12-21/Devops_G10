@@ -8,7 +8,7 @@
     "baseline": {
       "commit": "<C0_FULL_40_SHA>",
       "configuration_id": "cc-MODE0",
-      "actual_graph_uri": "artifact://pair10/full01/actual.json"
+      "actual_graph_uri": "artifact://pair10/job-full01/actual.json"
     },
     "build": {
       "command": "make",

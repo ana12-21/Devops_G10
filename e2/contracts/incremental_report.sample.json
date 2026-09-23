@@ -32,7 +32,7 @@
         "kind": "INCLUDE",
         "snippet": "#include \"config.h\""
       },
-      "evidence_uri": "artifact://pair10/incr01/evidence/F-0001.json",
+      "evidence_uri": "artifact://pair10/job-incr01/evidence/F-0001.json",
       "confidence": 0.98,
       "first_seen_commit": "1111111111111111111111111111111111111111",
       "delta_status": "UNCHANGED",
@@ -52,7 +52,7 @@
         "kind": "INCLUDE",
         "snippet": "#include \"utils.h\""
       },
-      "evidence_uri": "artifact://pair10/incr01/evidence/F-0002.json",
+      "evidence_uri": "artifact://pair10/job-incr01/evidence/F-0002.json",
       "confidence": 0.96,
       "first_seen_commit": "2222222222222222222222222222222222222222",
       "delta_status": "NEW",
@@ -73,7 +73,7 @@
         "makefile_target": "app",
         "snippet": "$(CC) $(OBJS) -o $@"
       },
-      "evidence_uri": "artifact://pair10/incr01/evidence/F-0004.json",
+      "evidence_uri": "artifact://pair10/job-incr01/evidence/F-0004.json",
       "confidence": 0.93,
       "first_seen_commit": "2222222222222222222222222222222222222222",
       "delta_status": "NEW",
@@ -93,7 +93,7 @@
         "makefile_target": "src/legacy.o",
         "snippet": "src/legacy.o: src/legacy.c include/old.h"
       },
-      "evidence_uri": "artifact://pair10/incr01/evidence/F-0101.json",
+      "evidence_uri": "artifact://pair10/job-incr01/evidence/F-0101.json",
       "confidence": 0.86,
       "first_seen_commit": "1111111111111111111111111111111111111111",
       "delta_status": "ELIMINATED",
@@ -102,9 +102,9 @@
   ],
 
   "delta": {
-    "baseline_report_uri": "artifact://pair10/full01/md_report.json",
+    "baseline_report_uri": "artifact://pair10/job-full01/md_report.json",
     "baseline_commit": "1111111111111111111111111111111111111111",
-    "current_graph_uri": "artifact://pair10/incr01/actual.json",
+    "current_graph_uri": "artifact://pair10/job-incr01/actual.json",
     "new_finding_ids": ["F-0002", "F-0004"],
     "eliminated_finding_ids": ["F-0101"],
     "unchanged_finding_ids": ["F-0001"]
@@ -124,9 +124,9 @@
     "image_ref": "registry.local/pair10/draft01:sha-abc1234",
     "build_command": "make",
     "verify_command": "make check",
-    "build_log_uri": "artifact://pair10/incr01/build.log",
-    "actual_graph_uri": "artifact://pair10/incr01/actual.json",
-    "declared_graph_uri": "artifact://pair10/incr01/declared.json"
+    "build_log_uri": "artifact://pair10/job-incr01/build.log",
+    "actual_graph_uri": "artifact://pair10/job-incr01/actual.json",
+    "declared_graph_uri": "artifact://pair10/job-incr01/declared.json"
   },
 
   "human_review": {

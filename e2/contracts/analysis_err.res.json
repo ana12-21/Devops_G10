@@ -31,7 +31,7 @@
       "file": "Makefile",
       "line": 41,
       "exit_code": 1,
-      "build_log_uri": "artifact://pair10/full02/build.log",
+      "build_log_uri": "artifact://pair10/job-full02/build.log",
       "note": "构建阶段已成功（exit_code=0），失败发生在声明依赖图解析阶段；actual.json 未产出"
     }
   }

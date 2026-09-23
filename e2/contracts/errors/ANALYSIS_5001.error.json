@@ -12,6 +12,6 @@
     "line": 41,
     "exit_code": 1,
     "partial_artifacts": [],
-    "build_log_uri": "artifact://pair10/full02/build.log"
+    "build_log_uri": "artifact://pair10/job-full02/build.log"
   }
 }

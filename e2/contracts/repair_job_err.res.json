@@ -14,7 +14,7 @@
       "deadline_sec": 600,
       "iterations_used": 3,
       "last_failure_step": "verify_command",
-      "log_uri": "artifact://pair10/repair02/attempt.log"
+      "log_uri": "artifact://pair10/job-repair02/attempt.log"
     }
   }
 }

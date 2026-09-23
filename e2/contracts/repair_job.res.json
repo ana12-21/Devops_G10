@@ -8,7 +8,7 @@
   "updated_at": "2026-09-20T12:00:58Z",
   "input": { "_echo": "请求副本或省略" },
   "output": {
-    "git_patch_uri": "artifact://pair10/repair01/fix.patch",
+    "git_patch_uri": "artifact://pair10/job-repair01/fix.patch",
     "patch_meta": {
       "files_changed": ["Makefile"],
       "lines_added": 3,
@@ -25,9 +25,9 @@
     ],
     "rejected_candidates": [],
     "recheck": {
-      "build_log_uri": "artifact://pair10/repair01/build.log",
+      "build_log_uri": "artifact://pair10/job-repair01/build.log",
       "build_exit_code": 0,
-      "verify_log_uri": "artifact://pair10/repair01/verify.log",
+      "verify_log_uri": "artifact://pair10/job-repair01/verify.log",
       "verify_exit_code": 0
     },
     "stats": {

@@ -13,7 +13,7 @@
     "detail": {
       "step": "RUN apt-get install -y libfoo-dev",
       "exit_code": 100,
-      "log_uri": "artifact://pair10/draft02/build.log"
+      "log_uri": "artifact://pair10/job-draft02/build.log"
     }
   }
 }

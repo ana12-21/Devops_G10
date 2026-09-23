@@ -20,7 +20,7 @@
     "detail": {
       "step": "RUN make",
       "exit_code": 2,
-      "log_uri": "artifact://pair10/full02/build.log"
+      "log_uri": "artifact://pair10/job-full02/build.log"
     }
   }
 }
