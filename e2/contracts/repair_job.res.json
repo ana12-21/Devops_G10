@@ -32,7 +32,26 @@
     "resources": { "cpu": 2, "memory_mb": 2048 }
   },
   "output": {
-    "git_patch_uri": "artifact://pair10/job-repair01/fix.patch",
+    "artifacts": [
+      {
+        "artifact_id": "patch-001", "type": "GIT_PATCH",
+        "uri": "artifact://pair10/job-repair01/fix.patch", "media_type": "text/x-diff",
+        "producer_job_id": "job-repair01",
+        "sha256": "8e50a071a86732bb3ae58b195d1d1f73c519295e4a117c6019931189f747af2e"
+      },
+      {
+        "artifact_id": "build-log-003", "type": "BUILD_LOG",
+        "uri": "artifact://pair10/job-repair01/build.log", "media_type": "text/plain",
+        "producer_job_id": "job-repair01",
+        "sha256": "3d2804d7d04d0b20002d7956c1cad6c87522e1433589f16a7ecc966df07901f5"
+      },
+      {
+        "artifact_id": "verify-log-002", "type": "VERIFY_LOG",
+        "uri": "artifact://pair10/job-repair01/verify.log", "media_type": "text/plain",
+        "producer_job_id": "job-repair01",
+        "sha256": "44cf0453ec8ff1634fbe79cbee2474eb8396e76036691a36dc054010f692f849"
+      }
+    ],
     "patch_meta": {
       "files_changed": ["Makefile"],
       "lines_added": 3,

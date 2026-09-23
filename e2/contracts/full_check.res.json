@@ -31,10 +31,32 @@
     "resources": { "cpu": 2, "memory_mb": 2048 }
   },
   "output": {
-    "actual_graph_uri":   "artifact://pair10/job-full01/actual.json",
-    "declared_graph_uri": "artifact://pair10/job-full01/declared.json",
-    "md_report_uri":      "artifact://pair10/job-full01/md_report.json",
-    "rd_report_uri":      "artifact://pair10/job-full01/rd_report.json",
+    "artifacts": [
+      {
+        "artifact_id": "actual-001", "type": "ACTUAL_GRAPH",
+        "uri": "artifact://pair10/job-full01/actual.json", "media_type": "application/json",
+        "producer_job_id": "job-full01",
+        "sha256": "78535350a0c2be68f7e5fd8f52f12824443e8c33ab3b5ae3ae85f7250e2558e6"
+      },
+      {
+        "artifact_id": "declared-001", "type": "DECLARED_GRAPH",
+        "uri": "artifact://pair10/job-full01/declared.json", "media_type": "application/json",
+        "producer_job_id": "job-full01",
+        "sha256": "b92891e6d6ee64fcc1e0cc34d114a04d67db494d53dd2a0036bc8835d17e753a"
+      },
+      {
+        "artifact_id": "md-001", "type": "MD_REPORT",
+        "uri": "artifact://pair10/job-full01/md_report.json", "media_type": "application/json",
+        "producer_job_id": "job-full01",
+        "sha256": "4a6c795546dc5474710e85713ced5752bb0cf22d7a94887e79fd1e9a56f9de65"
+      },
+      {
+        "artifact_id": "rd-001", "type": "RD_REPORT",
+        "uri": "artifact://pair10/job-full01/rd_report.json", "media_type": "application/json",
+        "producer_job_id": "job-full01",
+        "sha256": "ecaf0fe5d44ec82b9844ce9ebf74ae535a248ed251b66bcc4a2ecd511b4f8b7f"
+      }
+    ],
     "findings": [
       {
         "type": "MISSING",

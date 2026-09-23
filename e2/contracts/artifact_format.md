@@ -23,6 +23,11 @@ artifact://<pair_id>/<job_id>/<relative_path>
 
 每一份产物必须在 `output.artifacts[]` 里给一条元数据记录（B10 Issue 第 4 条的目标形态）：
 
+四类成功响应均以 `output.artifacts[]` 作为统一的产物入口；消费者按 `type`
+查找对应记录，不再从 `output` 的裸字段读取产物。`IMAGE_REF` 记录的 `uri`
+指向保存镜像引用字符串的文本产物，记录中的 `image_ref` 是该引用的示例值。
+增量检查请求中的 `input.baseline.actual_graph_uri` 是历史产物的输入引用，继续保留。
+
 ```json
 {
   "artifact_id": "actual-001",

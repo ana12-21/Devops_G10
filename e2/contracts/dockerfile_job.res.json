@@ -32,8 +32,39 @@
     "resources": { "cpu": 2, "memory_mb": 2048 }
   },
   "output": {
-    "dockerfile_uri": "artifact://pair10/job-draft01/Dockerfile",
-    "image_ref": "registry.local/pair10/draft01:sha-<7chars>",
+    "artifacts": [
+      {
+        "artifact_id": "dockerfile-001", "type": "DOCKERFILE",
+        "uri": "artifact://pair10/job-draft01/Dockerfile", "media_type": "text/dockerfile",
+        "producer_job_id": "job-draft01",
+        "sha256": "b48f4415903e971e4f923f5a191b1c84b4fbbc9062330b6add1f366c9c5b6588"
+      },
+      {
+        "artifact_id": "image-ref-001", "type": "IMAGE_REF",
+        "uri": "artifact://pair10/job-draft01/image_ref.txt", "media_type": "text/plain",
+        "producer_job_id": "job-draft01",
+        "sha256": "27c5fc3c8a110fa0b9d866e1b54dfbea79b9f2377ce1cd2977fa3a149914b6b9",
+        "image_ref": "registry.local/pair10/draft01:sha-<7chars>"
+      },
+      {
+        "artifact_id": "build-log-001", "type": "BUILD_LOG",
+        "uri": "artifact://pair10/job-draft01/iter1.log", "media_type": "text/plain",
+        "producer_job_id": "job-draft01",
+        "sha256": "cacacf8e9d697f6e8d941d0c7bd520b6e97006dde8ddb5f24cb188120f0980ee"
+      },
+      {
+        "artifact_id": "build-log-002", "type": "BUILD_LOG",
+        "uri": "artifact://pair10/job-draft01/iter2.log", "media_type": "text/plain",
+        "producer_job_id": "job-draft01",
+        "sha256": "0713bcb3783dd6289294afe6c489885b35a9bc83236aacae32855c0dd39d5990"
+      },
+      {
+        "artifact_id": "verify-log-001", "type": "VERIFY_LOG",
+        "uri": "artifact://pair10/job-draft01/verify.log", "media_type": "text/plain",
+        "producer_job_id": "job-draft01",
+        "sha256": "5eb8d79ca157af5e6656fb0c94829bec01479fbfda1b7548f2f012250ab67232"
+      }
+    ],
     "iterations": [
       {
         "round": 1,

@@ -28,7 +28,14 @@
     "resources": { "cpu": 2, "memory_mb": 2048 }
   },
   "output": {
-    "current_graph_uri": "artifact://pair10/job-incr01/actual.json",
+    "artifacts": [
+      {
+        "artifact_id": "actual-002", "type": "ACTUAL_GRAPH",
+        "uri": "artifact://pair10/job-incr01/actual.json", "media_type": "application/json",
+        "producer_job_id": "job-incr01",
+        "sha256": "5d0939adc0c96f6bda7570bd92a1d2aba499ad0d010a72883d8989f25f1d7ed9"
+      }
+    ],
     "delta": {
       "new_findings": [
         {
