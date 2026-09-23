@@ -118,7 +118,7 @@ def check_envelope(doc: dict, src: Path) -> bool:
 
 
 def check_request_envelope(doc: dict, src: Path) -> bool:
-    """请求样例只检查必填 job_type + 不应带 schema_version/job_id/status"""
+    "创建请求要求版本、任务类型和输入；禁止服务端生成字段"
     passed = True
     if "job_type" not in doc:
         passed &= fail("请求样例缺 job_type", str(src))
@@ -129,8 +129,26 @@ def check_request_envelope(doc: dict, src: Path) -> bool:
     else:
         passed &= ok(f"job_type = {doc['job_type']}")
 
+    if doc.get("schema_version") != SCHEMA_VERSION:
+        passed &= fail(
+            f"请求 schema_version 应为 {SCHEMA_VERSION!r}",
+            str(src),
+        )
+
+    if not isinstance(doc.get("input"), dict):
+        passed &= fail("请求必须包含对象类型的 input", str(src))
+
+    if doc.get("job_type") == "INCREMENTAL_CHECK":
+        baseline = doc.get("input", {}).get("baseline")
+        if not isinstance(baseline, dict):
+            passed &= fail("INCREMENTAL_CHECK 缺 input.baseline", str(src))
+        elif not all(baseline.get(k) for k in (
+                "commit", "configuration_id", "actual_graph_uri"
+        )):
+            passed &= fail("input.baseline 字段不完整", str(src))
+
     # 请求不应携带服务端字段
-    for k in ("schema_version", "job_id", "status", "output", "error"):
+    for k in ( "job_id", "status", "output", "error"):
         if k in doc:
             passed &= fail(f"请求样例不应携带 {k}", str(src))
 
@@ -180,7 +198,7 @@ def run_positive():
         "dockerfile_job.req.json",
         "repair_job.req.json",
     ]
-    print("\n=== 2. 请求样例：必填 job_type + 不含服务端字段 ===")
+    print("\n=== 2. 请求必须携带正确的 schema_version,必填 job_type + 不含服务端字段 ===")
     for name in request_files:
         path = CONTRACTS / name
         if not path.exists():
