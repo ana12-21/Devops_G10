@@ -7,6 +7,18 @@
   "job_type": "INCREMENTAL_CHECK",
   "status": "QUEUED",
   "trace_id": "trace-003",
+  "input": {
+    "repository": {
+      "url": "git@github.com:<OWNER>/<PROJECT>.git",
+      "commit": "<C1_FULL_40_SHA>"
+    },
+    "baseline": {
+      "commit": "<C0_FULL_40_SHA>",
+      "configuration_id": "cc-MODE0",
+      "actual_graph_uri": "artifact://pair10/job-full01/actual.json"
+    },
+    "build": { "command": "make", "project_root": "./" }
+  },
   "idempotency_key": "pair10-incr-C0FULL40SHA-C1FULL40SHA-ccMODE0",
   "created_at": "2026-09-20T11:00:00Z",
   "updated_at": "2026-09-20T11:00:00Z"

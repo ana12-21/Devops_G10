@@ -10,6 +10,14 @@
   "status": "FAILED",
   "trace_id": "trace-005",
   "created_at": "2026-09-20T10:20:00Z",
+  "input": {
+    "repository": {
+      "url": "git@github.com:<OWNER>/<PROJECT>.git",
+      "commit": "<C0_FULL_40_SHA>"
+    },
+    "build": { "command": "make", "project_root": "./" },
+    "configuration_id": "cc-MODE0"
+  },
   "updated_at": "2026-09-20T10:21:12Z",
   "error": {
     "code": "ANALYSIS_5001",

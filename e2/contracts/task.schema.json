@@ -1,35 +1,276 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Job",
-  "description": "统一任务模型——四类服务共用外壳",
+  "description": "统一任务模型——四类服务共用外壳。本版相对 1.0.0 的三处结构性修订：(1) required 由 4 项扩为 7 项；(2) output/error 改为按 status 条件必填；(3) 补 output 的属性声明，使 findings.type 与产物 type 的枚举真正生效。",
   "type": "object",
-  "required": ["schema_version", "job_id", "job_type", "status"],
+
+  "required": ["schema_version", "job_id", "job_type", "status", "trace_id", "input", "created_at"],
+  "additionalProperties": true,
+
   "properties": {
     "schema_version": {
       "type": "string",
-      "const": "1.0.0",
-      "description": "契约版本，破坏性变更必须升位"
+      "enum": ["1.0.0", "2.0.0"],
+      "description": "契约版本。本次为结构性修订（required 扩容属破坏性变更），过渡期内消费者须同时接受 1.0.0 与 2.0.0；待与 B10 确认全部破坏性变更后统一升为 2.0.0。"
     },
     "job_id": {
       "type": "string",
       "pattern": "^job-[a-z0-9]+$",
-      "description": "服务端生成的唯一编号"
-    },
-    "job_type": {
-      "enum": ["DRAFT", "FULL_CHECK", "INCREMENTAL_CHECK", "REPAIR"],
-      "description": "四类任务之一"
-    },
-    "status": {
-      "enum": ["QUEUED", "RUNNING", "SUCCEEDED", "FAILED", "TIMED_OUT", "CANCELLED"]
+      "description": "服务端生成的唯一编号；请求侧不得携带"
     },
     "trace_id": {
       "type": "string",
-      "description": "一次平台流程的串联 ID"
+      "pattern": "^trace-[a-z0-9-]+$",
+      "description": "一次平台流程的串联 ID，由发起方产生，跨 A/B 两组任务保持不变"
     },
-    "created_at": { "type": "string", "format": "date-time" },
-    "updated_at": { "type": "string", "format": "date-time" },
-    "input":  { "type": "object" },
-    "output": { "type": "object" },
-    "error":  { "type": "object" }
+    "job_type": {
+      "enum": ["DRAFT", "FULL_CHECK", "INCREMENTAL_CHECK", "REPAIR"],
+      "description": "四类任务之一；非枚举值必须被拒绝"
+    },
+    "status": {
+      "enum": ["QUEUED", "RUNNING", "SUCCEEDED", "FAILED", "TIMED_OUT", "CANCELLED"],
+      "description": "六态状态机；SUCCEEDED 时可有 findings，FAILED/TIMED_OUT 必须有 error"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "服务端受理时刻（ISO8601 UTC）"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "input": {
+      "type": "object",
+      "minProperties": 1,
+      "description": "请求 input 的逐字副本（定稿见 B10 Issue 第 3 条）；解析细节由各 job_type 的专有定义约束"
+    },
+    "execution": {
+      "$ref": "#/definitions/execution"
+    },
+    "output": {
+      "$ref": "#/definitions/output"
+    },
+    "error": {
+      "$ref": "#/definitions/jobError"
+    }
+  },
+
+  "allOf": [
+    {
+      "description": "规则 R1：SUCCEEDED 必须有 output",
+      "if":   { "required": ["status"], "properties": { "status": { "const": "SUCCEEDED" } } },
+      "then": { "required": ["output"] }
+    },
+    {
+      "description": "规则 R2：FAILED / TIMED_OUT 必须有 error",
+      "if":   { "required": ["status"], "properties": { "status": { "enum": ["FAILED", "TIMED_OUT"] } } },
+      "then": { "required": ["error"] }
+    },
+    {
+      "description": "规则 R3：非失败态不得携带 error（检测发现不是系统错误）",
+      "if":   { "required": ["status"], "properties": { "status": { "enum": ["QUEUED", "RUNNING", "SUCCEEDED", "CANCELLED"] } } },
+      "then": { "not": { "required": ["error"] } }
+    },
+    {
+      "description": "规则 R4：QUEUED 尚未开始执行，不得携带 output",
+      "if":   { "required": ["status"], "properties": { "status": { "const": "QUEUED" } } },
+      "then": { "not": { "required": ["output"] } }
+    },
+    {
+      "description": "规则 R5：互斥——job.error 与 output.findings 不得同存",
+      "if":   { "required": ["error"] },
+      "then": { "properties": { "output": { "not": { "required": ["findings"] } } } }
+    },
+    {
+      "description": "规则 R6：互斥——job.error 与 output.delta 不得同存",
+      "if":   { "required": ["error"] },
+      "then": { "properties": { "output": { "not": { "required": ["delta"] } } } }
+    }
+  ],
+
+  "definitions": {
+
+    "sha40": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$",
+      "description": "完整 40 位小写十六进制 commit SHA，不接受短 SHA"
+    },
+
+    "artifactUri": {
+      "type": "string",
+      "pattern": "^artifact://[a-z0-9]+/job-[a-z0-9]+/.+$",
+      "description": "产物 URI，格式 artifact://<pair_id>/<job_id>/<relative_path>；第二段必须是 job-<id>（见 B10 Issue 第 7 条）"
+    },
+
+    "artifact": {
+      "type": "object",
+      "description": "产物引用。sha256 将于后续提交提为必需（B10 Issue 第 6 条）。",
+      "required": ["artifact_id", "type", "uri", "media_type", "producer_job_id"],
+      "additionalProperties": true,
+      "properties": {
+        "artifact_id":     { "type": "string", "minLength": 1 },
+        "type": {
+          "enum": [
+            "ACTUAL_GRAPH", "DECLARED_GRAPH", "MD_REPORT", "RD_REPORT",
+            "ERROR_REPORT", "BUILD_LOG", "VERIFY_LOG",
+            "DOCKERFILE", "IMAGE_REF", "GIT_PATCH"
+          ],
+          "description": "产物类型枚举（此前因 output 未声明而未生效）"
+        },
+        "uri":             { "$ref": "#/definitions/artifactUri" },
+        "media_type":      { "type": "string", "minLength": 1 },
+        "producer_job_id": { "type": "string", "pattern": "^job-[a-z0-9]+$" },
+        "sha256":          { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "size_bytes":      { "type": "integer", "minimum": 0 },
+        "target_commit":   { "$ref": "#/definitions/sha40" },
+        "configuration_id": { "type": "string" }
+      }
+    },
+
+    "location": {
+      "type": "object",
+      "required": ["file"],
+      "additionalProperties": false,
+      "properties": {
+        "file":            { "type": "string", "minLength": 1 },
+        "line":            { "type": "integer", "minimum": 1 },
+        "column":          { "type": "integer", "minimum": 1 },
+        "span_lines":      { "type": "integer", "minimum": 1 },
+        "snippet":         { "type": "string" },
+        "makefile_target": { "type": "string" },
+        "kind": {
+          "enum": ["INCLUDE", "MAKEFILE_PREREQ", "LINK_FLAG", "COMPILE_ARGS", "GENERATED_FILE", "MANUAL"],
+          "description": "MANUAL 表示人工阅读得出"
+        }
+      }
+    },
+
+    "finding": {
+      "type": "object",
+      "description": "检测发现。只约束 type/target/dependency/detector，其余字段由各报告形态扩展，故不加 additionalProperties:false。",
+      "required": ["type", "target", "dependency", "detector"],
+      "additionalProperties": true,
+      "properties": {
+        "finding_id":   { "type": "string", "pattern": "^F-[0-9]{4}$" },
+        "type": {
+          "enum": ["MISSING", "REDUNDANT"],
+          "description": "MISSING=实际需要但声明缺失；REDUNDANT=声明了但本配置未用。二者都是合法发现，不等于任务失败。"
+        },
+        "target":       { "type": "string", "minLength": 1 },
+        "dependency":   { "type": "string", "minLength": 1 },
+        "commit":       { "$ref": "#/definitions/sha40" },
+        "detector":     { "enum": ["BUILDCHECKER", "ECHECKER", "INSTRUCTOR_ORACLE"] },
+        "location":     { "$ref": "#/definitions/location" },
+        "evidence_uri": { "type": "string", "pattern": "^artifact://" },
+        "evidence_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "evidence": {
+          "type": "object",
+          "description": "1.0.0 遗留的内联证据形态，保留以兼容",
+          "additionalProperties": true,
+          "properties": {
+            "file":    { "type": "string" },
+            "line":    { "type": "integer", "minimum": 1 },
+            "snippet": { "type": "string" }
+          }
+        },
+        "confidence":        { "type": "number", "minimum": 0, "maximum": 1 },
+        "first_seen_commit": { "$ref": "#/definitions/sha40" },
+        "delta_status":      { "enum": ["NEW", "UNCHANGED", "ELIMINATED"] },
+        "fix_strategy":      { "type": "string" },
+        "note":              { "type": "string" }
+      }
+    },
+
+    "stats": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "missing_count":   { "type": "integer", "minimum": 0 },
+        "redundant_count": { "type": "integer", "minimum": 0 },
+        "duration_sec":    { "type": "number", "minimum": 0 }
+      }
+    },
+
+    "delta": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "new_findings":        { "type": "array", "items": { "$ref": "#/definitions/finding" } },
+        "eliminated_findings": { "type": "array", "items": { "$ref": "#/definitions/finding" } },
+        "unchanged_findings":  { "type": "array", "items": { "$ref": "#/definitions/finding" } },
+        "new_finding_ids":       { "type": "array", "items": { "type": "string" } },
+        "eliminated_finding_ids": { "type": "array", "items": { "type": "string" } },
+        "unchanged_finding_ids":  { "type": "array", "items": { "type": "string" } },
+        "baseline_report_uri": { "type": "string" },
+        "baseline_commit":     { "$ref": "#/definitions/sha40" },
+        "current_graph_uri":   { "type": "string" }
+      }
+    },
+
+    "output": {
+      "type": "object",
+      "description": "各类任务的产出。此处只声明四类共有的结构与枚举约束；各 job_type 的专有键（如 iterations / patch_meta / progress）不在此封禁，由各自定义补充。",
+      "additionalProperties": true,
+      "properties": {
+        "artifacts": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/artifact" },
+          "description": "产物引用数组（B10 Issue 第 4 条的目标形态）"
+        },
+        "findings": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/finding" },
+          "description": "检测发现；存在 findings 时 status 仍为 SUCCEEDED"
+        },
+        "delta":  { "$ref": "#/definitions/delta" },
+        "stats":  { "$ref": "#/definitions/stats" }
+      }
+    },
+
+    "jobError": {
+      "type": "object",
+      "description": "系统执行错误。仅承载平台/工具自身失败，绝不承载 MISSING/REDUNDANT 等分析发现。",
+      "required": ["code", "message"],
+      "additionalProperties": true,
+      "properties": {
+        "code": {
+          "type": "string",
+          "pattern": "^[A-Z]+_[0-9]{4}$",
+          "description": "{域}_{四位}；1=Schema 2=Baseline 3=Env 4=Exec 5=Analysis 6=NotFound 7=Conflict"
+        },
+        "message":     { "type": "string", "minLength": 1 },
+        "detail":      { "type": "object" },
+        "phase":       { "enum": ["VALIDATE", "FETCH", "ENV_PREPARE", "BUILD", "ANALYZE", "REPORT", "CLEANUP"] },
+        "retryable":   { "type": "boolean" },
+        "occurred_at": { "type": "string", "format": "date-time" }
+      }
+    },
+
+    "execution": {
+      "type": "object",
+      "description": "执行元信息（B10 Issue 第 2 条的字段形态）。目前为可选；待双方确认后提为公共必填字段。",
+      "required": ["mode", "attempt"],
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": ["ASYNC", "SYNC"],
+          "description": "本契约采用异步 Job 模式（见 ADR-001）"
+        },
+        "attempt":         { "type": "integer", "minimum": 1 },
+        "command":         { "type": "string" },
+        "timeout_seconds": { "type": "integer", "minimum": 1 },
+        "started_at":      { "type": "string", "format": "date-time" },
+        "finished_at":     { "type": "string", "format": "date-time" },
+        "resources": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "cpu":       { "type": "integer", "minimum": 1 },
+            "memory_mb": { "type": "integer", "minimum": 1 }
+          }
+        }
+      }
+    }
   }
 }

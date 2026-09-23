@@ -11,6 +11,13 @@
   "trace_id": "trace-004",
   "created_at": "2026-09-20T11:10:00Z",
   "updated_at": "2026-09-20T11:10:01Z",
+  "input": {
+    "repository": {
+      "url": "git@github.com:<OWNER>/<PROJECT>.git",
+      "commit": "2222222222222222222222222222222222222222"
+    },
+    "build": { "command": "make", "project_root": "./" }
+  },
   "error": {
     "code": "BASELINE_2001",
     "message": "incremental check requires input.baseline; no baseline commit or actual graph was provided",
