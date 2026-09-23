@@ -6,7 +6,22 @@
   "trace_id": "trace-020",
   "created_at": "2026-09-20T12:00:00Z",
   "updated_at": "2026-09-20T12:00:58Z",
-  "input": { "_echo": "请求副本或省略" },
+  "input": {
+    "repository": {
+      "url": "git@github.com:<OWNER>/<PROJECT>.git",
+      "commit": "<C0_FULL_40_SHA>"
+    },
+    "md_report_uri": "artifact://pair10/job-full01/md_report.json",
+    "makefile_uri": "artifact://pair10/job-full01/Makefile",
+    "build": {
+      "command": "make",
+      "verify_command": "make check"
+    },
+    "options": {
+      "style_hint": "preserve-tab-indent",
+      "max_candidates": 3
+    }
+  },
   "execution": {
     "mode": "ASYNC",
     "timeout_seconds": 300,

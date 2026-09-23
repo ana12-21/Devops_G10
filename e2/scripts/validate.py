@@ -182,6 +182,14 @@ def run_positive():
         "repair_job_err.res.json",
         "query_job.res.json",
     ]
+    echoed_requests = {
+        "full_check.res.json": "full_check.req.json",
+        "query_job.res.json": "full_check.req.json",
+        "dockerfile_job.res.json": "dockerfile_job.req.json",
+        "dockerfile_job_err.res.json": "dockerfile_job.req.json",
+        "repair_job.res.json": "repair_job.req.json",
+        "repair_job_err.res.json": "repair_job.req.json",
+    }
     for name in response_files:
         path = CONTRACTS / name
         if not path.exists():
@@ -190,6 +198,12 @@ def run_positive():
         print(f"\n  [{name}]")
         doc = load_json(path)
         all_ok &= check_envelope(doc, path)
+        if name in echoed_requests:
+            request_input = load_json(CONTRACTS / echoed_requests[name])["input"]
+            if doc.get("input") != request_input:
+                all_ok &= fail("响应 input 与创建请求的 input 不一致", str(path))
+            else:
+                all_ok &= ok("响应 input 与创建请求一致")
 
     # 请求样例校验（query_job.req.json 是 GET 查询，无 job_type，跳过）
     request_files = [
