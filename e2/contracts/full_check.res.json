@@ -7,6 +7,15 @@
   "created_at": "2026-09-20T10:00:00Z",
   "updated_at": "2026-09-20T10:00:47Z",
   "input": { "_echo": "请求副本或省略" },
+  "execution": {
+    "mode": "ASYNC",
+    "timeout_seconds": 300,
+    "started_at": "2026-09-20T10:00:00Z",
+    "finished_at": "2026-09-20T10:00:47Z",
+    "attempt": 1,
+    "command": "make",
+    "resources": { "cpu": 2, "memory_mb": 2048 }
+  },
   "output": {
     "actual_graph_uri":   "artifact://pair10/job-full01/actual.json",
     "declared_graph_uri": "artifact://pair10/job-full01/declared.json",

@@ -18,6 +18,15 @@
     },
     "build": { "command": "make", "project_root": "./" }
   },
+  "execution": {
+    "mode": "ASYNC",
+    "timeout_seconds": 300,
+    "started_at": "2026-09-20T11:00:00Z",
+    "finished_at": "2026-09-20T11:02:10Z",
+    "attempt": 1,
+    "command": "make",
+    "resources": { "cpu": 2, "memory_mb": 2048 }
+  },
   "output": {
     "current_graph_uri": "artifact://pair10/job-incr01/actual.json",
     "delta": {

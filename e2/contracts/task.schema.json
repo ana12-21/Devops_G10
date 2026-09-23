@@ -253,19 +253,31 @@
 
     "execution": {
       "type": "object",
-      "description": "执行元信息（B10 Issue 第 2 条的字段形态）。目前为可选；待双方确认后提为公共必填字段。",
+      "description": "Job 的执行元信息。当前 execution 整体可省略；出现时必须包含 mode 和 attempt。mode 表示同步或异步执行方式，attempt 表示当前或计划执行的尝试序号。尚未开始执行时省略 started_at，尚未结束时省略 finished_at。",
       "required": ["mode", "attempt"],
       "additionalProperties": false,
       "properties": {
         "mode": {
           "enum": ["ASYNC", "SYNC"],
-          "description": "本契约采用异步 Job 模式（见 ADR-001）"
+          "description": "任务执行方式：ASYNC 表示异步，SYNC 表示同步。本项目现有异步 Job 接口填写 ASYNC；此字段不表示容器或本机运行环境。"
         },
-        "attempt":         { "type": "integer", "minimum": 1 },
+        "attempt": {
+        "type": "integer",
+        "minimum": 1,
+        "description": "当前或计划执行的尝试序号，从 1 开始；首次排队为 1，首次执行仍为 1，每次重新尝试时递增。"
+        },
         "command":         { "type": "string" },
         "timeout_seconds": { "type": "integer", "minimum": 1 },
-        "started_at":      { "type": "string", "format": "date-time" },
-        "finished_at":     { "type": "string", "format": "date-time" },
+        "started_at": {
+        "type": "string",
+        "format": "date-time",
+        "description": "本次尝试实际开始执行的时间；尚未开始时省略。"
+        },
+        "finished_at": {
+        "type": "string",
+        "format": "date-time",
+        "description": "本次尝试结束的时间；尚未结束或未实际执行时省略。"
+        },
         "resources": {
           "type": "object",
           "additionalProperties": true,
