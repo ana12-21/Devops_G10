@@ -193,6 +193,7 @@ def run_positive():
         "dockerfile_job_err.res.json",
         "repair_job.res.json",
         "repair_job_err.res.json",
+        "repair_job_timeout.res.json",
         "query_job.res.json",
     ]
     echoed_requests = {
@@ -202,6 +203,7 @@ def run_positive():
         "dockerfile_job_err.res.json": "dockerfile_job.req.json",
         "repair_job.res.json": "repair_job.req.json",
         "repair_job_err.res.json": "repair_job.req.json",
+        "repair_job_timeout.res.json": "repair_job.req.json",
     }
     for name in response_files:
         path = CONTRACTS / name

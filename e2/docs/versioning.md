@@ -84,7 +84,7 @@
 | D-01 | findings 的 `commit` / `location` / `evidence_uri` **是否提升为必填** | 采纳后 `full_check.res.json` / `incremental_check.res.json` 变为**非法**，必须同步重写；`schema_version` 应升 `2.0.0` | **推荐采纳**，因为 B 组 MDFixer 需要 `commit` 核对、需要 `location` 定位插入点。但必须**一次性同步所有样例**，不能只改一半 |
 | D-02 | `idempotency_key` 落点：`body` vs HTTP 头 `Idempotency-Key` | 若定为头部，则请求样例结构不变但**调用约定改变**；若定为 `body`，请求样例需新增字段 | 建议 `body`，理由是 HTTP 头无法在 JSON 样例中体现，不利于课堂互相解释 |
 | D-03 | `error_codes.md` 中 `ENV_3002` 归属仅写 DRAFT，但 A 组 `full_check_err.res.json` 在用 | 不改则文档与样例矛盾 | 建议改为"**DRAFT / BuildChecker**" |
-| D-04 | `EXEC_4003` 语义冲突：`error_codes.md` 定义为"候选 patch 全部失败"，`practice_log.md` 当作"REDUNDANT 被拒" | 同名两种含义，消费者无法正确分支 | 建议拆分为 `EXEC_4003`（patch 全败）与 `SCHEMA_1002`（无可修复发现） |
+| ~~D-04~~ | ~~`EXEC_4003` 语义冲突：`error_codes.md` 定义为"候选 patch 全部失败"，`practice_log.md` 当作"REDUNDANT 被拒"~~ | — | ✅ **已解决**：采纳 B10 意见把 REPAIR 的候选全败/超时拆为两份样例，并修正 `practice_log.md` 的误用（该处应属 `SCHEMA_1001`，不是 `EXEC_4003`） |
 
 > 📌 **D-01 ~ D-04 全部标记为「需与 B 组确认」**。
 > 在确认之前，本仓库按 `1.0.0` 维持运行，新增样例仅作"目标形态"展示。
@@ -154,4 +154,4 @@ A、B 两组共用一份 `task.schema.json`。任何一方改动**必须**走完
 | D-01 | findings 的 `commit` / `location` / `evidence_uri` 是否必填 | ⏳ 待 B 组确认 |
 | D-02 | `idempotency_key` 落点（`body` vs 头） | ⏳ 待 B 组确认 |
 | D-03 | `ENV_3002` 归属是否含 BuildChecker | ⏳ 待 B 组确认 |
-| D-04 | `EXEC_4003` 是否拆分 | ⏳ 待 B 组确认 |
+| D-04 | ~~`EXEC_4003` 是否拆分~~ | ✅ 已解决（见 4.3 节） |

@@ -45,7 +45,7 @@
 | `repository.url` | 用 SSH 格式 `git@github.com:<owner>/<repo>.git` |
 | `repository.commit` | 完整 40 位 SHA，不接受短 SHA |
 | `verify_command` | 必须存在，DRAFT 至少跑一次 |
-| `max_iterations` | 默认 5，失败次数过多返回 `EXEC_4002` |
+| `max_iterations` | 默认 5，候选全部失败时返回 `EXEC_4003`（整体超时才用 `EXEC_4002`） |
 
 ### 待办 / 遗留
 
@@ -147,7 +147,10 @@
 
 **预期行为**：
 - A 组 SUCCEEDED（含 findings）
-- MDFixer 接收 → **拒绝**（EXEC_4003 或 SCHEMA_1001，因只消费 MISSING）
+- MDFixer 接收 → **不接受为可修项**（无可修复发现；因只消费 `MISSING`）
+
+  > 注：这**不是** `EXEC_4003`。`EXEC_4003` 专指「已生成候选补丁但全部不通过」，
+  > 与「输入里根本没有可修项」是两回事。后者属输入与契约不符，归 `SCHEMA_1001`。
 
 **实际行为**：✅ MDFixer 应过滤后报 "no actionable findings"。
 
