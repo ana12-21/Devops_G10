@@ -106,7 +106,7 @@
       "required": ["code", "message"],
       "properties": {
         "code": {
-          "enum": ["SCHEMA_1001", "BASELINE_2001", "BASELINE_2002", "ENV_3001", "ENV_3003", "EXEC_4001", "EXEC_4002", "ANALYSIS_5001", "NOT_FOUND_6001", "CONFLICT_7001"]
+          "enum": ["SCHEMA_1001", "BASELINE_2001", "BASELINE_2002", "ENV_3001", "ENV_3002", "ENV_3003", "EXEC_4001", "EXEC_4002", "EXEC_4003", "ANALYSIS_5001", "ANALYSIS_5002", "NOT_FOUND_6001", "CONFLICT_7001"]
         },
         "message": { "type": "string" },
         "detail": { "type": "object" }

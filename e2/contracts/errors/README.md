@@ -1,4 +1,4 @@
-# 系统执行错误详解（ENV_3002 / EXEC_4002 / ANALYSIS_5001）
+# 系统执行错误详解（ENV_3002 / EXEC_4002 / ANALYSIS_5001 / ANALYSIS_5002）
 
 > A10 组产出。这三个错误码是 E2 规范点名的**系统执行错误**，写入 `job.error`，
 > 对应 `status = FAILED` / `TIMED_OUT`。**需与 B10 确认**（B 组同样会抛出其中部分）。
@@ -161,6 +161,56 @@
 | `partial_artifacts` | 崩溃前已落盘的产物 URI 列表。**空数组表示无任何可信产出** |
 | `build_log_uri` | 构建阶段日志（构建本身已成功，用于确认问题出在分析而非构建） |
 
+### 2.4 `ANALYSIS_5002` — 修复器内部异常
+
+| 项 | 内容 |
+|----|------|
+| 含义 | 环境与输入均正常，但 **MDFixer 自身**在生成/验证补丁过程中异常终止 |
+| 触发阶段 | `phase` 取崩溃所在阶段（生成补丁时多为 `BUILD`） |
+| 典型抛出方 | **MDFixer** |
+| `retryable` | `false` — 同一输入下崩溃是确定性的，原样重试不会成功；需换工具版本或人工介入 |
+| 期望 `status` | `FAILED` |
+| 与其他码的区分 | ① `EXEC_4003` = 候选全部不通过（**正常跑完得出的结论**，不是崩溃）；② `EXEC_4002` = 超时（**没跑完**，但不是异常）；③ `ANALYSIS_5001` = **分析器**崩溃，本码是**修复器**崩溃 |
+
+```json
+{
+  "code": "ANALYSIS_5002",
+  "message": "patcher crashed while synthesizing candidate patch 1; unhandled KeyError in makefile_target lookup",
+  "phase": "BUILD",
+  "retryable": false,
+  "occurred_at": "2026-09-20T13:20:41Z",
+  "detail": {
+    "fixer": "mdfixer",
+    "fixer_version": "0.4.2",
+    "step": "synthesize_patch",
+    "candidate_index": 1,
+    "unhandled_exception": "KeyError: 'makefile_target'",
+    "iterations_completed": 0,
+    "partial_artifacts": [],
+    "attempt_log_uri": "artifact://pair10/job-repair04/attempt.log"
+  }
+}
+```
+
+`detail` 字段说明：
+
+| 字段 | 说明 |
+|------|------|
+| `fixer` | 崩溃的修复器名称 |
+| `fixer_version` | 版本号，便于复现与上报 |
+| `step` | 崩溃所在内部步骤（如 `synthesize_patch` / `verify_candidate`） |
+| `candidate_index` | 崩溃时正在处理的候选序号，从 1 开始 |
+| `unhandled_exception` | 触发崩溃的异常摘要 |
+| `iterations_completed` | 崩溃前已完成的迭代轮数 |
+| `partial_artifacts` | 崩溃前已落盘的产物 URI。**空数组表示无任何可信产出** |
+| `attempt_log_uri` | 崩溃前的完整日志 |
+
+> 与 `ANALYSIS_5001` 的结构刻意保持平行（`analyzer`↔`fixer`、`analyzer_version`↔`fixer_version`），
+> 便于消费方用同一套逻辑处理两类「工具内部异常」。
+
+> ⚠️ `retryable` 取 `false` 是因为**同一输入、同一工具版本下重试不会成功**。
+> 它不表示“永远修不好”——换工具版本后可以重提。
+
 ## 3. 关键边界：系统错误 vs 检测发现
 
 这是 E2 最容易被误读的一点，因此单独列出对照：
@@ -170,7 +220,9 @@
 | 发现缺失依赖 | `SUCCEEDED` | 空 | 有（`MISSING`） | ✅ **工具正常完成** |
 | 发现冗余依赖 | `SUCCEEDED` | 空 | 有（`REDUNDANT`） | ✅ **工具正常完成** |
 | 分析器崩溃 | `FAILED` | `ANALYSIS_5001` | 空 | ❌ 工具失败，无可信结论 |
+| 修复器崩溃 | `FAILED` | `ANALYSIS_5002` | 空 | ❌ 工具失败，无可信结论 |
 | 镜像构建失败 | `FAILED` | `ENV_3002` | 空 | ❌ 环境失败，未进入分析 |
+| 候选补丁全败 | `FAILED` | `EXEC_4003` | 空 | ⚠️ 工具**正常完成**但无可用补丁（结论性失败，非崩溃） |
 | 任务超时 | `TIMED_OUT` | `EXEC_4002` | 空 | ❌ 未完成，结果不完整 |
 
 三条不变量：
@@ -189,9 +241,11 @@
 | `ENV_3002.error.json` | 镜像构建失败的 `job.error` 纯对象 |
 | `EXEC_4002.error.json` | 任务超时的 `job.error` 纯对象 |
 | `ANALYSIS_5001.error.json` | 分析器崩溃的 `job.error` 纯对象 |
-| `../error_codes.md` | 全部 12 个错误码总览表 |
+| `ANALYSIS_5002.error.json` | 修复器崩溃的 `job.error` 纯对象 |
+| `../error_codes.md` | 全部 13 个错误码总览表 |
 | `../full_check_err.res.json` | `ENV_3002` 的完整任务响应样例 |
-| `../repair_job_err.res.json` | `EXEC_4002` 的完整任务响应样例 |
+| `../repair_job_err.res.json` | `EXEC_4003`（候选补丁全败）的完整任务响应样例 |
+| `../repair_job_timeout.res.json` | `EXEC_4002`（任务超时）的完整任务响应样例 |
 | `../analysis_err.res.json` | `ANALYSIS_5001` 的完整任务响应样例 |
 
 > 本目录的 `*.error.json` 是**可独立校验的纯错误对象**（即 `job.error` 的值本身），
