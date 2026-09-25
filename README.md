@@ -59,6 +59,10 @@ python scripts/diff_reproducibility.py        # 两次运行的复现性比对�
 - GitHub：[hll335](https://github.com/hll335)
 - 邮箱：241880335@smail.nju.edu.cn
 
+- 杨宗乔
+- GitHub：[yangzongqiao](https://github.com/yangzongqiao) 
+- 邮箱：2476194493@qq.com
+
 ## 贡献分工
 
 | 成员  | GitHub | 提交数 | 主要提交内容（按 git 记录归集） |
