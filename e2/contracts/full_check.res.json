@@ -28,7 +28,7 @@
     "finished_at": "2026-09-20T10:00:47Z",
     "attempt": 1,
     "command": "make",
-    "resources": { "cpu": 2, "memory_mb": 2048 }
+    "resources": { "cpu": "2", "memory_mb": 2048 }
   },
   "output": {
     "artifacts": [

@@ -29,7 +29,7 @@
     "finished_at": "2026-09-20T12:00:58Z",
     "attempt": 1,
     "command": "make check",
-    "resources": { "cpu": 2, "memory_mb": 2048 }
+    "resources": { "cpu": "2", "memory_mb": 2048 }
   },
   "output": {
     "artifacts": [

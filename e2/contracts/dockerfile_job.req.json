@@ -11,7 +11,6 @@
       "verify_command": "make check"
     },
     "max_iterations": 5,
-    "deadline_sec": 1800,
     "options": {
       "base_image": "ubuntu:22.04",
       "keep_intermediate_images": false

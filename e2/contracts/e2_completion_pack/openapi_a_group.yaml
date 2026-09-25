@@ -196,6 +196,13 @@ components:
           type: string
         resources:
           type: object
+          properties:
+            cpu:
+              type: string
+              description: CPU 配额字符串，例如 2、0.5 或 2000m
+            memory_mb:
+              type: integer
+              minimum: 1
     Error:
       type: object
       required: [code, message]
