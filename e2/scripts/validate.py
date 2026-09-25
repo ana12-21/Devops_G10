@@ -73,6 +73,10 @@ def check_envelope(doc: dict, src: Path) -> bool:
             f"schema_version 应为 {SCHEMA_VERSION!r}，实为 {doc.get('schema_version')!r}",
             str(src),
         )
+
+    trace_id = doc.get("trace_id")
+    if not isinstance(trace_id, str) or not re.match(r"^trace-[a-z0-9-]+$", trace_id):
+        passed &= fail("请求必须包含合法的 trace_id", str(src))
     else:
         passed &= ok(f"schema_version = {SCHEMA_VERSION}")
 

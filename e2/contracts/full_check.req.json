@@ -1,6 +1,7 @@
 {
   "schema_version": "1.0.0",
   "job_type": "FULL_CHECK",
+  "trace_id": "trace-001",
   "input": {
     "repository": {
       "url": "git@github.com:<OWNER>/<PROJECT>.git",

@@ -95,10 +95,13 @@ components:
           type: string
     FullCheckRequest:
       type: object
-      required: [job_type, input]
+      required: [job_type, trace_id, input]
       properties:
         job_type:
           enum: [FULL_CHECK]
+        trace_id:
+          type: string
+          pattern: '^trace-[a-z0-9-]+$'
         input:
           type: object
           required: [repository, build, configuration_id]
@@ -111,10 +114,13 @@ components:
               type: string
     IncrementalCheckRequest:
       type: object
-      required: [job_type, input]
+      required: [job_type, trace_id, input]
       properties:
         job_type:
           enum: [INCREMENTAL_CHECK]
+        trace_id:
+          type: string
+          pattern: '^trace-[a-z0-9-]+$'
         input:
           type: object
           required: [repository, baseline, build]

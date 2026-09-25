@@ -1,6 +1,7 @@
 {
   "schema_version": "1.0.0",
   "job_type": "REPAIR",
+  "trace_id": "trace-020",
   "input": {
     "repository": {
       "url": "git@github.com:<OWNER>/<PROJECT>.git",
