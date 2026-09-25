@@ -64,7 +64,7 @@ python scripts/diff_reproducibility.py        # 两次运行的复现性比对�
 | 成员 | GitHub | 提交数 | 主要提交内容（按 git 记录归集） |
 |------|--------|--------|--------------------------------|
 | 秦林炜 | [ana12-21](https://github.com/ana12-21) | 16 | E2 契约（`task.schema.json` / `error_codes.md` / `artifact_format.md`）、`validate.py`、E3 样本（md-rd、C0/C1/C2）、`run_lab.py` / `render_evidence.py`、ADR-003 / Backlog / practice_log / AI_USAGE |
-| 何刘磊 | [hll335](https://github.com/hll335) | 8 | E2 契约补充（202 创建响应、失败样例、ERROR_REPORT 样例、反例集合）、`versioning.md` / `min_check.md` / `contracts/errors/`、B10 对齐议题 5/6/7（`required` 扩容、`sha256` 必需、URI 统一）、README |
+| 何刘磊 | [hll335](https://github.com/hll335) | 11 | E2 契约补充（202 创建响应、失败样例、ERROR_REPORT 样例、反例集合）、`versioning.md` / `min_check.md` / `contracts/errors/`、B10 契约对齐（`required` 扩容与枚举约束、`ANALYSIS_5002` 修复器内部异常、REPAIR 候选全败/超时拆分、`sha256` 必需、URI 统一）、README |
 
 ## 提交历史
 
