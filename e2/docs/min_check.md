@@ -27,7 +27,7 @@ G5 是**语义**检查（用样例对证，不是断言）。
 
 | # | 断言 | 期望 |
 |---|------|------|
-| 1 | 必填字段齐全 | `schema_version` / `job_id` / `job_type` / `status` 全部存在 |
+| 1 | 必填字段齐全 | `schema_version` / `job_id` / `job_type` / `status` / `trace_id` / `input` / `execution` / `created_at` 全部存在；`execution` 含合法的 `mode` 与正整数 `attempt` |
 | 2 | `schema_version` 合法 | 等于当前契约版本（`1.0.0`） |
 | 3 | `job_id` 格式合法 | 匹配 `^job-[a-z0-9]+$` |
 | 4 | `job_type` 在枚举内 | `DRAFT` / `FULL_CHECK` / `INCREMENTAL_CHECK` / `REPAIR` |
@@ -99,7 +99,7 @@ G5 是**语义**检查（用样例对证，不是断言）。
 
 ```python
 # ========== 常量 ==========
-REQUIRED_SERVER_FIELDS = {"schema_version", "job_id", "job_type", "status"}
+REQUIRED_SERVER_FIELDS = {"schema_version", "job_id", "job_type", "status", "trace_id", "input", "execution", "created_at"}
 SERVER_ONLY_FIELDS = {"schema_version", "job_id", "status", "output", "error"}
 JOB_TYPES = {"DRAFT", "FULL_CHECK", "INCREMENTAL_CHECK", "REPAIR"}
 STATUSES = {"QUEUED", "RUNNING", "SUCCEEDED", "FAILED", "TIMED_OUT", "CANCELLED"}
@@ -113,6 +113,8 @@ def check_response(doc) -> bool:
     ok &= matches(doc["job_id"], r"^job-[a-z0-9]+$")
     ok &= doc["job_type"] in JOB_TYPES
     ok &= doc["status"] in STATUSES
+    ok &= doc["execution"]["mode"] in {"ASYNC", "SYNC"}
+    ok &= isinstance(doc["execution"]["attempt"], int) and doc["execution"]["attempt"] >= 1
 
     has_error    = bool(doc.get("error"))
     findings     = doc.get("output", {}).get("findings", [])

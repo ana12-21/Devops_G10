@@ -4,6 +4,13 @@
   "job_type": "REPAIR",
   "status": "FAILED",
   "trace_id": "trace-021",
+  "execution": {
+    "mode": "ASYNC",
+    "attempt": 1,
+    "started_at": "2026-09-20T12:05:00Z",
+    "finished_at": "2026-09-20T12:15:04Z",
+    "command": "make check"
+  },
   "created_at": "2026-09-20T12:05:00Z",
   "updated_at": "2026-09-20T12:15:04Z",
   "input": {

@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Job",
-  "description": "统一任务模型——四类服务共用外壳。本版相对 1.0.0 的三处结构性修订：(1) required 由 4 项扩为 7 项；(2) output/error 改为按 status 条件必填；(3) 补 output 的属性声明，使 findings.type 与产物 type 的枚举真正生效。",
+  "description": "统一任务模型——四类服务共用外壳。execution 为公共必填字段；started_at 和 finished_at 按实际执行状态填写。",
   "type": "object",
 
-  "required": ["schema_version", "job_id", "job_type", "status", "trace_id", "input", "created_at"],
+  "required": ["schema_version", "job_id", "job_type", "status", "trace_id", "input", "execution", "created_at"],
   "additionalProperties": true,
 
   "properties": {
@@ -253,7 +253,7 @@
 
     "execution": {
       "type": "object",
-      "description": "Job 的执行元信息。当前 execution 整体可省略；出现时必须包含 mode 和 attempt。mode 表示同步或异步执行方式，attempt 表示当前或计划执行的尝试序号。尚未开始执行时省略 started_at，尚未结束时省略 finished_at。",
+      "description": "Job 必填的执行元信息，至少包含 mode 和 attempt。mode 表示同步或异步执行方式，attempt 表示当前或计划执行的尝试序号。尚未开始执行时省略 started_at，尚未结束时省略 finished_at。",
       "required": ["mode", "attempt"],
       "additionalProperties": false,
       "properties": {

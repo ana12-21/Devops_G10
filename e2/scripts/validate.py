@@ -26,7 +26,7 @@ SCHEMA_VERSION = "1.0.0"
 JOB_ID_PATTERN = re.compile(r"^job-[a-z0-9]+$")
 JOB_TYPES = {"DRAFT", "FULL_CHECK", "INCREMENTAL_CHECK", "REPAIR"}
 STATUSES = {"QUEUED", "RUNNING", "SUCCEEDED", "FAILED", "TIMED_OUT", "CANCELLED"}
-REQUIRED = {"schema_version", "job_id", "job_type", "status"}
+REQUIRED = {"schema_version", "job_id", "job_type", "status", "trace_id", "input", "execution", "created_at"}
 
 
 def load_json(path: Path):
@@ -57,6 +57,15 @@ def check_envelope(doc: dict, src: Path) -> bool:
         passed &= fail(f"缺必填字段 {missing}", str(src))
     else:
         passed &= ok("必填字段齐全")
+
+    execution = doc.get("execution")
+    if (
+        not isinstance(execution, dict)
+        or execution.get("mode") not in {"ASYNC", "SYNC"}
+        or type(execution.get("attempt")) is not int
+        or execution["attempt"] < 1
+    ):
+        passed &= fail("execution 必须包含合法的 mode 和正整数 attempt", str(src))
 
     # schema_version
     if doc.get("schema_version") != SCHEMA_VERSION:
@@ -275,6 +284,10 @@ def run_negative():
                          "build": {"command": "make", "project_root": "./"}})]},
          "同上一条"),
     ]
+
+    for _, doc, _ in bad_payloads:
+        if "status" in doc:
+            doc.setdefault("execution", {"mode": "ASYNC", "attempt": 1})
 
     for label, doc, why in bad_payloads:
         ok_so_far = True

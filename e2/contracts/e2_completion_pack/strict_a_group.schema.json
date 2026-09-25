@@ -114,7 +114,7 @@
     },
     "jobEnvelope": {
       "type": "object",
-      "required": ["schema_version", "job_id", "job_type", "status", "trace_id"],
+      "required": ["schema_version", "job_id", "job_type", "status", "trace_id", "execution"],
       "properties": {
         "schema_version": { "const": "1.0.0" },
         "job_id": {
@@ -128,6 +128,20 @@
         "trace_id": {
           "type": "string",
           "pattern": "^trace-[a-z0-9]+$"
+        },
+        "execution": {
+          "type": "object",
+          "required": ["mode", "attempt"],
+          "additionalProperties": false,
+          "properties": {
+            "mode": { "enum": ["ASYNC", "SYNC"] },
+            "attempt": { "type": "integer", "minimum": 1 },
+            "timeout_seconds": { "type": "integer", "minimum": 1 },
+            "started_at": { "type": "string", "format": "date-time" },
+            "finished_at": { "type": "string", "format": "date-time" },
+            "command": { "type": "string" },
+            "resources": { "type": "object" }
+          }
         },
         "input": { "type": "object" },
         "output": { "type": "object" },
@@ -170,4 +184,3 @@
     }
   }
 }
-

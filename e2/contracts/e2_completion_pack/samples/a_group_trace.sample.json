@@ -15,6 +15,7 @@
       "job_type": "FULL_CHECK",
       "status": "SUCCEEDED",
       "trace_id": "trace-a10pack01",
+      "execution": { "mode": "ASYNC", "attempt": 1 },
       "input": {
         "repository": {
           "url": "git@github.com:ana12-21/Devops_G10.git",
@@ -106,6 +107,7 @@
       "job_type": "INCREMENTAL_CHECK",
       "status": "SUCCEEDED",
       "trace_id": "trace-a10pack01",
+      "execution": { "mode": "ASYNC", "attempt": 1 },
       "input": {
         "repository": {
           "url": "git@github.com:ana12-21/Devops_G10.git",
@@ -201,4 +203,3 @@
     "all_findings_bind_to_checked_commit": true
   }
 }
-

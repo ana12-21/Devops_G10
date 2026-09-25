@@ -48,8 +48,10 @@ def all_findings(job):
 
 
 def check_job_envelope(job):
-    for field in ("schema_version", "job_id", "job_type", "status", "trace_id"):
+    for field in ("schema_version", "job_id", "job_type", "status", "trace_id", "execution"):
         require(field in job, f"{job.get('job_id', '<unknown>')} missing {field}")
+    require(job["execution"].get("mode") in {"ASYNC", "SYNC"}, "execution.mode must be ASYNC or SYNC")
+    require(type(job["execution"].get("attempt")) is int and job["execution"]["attempt"] >= 1, "execution.attempt must be a positive integer")
     require(job["schema_version"] == "1.0.0", "schema_version must be 1.0.0")
     require(JOB_ID.match(job["job_id"]), f"bad job_id {job['job_id']}")
     require(job["job_type"] in {"FULL_CHECK", "INCREMENTAL_CHECK"}, "A-group pack must only contain A-group job types")
@@ -139,4 +141,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

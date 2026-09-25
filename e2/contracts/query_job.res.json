@@ -4,6 +4,12 @@
   "job_type": "FULL_CHECK",
   "status": "RUNNING",
   "trace_id": "trace-001",
+  "execution": {
+    "mode": "ASYNC",
+    "attempt": 1,
+    "started_at": "2026-09-20T10:00:00Z",
+    "command": "make"
+  },
   "created_at": "2026-09-20T10:00:00Z",
   "updated_at": "2026-09-20T10:00:47Z",
   "input": {

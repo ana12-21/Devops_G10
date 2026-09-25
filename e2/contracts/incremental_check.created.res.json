@@ -7,6 +7,7 @@
   "job_type": "INCREMENTAL_CHECK",
   "status": "QUEUED",
   "trace_id": "trace-003",
+  "execution": { "mode": "ASYNC", "attempt": 1 },
   "input": {
     "repository": {
       "url": "git@github.com:<OWNER>/<PROJECT>.git",
