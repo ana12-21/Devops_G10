@@ -1,10 +1,10 @@
+# syntax=docker/dockerfile:1
 # BuildChecker 服务镜像（A 组）。构建上下文是仓库根目录：docker compose build 或 make build。
 #   1. 基础镜像按 digest 固定；升级时只改 BASE_IMAGE 这一行，并在提交说明里写新 digest
 #   2. 系统工具和 Python 包的实际版本在构建时写入 /opt/toolchain.lock
 #   3. Python 依赖按锁文件和哈希安装
 #   4. 以普通用户 app 运行；.env、work/、.git 不会进入镜像（见 .dockerignore）
-# 此镜像站提供与 Docker Hub 相同的 OCI 索引摘要；供无法直连 Docker Hub 的 ECS 使用。
-ARG BASE_IMAGE=m.daocloud.io/docker.io/library/python@sha256:f82c96458eedc847b233e582eb31336f4954b39cae020b6dcf5b3ed0e5cbcd74
+ARG BASE_IMAGE=python:3.13-slim@sha256:f82c96458eedc847b233e582eb31336f4954b39cae020b6dcf5b3ed0e5cbcd74
 FROM ${BASE_IMAGE}
 
 ENV LC_ALL=C.UTF-8 \
