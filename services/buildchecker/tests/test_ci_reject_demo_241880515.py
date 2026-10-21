@@ -1,6 +1,6 @@
-"""Deliberately wrong oracle for the protected-branch teaching demonstration."""
+"""Verify the documented success exit code after the CI rejection demonstration."""
 from buildchecker.cli import main
 
 
-def test_intentionally_wrong_version_exit_code():
-    assert main(["version"]) == 1, "Intentional teaching fault: version actually returns zero"
+def test_version_returns_success_exit_code():
+    assert main(["version"]) == 0
