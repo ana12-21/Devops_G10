@@ -39,4 +39,27 @@ class ProfileTests(unittest.TestCase):
         (self.p/'Makefile').write_text((self.p/'Makefile').read_text().replace('-O0','-include unknown.h'))
         with self.assertRaisesRegex(ValueError,'UNSUPPORTED_FLAGS'):scan(self.p)
 
+class StudentE8A(unittest.TestCase):
+    """Student addition (241880335): an indirect include inside a header
+    invalidates the cached graph for every target, even the one whose own
+    translation unit did not change."""
+
+    def test_indirect_include_in_header_invalidates_old_graph(self):
+        with tempfile.TemporaryDirectory() as directory:
+            p=Path(directory)/'sample'
+            fixture(p)
+            old=scan(p)
+            self.assertNotIn('extra.h',old['actual']['main.o'])
+            header=p/'config.h'
+            header.write_text('#include "extra.h"\n'+header.read_text())
+            commit(p,'student: indirect include through config.h')
+            result=scan(p,old)
+            self.assertNotIn('extra.h',old['actual']['main.o'])
+            self.assertIn('extra.h',result['actual']['main.o'])
+            self.assertEqual(result['actual']['main.o'],['config.h','extra.h','main.c'])
+            self.assertEqual(result['reused'],[])
+            self.assertEqual(set(result['refreshed']),{'main.o','helper.o'})
+            self.assertIn(['MISSING','main.o','extra.h'],result['added'])
+
+
 if __name__=='__main__':unittest.main()
