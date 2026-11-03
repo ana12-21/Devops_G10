@@ -55,3 +55,31 @@ E8 要求在**不重复执行完整构建**的前提下，判断本次提交相�
 变异检验证明这个决策不是空话：把 `key` 中的 `directives` 字段删掉（退化为只看配方），测试立刻报 `AssertionError: 'extra.h' not found in ['config.h', 'main.c']`。说明该字段是「头文件内容变化必须触发失效」这一行为的唯一保证。
 
 完整证据见 `$OUT/`（`work/e8-A-manual.MA9l1R`）：`baseline.json`、`incremental.json`、`buildchecker/{actual-graph.json,declared-graph.json,make-db.txt,trace/,findings.json}`、`steps/` 下每一步的容器日志与 `STEP_EXIT_CODE`。
+
+## E9 追加决策：实际图与声明图分开维护
+
+**选择**：`scan()` 把 `actual`（真实读取，来自 `gcc -MM` 或历史图）与 `declared`（Makefile 解析结果）作为两套独立数据，`findings` 每次都由二者现算，`key` 只覆盖 `actual` 的失效条件。
+
+**替代方案：把 `findings` 一起缓存**。看上去更省，但 C3 场景直接反证：只改声明行时 `actual` 完全可复用，而 `findings` 必须重算——否则 C3 会继续报告两条已被修复的 MD。E9 的 `C3_RESOLVED_PASS` 就是这个错误做法的反例。
+
+**代价**：每次 `scan` 都要重新解析 Makefile（文本解析，微秒级）。这与 `gcc -MM` 子进程（毫秒级）相比可以忽略，所以这个代价实际上是负的——用极小的解析开销换来了声明变更的即时生效。
+
+**验证**：`StudentE9A` 断言 `c3['key']==c2['key']`、`reused` 为两目标、`resolved` 恰为两条 MD、RD 保留。把复用分支的 `resolved` 强制置空后测试失败。
+
+## E10 追加决策：计时口径与离群值处理
+
+**选择**：计时直接用 `time.perf_counter()` 包住 `scan()`，包含 Git 调用、编译器版本探测、Makefile 解析、`gcc -MM` 子进程；**不包含** clean build。每类跑 5 次取中位数，离群值不剔除。
+
+**理由**：目的是比较「同一分析任务的两条路径」，所以只应计入 `scan` 自身。如果计入 clean build，两种路径的构建开销相同，会稀释掉真正的差异。用中位数而不是平均值，是因为 `unchanged`/`declaration` 的第 1 次都有明显冷启动（0.0091 s / 0.0055 s，其余 4 次 0.0017 s），平均值会被单个离群值拉偏。
+
+**不剔除离群值的理由**：5 个样本剔除 1 个就只剩 4 个，中位数会变成两点平均，反而更不稳定；而且冷启动是真实存在的成本，应当记录。原始值全部留在 `results.csv`，读者可以自行判断。
+
+**结果解读必须诚实**：`unchanged`/`body`/`declaration` 的 5.8 倍加速来自跳过两次 `gcc -MM`；`include`/`flags`/`header` 的 ≈1.0 则说明刷新路径没有收益。不能只报 5.8 倍而隐去 1.0——后者才是这个粗粒度 key 的真实代价。
+
+## E10 追加决策：为什么比较完整三元组而不是发现条数
+
+**选择**：`passed=all(inc[k]==full[k] for k in ['actual','declared','findings'])`，逐项比完整集合。
+
+**替代方案：只比较 `len(findings)`**。会放过一类严重错误——把 `MD main.o→config.h` 误报成 `MD main.o→extra.h`，条数同样是 1，但结论完全不同。E10 的 `include` 场景里 MD 从 config.h 变成 config.h + extra.h，如果只比条数，C3 之后「MD 全部消除」与「MD 换了个依赖」也无法区分。
+
+**代价**：需要保存完整的 `actual`/`declared`/`findings` 快照（每场景 5 对 JSON）。存储开销可以忽略，换来的是可复核性——每份 JSON 都能单独打开核对。
