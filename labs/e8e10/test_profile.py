@@ -109,4 +109,60 @@ class StudentE9A(unittest.TestCase):
             self.assertNotIn('config.h',c3['declared']['helper.o'])
 
 
+class StudentE10A(unittest.TestCase):
+    """Student addition (241880335): E10 asks for one extra scenario with a
+    full dependency expectation, repeated five times.
+
+    The scenario pins the exact granularity of the cache key. ``key`` only
+    collects lines whose first non-space character is ``#``, so a C comment
+    inside a header never reaches the preprocessor and must NOT invalidate the
+    graph, while adding a real ``#define`` MUST invalidate it even though the
+    include set is unchanged. The second half also shows the documented cost of
+    the coarse key: refresh happens with no change in actual/declared/findings,
+    and the five repeats prove the conservative result still equals a full scan.
+    """
+
+    def test_comment_reuses_but_new_directive_refreshes_five_times(self):
+        with tempfile.TemporaryDirectory() as directory:
+            p=Path(directory)/'sample'
+            fixture(p)
+            base=scan(p)
+            self.assertEqual(base['actual']['main.o'],['config.h','main.c'])
+
+            header=p/'config.h'
+            header.write_text('/* student: documentation only */\n'+header.read_text())
+            commit(p,'student: comment only')
+            after_comment=scan(p,base)
+
+            self.assertEqual(after_comment['key'],base['key'],
+                'A C comment is not a preprocessing directive, so the key must stay equal')
+            self.assertEqual(after_comment['reused'],['main.o','helper.o'])
+            self.assertEqual(after_comment['refreshed'],[])
+            self.assertEqual(after_comment['actual'],base['actual'])
+            self.assertEqual(after_comment['findings'],base['findings'])
+
+            header.write_text('#define UNUSED_MACRO 1\n'+header.read_text())
+            commit(p,'student: new directive')
+            previous=after_comment
+            repeats=[]
+            for repeat in range(1,6):
+                inc=scan(p,previous)
+                full=scan(p)
+                equal=all(inc[k]==full[k] for k in ['actual','declared','findings'])
+                repeats.append((repeat,equal,tuple(inc['reused']),tuple(inc['refreshed'])))
+                self.assertTrue(equal,f'directive case repeat {repeat} differs from full scan')
+                self.assertEqual(inc['reused'],[])
+                self.assertEqual(set(inc['refreshed']),{'main.o','helper.o'})
+                self.assertNotEqual(inc['key'],previous['key'],
+                    'A new #define must change the cache key')
+
+            self.assertEqual(len(repeats),5)
+            self.assertEqual({r[1] for r in repeats},{True},
+                'All five repeats must agree with the full scan')
+            self.assertEqual({r[2] for r in repeats},{()},
+                'Every repeat must show zero reuse')
+            self.assertEqual({r[3] for r in repeats},{('main.o','helper.o')},
+                'Refresh order is deterministic: both targets, main.o first')
+
+
 if __name__=='__main__':unittest.main()
