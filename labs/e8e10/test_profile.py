@@ -217,3 +217,52 @@ class StudentE10A221900015(unittest.TestCase):
 
 
 if __name__=='__main__':unittest.main()
+
+class StudentE9A221900015(unittest.TestCase):
+    """Personal case (221900015) for E9: replay the track-A mutation chain
+    (body -> include -> declaration) and assert that only the include step
+    invalidates the cached graph, while the declaration step keeps the graph
+    and re-derives every finding from the new Makefile."""
+
+    def test_body_include_declaration_chain(self):
+        with tempfile.TemporaryDirectory() as directory:
+            p=Path(directory)/'sample'
+            fixture(p)
+            c0=scan(p)
+            self.assertEqual(c0['findings'],[
+                {'type':'MISSING','target':'main.o','dependency':'config.h'},
+                {'type':'REDUNDANT','target':'main.o','dependency':'unused.h'}])
+
+            main=p/'main.c'
+            main.write_text(main.read_text().replace('return 0;}','return 1;}'))
+            commit(p,'student: body change only')
+            c1=scan(p,c0)
+            self.assertEqual(c1['key'],c0['key'])
+            self.assertEqual(c1['reused'],['main.o','helper.o'])
+            self.assertEqual(c1['refreshed'],[])
+            self.assertEqual(c1['findings'],c0['findings'])
+
+            main.write_text('#include "extra.h"\n'+main.read_text())
+            commit(p,'student: include change')
+            c2=scan(p,c1)
+            self.assertNotEqual(c2['key'],c1['key'])
+            self.assertEqual(c2['reused'],[])
+            self.assertEqual(set(c2['refreshed']),{'main.o','helper.o'})
+            self.assertEqual(c2['actual']['main.o'],['config.h','extra.h','main.c'])
+            self.assertEqual(c2['added'],[['MISSING','main.o','extra.h']])
+
+            make=p/'Makefile'
+            make.write_text(make.read_text().replace(
+                'main.o: main.c unused.h','main.o: main.c unused.h config.h extra.h'))
+            commit(p,'student: repair declarations')
+            c3=scan(p,c2)
+            self.assertEqual(c3['key'],c2['key'])
+            self.assertEqual(c3['reused'],['main.o','helper.o'])
+            self.assertEqual(c3['refreshed'],[])
+            self.assertEqual(c3['actual'],c2['actual'])
+            self.assertEqual(c3['resolved'],[
+                ['MISSING','main.o','config.h'],
+                ['MISSING','main.o','extra.h']])
+            self.assertEqual(c3['findings'],[
+                {'type':'REDUNDANT','target':'main.o','dependency':'unused.h'}])
+

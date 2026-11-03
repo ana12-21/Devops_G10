@@ -30,6 +30,12 @@ A 组 E8—E10 要求在不改动 BuildChecker 的前提下，为对象级依赖
 - 代价：镜像 ID 与在能访问清华源的机器上构建的结果不同，但基础镜像、包集合、gcc/make/python 版本一致（gcc 14.2.0、make 4.4.1、pytest 8.4.2）。仓库内 Dockerfile 未被修改，CI 在 GitHub 上仍按原文件构建。
 - 替代方案：`docker build --cache-from course-e8e10:241880335` 复用同学镜像层，实测旧版构建器未命中缓存，仍会走网络，故放弃。
 
+**D：E10 自建场景怎样取五次样本**
+
+- 选择：五个独立副本，每个副本从自己的 C0 出发把包含关系下沉一层（`config.h → extra.h → leaf.h`，leaf 内容逐次不同），各自与其基线做增量、再做一次全量，逐行比对三集合。OUT=`work/e10-A-own.11225683`。
+- 替代方案：在同一份代码上连跑五次。手册明确禁止“对完全相同代码状态重复运行矩阵只为凑记录”，而且同一状态连续扫描只会测到缓存命中，得不到有意义的对照。
+- 代价：五个副本的 C0 各不相同，耗时的绝对值和 30 行矩阵不能直接拼接；因此自建统计单独一张 `performance-own.csv`，只用于说明“间接 include 必须全量刷新”。
+
 ## 代价与覆盖范围
 
 - header/include/flags 三类变化下没有加速：增量中位数与全量之比分别为 1.00、0.99、0.98。这是保守失效的直接代价。
@@ -39,19 +45,23 @@ A 组 E8—E10 要求在不改动 BuildChecker 的前提下，为对象级依赖
 ## 验证命令与实际证据
 
 ```bash
-# 1. 单测：原包 7 项 + 本人 2 项
+# 1. 单测：原包 7 项 + 同学 3 项 + 本人 3 项
 docker run --rm --network none --user "$(id -u):$(id -g)" -e HOME=/tmp \
   -v "$PWD:/course" -w /course course-e8e10:221900015 \
   python3 -m unittest discover -s labs/e8e10 -p test_profile.py -v
-# -> Ran 9 tests ... OK
+# -> Ran 13 tests ... OK
 
 # 2. E10 矩阵一致性
 cat work/e10-A-manual.1kYmmv/matrix/gate.json
 # -> {"track":"A","passed":true,"rows":30}
+
+# 2b. E10 自建场景（间接 include，五个独立副本）
+cat work/e10-A-own.11225683/matrix/gate-own.json
+# -> {"track":"A","scenario":"indirect-include-through-header","passed":true,"rows":5}
 
 # 3. 复用判定
 cat work/e8-A-manual.GfMg98/incremental.json
 # -> "reused":["main.o","helper.o"], "refreshed":[], "added":[]
 ```
 
-证据文件：`work/e8-A-manual.GfMg98/`、`work/e9-A-manual.cviTAV/`、`work/e10-A-manual.1kYmmv/`、`work/unit-tests-*.log`、`work/environment-build-*.log`。
+证据文件：`work/e8-A-manual.GfMg98/`、`work/e9-A-manual.cviTAV/`、`work/e10-A-manual.1kYmmv/`、`work/e10-A-own.11225683/`、`work/unit-tests-*.log`、`work/environment-build-*.log`、`work/ci-e8e10/`。
