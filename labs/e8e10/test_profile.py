@@ -39,4 +39,53 @@ class ProfileTests(unittest.TestCase):
         (self.p/'Makefile').write_text((self.p/'Makefile').read_text().replace('-O0','-include unknown.h'))
         with self.assertRaisesRegex(ValueError,'UNSUPPORTED_FLAGS'):scan(self.p)
 
+class StudentE8A(unittest.TestCase):
+    """Personal case (221900015): a header-level indirect include must
+    invalidate the cached actual graph of every target, not only the target
+    whose translation unit was edited."""
+
+    def test_indirect_include_in_header_invalidates_cached_graph(self):
+        with tempfile.TemporaryDirectory() as directory:
+            p=Path(directory)/'sample'
+            fixture(p)
+            old=scan(p)
+            self.assertEqual(old['actual']['main.o'],['config.h','main.c'])
+            self.assertNotIn('extra.h',old['actual']['main.o'])
+            header=p/'config.h'
+            header.write_text('#include "extra.h"\n'+header.read_text())
+            commit(p,'student: indirect include through config.h')
+            result=scan(p,old)
+            self.assertEqual(result['actual']['main.o'],['config.h','extra.h','main.c'])
+            self.assertEqual(result['reused'],[])
+            self.assertEqual(set(result['refreshed']),{'main.o','helper.o'})
+            self.assertIn(['MISSING','main.o','extra.h'],result['added'])
+            self.assertEqual(
+                {(x['type'],x['dependency']) for x in result['findings']},
+                {('MISSING','config.h'),('MISSING','extra.h'),('REDUNDANT','unused.h')})
+
+
+class StudentE10A(unittest.TestCase):
+    """Personal case (221900015): after a three-level header chain appears,
+    the incremental path and the full path must agree on all three sets."""
+
+    def test_transitive_header_chain_matches_full_scan(self):
+        with tempfile.TemporaryDirectory() as directory:
+            p=Path(directory)/'sample'
+            fixture(p)
+            old=scan(p)
+            (p/'config.h').write_text('#include "extra.h"\n#define VALUE 1\n')
+            (p/'extra.h').write_text('#include "leaf.h"\n')
+            (p/'leaf.h').write_text('#define LEAF 7\n')
+            commit(p,'student: transitive header chain')
+            incremental=scan(p,old)
+            full=scan(p)
+            for key in ['actual','declared','findings']:
+                self.assertEqual(incremental[key],full[key])
+            self.assertEqual(incremental['actual']['main.o'],['config.h','extra.h','leaf.h','main.c'])
+            self.assertEqual(incremental['reused'],[])
+            self.assertEqual(
+                {x['dependency'] for x in incremental['findings'] if x['type']=='MISSING'},
+                {'config.h','extra.h','leaf.h'})
+
+
 if __name__=='__main__':unittest.main()
