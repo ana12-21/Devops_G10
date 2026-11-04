@@ -165,6 +165,83 @@ class StudentE10A(unittest.TestCase):
                 'Refresh order is deterministic: both targets, main.o first')
 
 
+
+class Student241880515DependencyReplacement(unittest.TestCase):
+    """Replace a transitive dependency without changing the edge count."""
+
+    def test_transitive_leaf_replacement_removes_old_edge(self):
+        with tempfile.TemporaryDirectory() as directory:
+            p = Path(directory) / 'sample'
+            fixture(p)
+            original = scan(p)
+
+            # Both leaf files exist throughout the replacement.
+            # Only the include directive changes in the second phase.
+            (p / 'leaf_a.h').write_text('#define LEAF_A 7\n')
+            (p / 'leaf_b.h').write_text('#define LEAF_B 9\n')
+            (p / 'config.h').write_text(
+                '#include "extra.h"\n#define VALUE 1\n')
+            (p / 'extra.h').write_text(
+                '#include "leaf_a.h"\n#define EXTRA 0\n')
+            commit(p, '241880515: add transitive leaf_a dependency')
+
+            old = scan(p, original)
+            self.assertEqual(old['actual'], {
+                'main.o': ['config.h', 'extra.h', 'leaf_a.h', 'main.c'],
+                'helper.o': ['helper.c'],
+            })
+            self.assertEqual(
+                {(f['type'], f['target'], f['dependency'])
+                 for f in old['findings']},
+                {
+                    ('MISSING', 'main.o', 'config.h'),
+                    ('MISSING', 'main.o', 'extra.h'),
+                    ('MISSING', 'main.o', 'leaf_a.h'),
+                    ('REDUNDANT', 'main.o', 'unused.h'),
+                })
+            self.assertEqual(old['reused'], [])
+            self.assertEqual(set(old['refreshed']), {'main.o', 'helper.o'})
+
+            # Keep leaf_a.h on disk: it becomes unused, not deleted.
+            (p / 'extra.h').write_text(
+                '#include "leaf_b.h"\n#define EXTRA 0\n')
+            commit(p, '241880515: replace transitive leaf_a with leaf_b')
+
+            result = scan(p, old)
+            full = scan(p)
+
+            self.assertEqual(result['actual'], {
+                'main.o': ['config.h', 'extra.h', 'leaf_b.h', 'main.c'],
+                'helper.o': ['helper.c'],
+            })
+            self.assertEqual(result['declared'], {
+                'main.o': ['main.c', 'unused.h'],
+                'helper.o': ['helper.c'],
+            })
+            self.assertEqual(
+                {(f['type'], f['target'], f['dependency'])
+                 for f in result['findings']},
+                {
+                    ('MISSING', 'main.o', 'config.h'),
+                    ('MISSING', 'main.o', 'extra.h'),
+                    ('MISSING', 'main.o', 'leaf_b.h'),
+                    ('REDUNDANT', 'main.o', 'unused.h'),
+                })
+            self.assertEqual(
+                result['added'], [['MISSING', 'main.o', 'leaf_b.h']])
+            self.assertEqual(
+                result['resolved'], [['MISSING', 'main.o', 'leaf_a.h']])
+            self.assertEqual(result['reused'], [])
+            self.assertEqual(set(result['refreshed']), {'main.o', 'helper.o'})
+
+            for key in ['actual', 'declared', 'findings']:
+                self.assertEqual(result[key], full[key], key)
+
+            # The historical report must remain unchanged.
+            self.assertIn('leaf_a.h', old['actual']['main.o'])
+            self.assertNotIn('leaf_b.h', old['actual']['main.o'])
+
+
 if __name__=='__main__':unittest.main()
 
 class StudentE8A221900015(unittest.TestCase):
