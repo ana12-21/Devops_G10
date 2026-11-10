@@ -1,0 +1,14 @@
+{
+  "source": "team repository labs/e8e10/environment/fixtures/md-rd (real files at commit fd7ebe4)",
+  "adaptations": [
+    "added helper.c and a helper.o rule: current scan() maps exactly main.o/helper.o",
+    "main.c calls helper() so the program still prints 1",
+    "added CFLAGS = -O0 and $(CFLAGS) in recipes: scan() rejects other flags with UNSUPPORTED_FLAGS"
+  ],
+  "preserved_defect": "main.o declares \"main.c unused.h\" while main.c includes config.h (unchanged from the real fixture)",
+  "base_commit": "f03075f14ed32fecaa1aeb69dd3fde1edc5c824c",
+  "target_commit_body": "94147e8a2559385e6adf0c680837c7033d6df6c2",
+  "target_commit_header": "89eb38eb19320d3d8c5f4e810ca0e4f823d8d381",
+  "observed": "after the header commit, touching config.h leaves make reporting app up to date, which is the real cost of the missing edge",
+  "expected_output": "1"
+}

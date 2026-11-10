@@ -48,4 +48,40 @@ class Contracts(unittest.TestCase):
             with self.assertRaises(ValueError):store.submit({'mode':'e11-a','repo':str(Path(d)),'base':'a','target':'b'},'k')
             store.pool.shutdown()
 
+class StudentContracts(unittest.TestCase):
+    """Student addition (241880335): E11-A compares an incremental report with a
+    full BuildChecker report, but the two are not shaped alike.
+
+    ``full_check`` observes the whole build, so ``findings.json`` also carries
+    the link target ``app``.  ``scan`` only ever maps ``main.o``/``helper.o``.
+    Comparing the raw lists would therefore always fail on ``app``, and
+    comparing only the number of findings would accept a report that swapped
+    one dependency for another.  ``pipeline.normalized`` is the single place
+    that resolves this, so it deserves its own tests.
+    """
+
+    def test_link_target_is_dropped_from_the_comparison(self):
+        full=[{'type':'MISSING','target':'app','dependency':'main.o'},
+              {'type':'MISSING','target':'main.o','dependency':'config.h'}]
+        self.assertEqual(pipeline.normalized(full), [('MISSING','main.o','config.h')])
+
+    def test_comparison_is_order_insensitive_but_content_exact(self):
+        left=[{'type':'REDUNDANT','target':'helper.o','dependency':'stale.h'},
+              {'type':'MISSING','target':'main.o','dependency':'config.h'}]
+        right=list(reversed(left))
+        self.assertEqual(pipeline.normalized(left), pipeline.normalized(right))
+        swapped=[{'type':'REDUNDANT','target':'helper.o','dependency':'stale.h'},
+                 {'type':'MISSING','target':'main.o','dependency':'extra.h'}]
+        self.assertNotEqual(pipeline.normalized(left), pipeline.normalized(swapped),
+            'Same finding count but a different dependency must not compare equal')
+
+    def test_full_and_incremental_agree_once_projected(self):
+        full=[{'type':'MISSING','target':'app','dependency':'main.o'},
+              {'type':'MISSING','target':'main.o','dependency':'config.h'},
+              {'type':'REDUNDANT','target':'main.o','dependency':'unused.h'}]
+        incremental=[{'type':'MISSING','target':'main.o','dependency':'config.h'},
+                     {'type':'REDUNDANT','target':'main.o','dependency':'unused.h'}]
+        self.assertEqual(pipeline.normalized(full), pipeline.normalized(incremental))
+
+
 if __name__=='__main__':unittest.main()

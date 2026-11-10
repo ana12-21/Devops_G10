@@ -243,3 +243,102 @@ class Student241880515DependencyReplacement(unittest.TestCase):
 
 
 if __name__=='__main__':unittest.main()
+
+class StudentE8A221900015(unittest.TestCase):
+    """Personal case (221900015): a header-level indirect include must
+    invalidate the cached actual graph of every target, not only the target
+    whose translation unit was edited."""
+
+    def test_indirect_include_in_header_invalidates_cached_graph(self):
+        with tempfile.TemporaryDirectory() as directory:
+            p=Path(directory)/'sample'
+            fixture(p)
+            old=scan(p)
+            self.assertEqual(old['actual']['main.o'],['config.h','main.c'])
+            self.assertNotIn('extra.h',old['actual']['main.o'])
+            header=p/'config.h'
+            header.write_text('#include "extra.h"\n'+header.read_text())
+            commit(p,'student: indirect include through config.h')
+            result=scan(p,old)
+            self.assertEqual(result['actual']['main.o'],['config.h','extra.h','main.c'])
+            self.assertEqual(result['reused'],[])
+            self.assertEqual(set(result['refreshed']),{'main.o','helper.o'})
+            self.assertIn(['MISSING','main.o','extra.h'],result['added'])
+            self.assertEqual(
+                {(x['type'],x['dependency']) for x in result['findings']},
+                {('MISSING','config.h'),('MISSING','extra.h'),('REDUNDANT','unused.h')})
+
+
+class StudentE10A221900015(unittest.TestCase):
+    """Personal case (221900015): after a three-level header chain appears,
+    the incremental path and the full path must agree on all three sets."""
+
+    def test_transitive_header_chain_matches_full_scan(self):
+        with tempfile.TemporaryDirectory() as directory:
+            p=Path(directory)/'sample'
+            fixture(p)
+            old=scan(p)
+            (p/'config.h').write_text('#include "extra.h"\n#define VALUE 1\n')
+            (p/'extra.h').write_text('#include "leaf.h"\n')
+            (p/'leaf.h').write_text('#define LEAF 7\n')
+            commit(p,'student: transitive header chain')
+            incremental=scan(p,old)
+            full=scan(p)
+            for key in ['actual','declared','findings']:
+                self.assertEqual(incremental[key],full[key])
+            self.assertEqual(incremental['actual']['main.o'],['config.h','extra.h','leaf.h','main.c'])
+            self.assertEqual(incremental['reused'],[])
+            self.assertEqual(
+                {x['dependency'] for x in incremental['findings'] if x['type']=='MISSING'},
+                {'config.h','extra.h','leaf.h'})
+
+
+if __name__=='__main__':unittest.main()
+
+class StudentE9A221900015(unittest.TestCase):
+    """Personal case (221900015) for E9: replay the track-A mutation chain
+    (body -> include -> declaration) and assert that only the include step
+    invalidates the cached graph, while the declaration step keeps the graph
+    and re-derives every finding from the new Makefile."""
+
+    def test_body_include_declaration_chain(self):
+        with tempfile.TemporaryDirectory() as directory:
+            p=Path(directory)/'sample'
+            fixture(p)
+            c0=scan(p)
+            self.assertEqual(c0['findings'],[
+                {'type':'MISSING','target':'main.o','dependency':'config.h'},
+                {'type':'REDUNDANT','target':'main.o','dependency':'unused.h'}])
+
+            main=p/'main.c'
+            main.write_text(main.read_text().replace('return 0;}','return 1;}'))
+            commit(p,'student: body change only')
+            c1=scan(p,c0)
+            self.assertEqual(c1['key'],c0['key'])
+            self.assertEqual(c1['reused'],['main.o','helper.o'])
+            self.assertEqual(c1['refreshed'],[])
+            self.assertEqual(c1['findings'],c0['findings'])
+
+            main.write_text('#include "extra.h"\n'+main.read_text())
+            commit(p,'student: include change')
+            c2=scan(p,c1)
+            self.assertNotEqual(c2['key'],c1['key'])
+            self.assertEqual(c2['reused'],[])
+            self.assertEqual(set(c2['refreshed']),{'main.o','helper.o'})
+            self.assertEqual(c2['actual']['main.o'],['config.h','extra.h','main.c'])
+            self.assertEqual(c2['added'],[['MISSING','main.o','extra.h']])
+
+            make=p/'Makefile'
+            make.write_text(make.read_text().replace(
+                'main.o: main.c unused.h','main.o: main.c unused.h config.h extra.h'))
+            commit(p,'student: repair declarations')
+            c3=scan(p,c2)
+            self.assertEqual(c3['key'],c2['key'])
+            self.assertEqual(c3['reused'],['main.o','helper.o'])
+            self.assertEqual(c3['refreshed'],[])
+            self.assertEqual(c3['actual'],c2['actual'])
+            self.assertEqual(c3['resolved'],[
+                ['MISSING','main.o','config.h'],
+                ['MISSING','main.o','extra.h']])
+            self.assertEqual(c3['findings'],[
+                {'type':'REDUNDANT','target':'main.o','dependency':'unused.h'}])
