@@ -9,3 +9,8 @@
 work/
 __pycache__/
 .pytest_cache/
+
+# E11-E12 local data and temporary files
+/data/
+*.pyc
+Dockerfile.before-mirror-change
