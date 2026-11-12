@@ -342,4 +342,3 @@ class StudentE9A221900015(unittest.TestCase):
                 ['MISSING','main.o','extra.h']])
             self.assertEqual(c3['findings'],[
                 {'type':'REDUNDANT','target':'main.o','dependency':'unused.h'}])
-
