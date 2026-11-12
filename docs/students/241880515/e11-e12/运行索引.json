@@ -1,0 +1,77 @@
+[
+  {
+    "case": "api-client",
+    "status": "SUCCEEDED",
+    "base_commit": "6dd1e24b6e19a46033fed11ecd4c42d79bf17102",
+    "target_commit": "8d30ae48034a096f100c3c15fa197b2ea77543ae",
+    "job_id": "job-d043c5eeeb1a45d8a199bbe4a6d00555",
+    "trace_id": "trace-579e4342c8a04c3fa108e07290fbc81d",
+    "error": null
+  },
+  {
+    "case": "e11-a-01",
+    "status": "SUCCEEDED",
+    "base_commit": "6dd1e24b6e19a46033fed11ecd4c42d79bf17102",
+    "target_commit": "8d30ae48034a096f100c3c15fa197b2ea77543ae",
+    "job_id": "job-77b97bc18a444981b95a388b001871f5",
+    "trace_id": "trace-64e9aff15adf4e67b6ebd4d037d0c068",
+    "error": null
+  },
+  {
+    "case": "e11-a-reuse-01",
+    "status": "SUCCEEDED",
+    "base_commit": "8d30ae48034a096f100c3c15fa197b2ea77543ae",
+    "target_commit": "804a3479fc0b3e05ee5f342f93fdbcee97ef53d6",
+    "job_id": "job-60258e3e5d50429b8e1be63ff6a18956",
+    "trace_id": "trace-5878702315ba414691b3cff356c79c0a",
+    "error": null
+  },
+  {
+    "case": "e11-real-c1-01",
+    "status": "SUCCEEDED",
+    "base_commit": "f03075f14ed32fecaa1aeb69dd3fde1edc5c824c",
+    "target_commit": "94147e8a2559385e6adf0c680837c7033d6df6c2",
+    "job_id": "job-0d6e20cbeff844d3b9dea4c80deb2861",
+    "trace_id": "trace-09d6568ac1024c4aa7b58305feab94c8",
+    "error": null
+  },
+  {
+    "case": "e11-real-c2-01",
+    "status": "SUCCEEDED",
+    "base_commit": "f03075f14ed32fecaa1aeb69dd3fde1edc5c824c",
+    "target_commit": "89eb38eb19320d3d8c5f4e810ca0e4f823d8d381",
+    "job_id": "job-4d9d96c4000f431494f99fbe97731635",
+    "trace_id": "trace-49816dfad1da4ae3bbe6b16a2f29fda0",
+    "error": null
+  },
+  {
+    "case": "e12-02",
+    "status": "SUCCEEDED",
+    "base_commit": "6dd1e24b6e19a46033fed11ecd4c42d79bf17102",
+    "target_commit": "8d30ae48034a096f100c3c15fa197b2ea77543ae",
+    "job_id": "job-58c0a513e2d143b0a86b70631c723884",
+    "trace_id": "trace-f5ab11be98434579880b131418b78cc3",
+    "error": null
+  },
+  {
+    "case": "e12-real-01",
+    "status": "FAILED",
+    "base_commit": "f03075f14ed32fecaa1aeb69dd3fde1edc5c824c",
+    "target_commit": "c7c6a2cbc2bbe4db30d8dca3c53729177d9f3d5a",
+    "job_id": "job-845c24dc7e544b6dbc622f038cc14450",
+    "trace_id": "trace-41414fa20e7943749702606ea2cad119",
+    "error": {
+      "code": "EXECUTION_FAILED",
+      "message": "Candidate changed the original base image tag"
+    }
+  },
+  {
+    "case": "e12-real-02",
+    "status": "SUCCEEDED",
+    "base_commit": "f03075f14ed32fecaa1aeb69dd3fde1edc5c824c",
+    "target_commit": "963a143b6ed8d6ba907798b356ff33752b67485a",
+    "job_id": "job-f7420983a581491f973390c6b5fd829a",
+    "trace_id": "trace-f7b08a8dfeec431092b67239f3171d35",
+    "error": null
+  }
+]

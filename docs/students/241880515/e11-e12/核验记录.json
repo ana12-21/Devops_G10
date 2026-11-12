@@ -1,0 +1,3247 @@
+{
+  "checked_artifact_entries": 648,
+  "all_matched": true,
+  "scope": "仅校验归档中存在的产物；API 未下载的文件不计入。计数包含重复引用。",
+  "entries": [
+    {
+      "manifest": "work/api-client/result.json",
+      "file": "work/api-client/candidate.patch",
+      "sha256": "88074f66c291dcad1344c48f6a2b9ddd42d235d9d0415c85fb33310c5b7cb2af"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/base-project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/base-project/Dockerfile.broken",
+      "sha256": "493f94f95181dd9f4cfb8f47beeed4bfd86e3395ab354742d1d201c409a3e745"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/base-project/Makefile",
+      "sha256": "9206301c23ce4cb93c3fc1434037e475cf69f53e132dc541f6028d05e30258b2"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/base-project/config.h",
+      "sha256": "ac32a92f4af359517c993d6e8583ea2d9b053c2ad171b4c602bc242894bd9696"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/base-project/extra.h",
+      "sha256": "5e20ae92639ee989af5638bd0308a6a86e71bdb4345f60b962ba9db7265e4f7c"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/base-project/helper.c",
+      "sha256": "90a60f959d215b0b91807c6dd2c94acf6684a9fe26629dc1591e9b2ea773d78c"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/base-project/main.c",
+      "sha256": "0da2f94ca7b27cfeae51e4842a4a39f527929b28a82f40b3796d308cc72c1379"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/base-project/unused.h",
+      "sha256": "3f7fec0991b34d614462e29b450c76638f07171936a12df337c578c2d1481b37"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-cache.json",
+      "sha256": "a7720ee27235e166231b46d6ae3277d738756c7cdfc573548ff064f0a937e9fa"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/actual-graph.json",
+      "sha256": "63e1a0a2261c319523cfbaabf92902b1b9a59d383b66630a86ce4f166cfc0625"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/build-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/clean-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/clean.log",
+      "sha256": "a76da8f583000fa9357e10035a1d3064eb2b74afe0c8c102ba5850e6824ca061"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/declared-graph.json",
+      "sha256": "29a4c1591ee2aba4fc2b42486c3366a3162918a3f93df8148f5033ae74a7c8e5"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/findings.json",
+      "sha256": "c26b643fbb1853c623763f686328245b38a2eabed6ceb1c2c2d826edd2bc8568"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/make-db.txt",
+      "sha256": "4d875e9c5ecbf7c93b8cc867d69cc231f1ee93eaa000ea70bcbaa1286ceb3041"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/processes.json",
+      "sha256": "06955edba1b49efc7f8f9b11b302576497c01d266e30792cc050fb690c7733af"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/project/Dockerfile.broken",
+      "sha256": "493f94f95181dd9f4cfb8f47beeed4bfd86e3395ab354742d1d201c409a3e745"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/project/Makefile",
+      "sha256": "9206301c23ce4cb93c3fc1434037e475cf69f53e132dc541f6028d05e30258b2"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/project/app",
+      "sha256": "046d971649828a7edbea9e9b47ae60d94fa0601ea524fb5cae492eaf0fb2fd6c"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/project/config.h",
+      "sha256": "ac32a92f4af359517c993d6e8583ea2d9b053c2ad171b4c602bc242894bd9696"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/project/extra.h",
+      "sha256": "5e20ae92639ee989af5638bd0308a6a86e71bdb4345f60b962ba9db7265e4f7c"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/project/helper.c",
+      "sha256": "90a60f959d215b0b91807c6dd2c94acf6684a9fe26629dc1591e9b2ea773d78c"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/project/helper.o",
+      "sha256": "961fb66c8af5b2693940ee70546c54ef44408a63fab84d441fc4ac680da6e560"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/project/main.c",
+      "sha256": "0da2f94ca7b27cfeae51e4842a4a39f527929b28a82f40b3796d308cc72c1379"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/project/main.o",
+      "sha256": "cf88c2521d8cc3f2a3b2c2a765cf8650204c663e820bd134be16d0a31d1583f3"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/project/unused.h",
+      "sha256": "3f7fec0991b34d614462e29b450c76638f07171936a12df337c578c2d1481b37"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/trace/t.22",
+      "sha256": "fc3414483b6f73ae7d9b2ce81c84e7825c5bae763da0af2ceff5e9bc78dee850"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/trace/t.23",
+      "sha256": "5171c2d9b0c69817da2de08d179010e65d1d25abb77989ca16142934b641885b"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/trace/t.24",
+      "sha256": "f529d2298d3c1ec5a26172c343d7541a34d81bbbd098789db7511ecb1fd7b3b5"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/trace/t.25",
+      "sha256": "968fc1ab6a0d5a7287aa5abe372d1e50069049c50f99e14231f0f4e179c6a956"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/trace/t.26",
+      "sha256": "0852cf07e3ca16cd61709f36a54ae4484907d9a0b719006a612a182d358e4f0d"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/trace/t.27",
+      "sha256": "46f0ceb9ee8591a3d7f108d79922c05254e37e24c7a0c8eb7bfd7b7a64626be3"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/trace/t.28",
+      "sha256": "6bb5d543dff9c4c925b391c4ad598606cc691e43cd61b41f479a23ab30a63ef8"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/trace/t.29",
+      "sha256": "56013f2dc1442ac91ba8ccd5b166f24224c4b6b9626aaa9136f570f33ca39803"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/trace/t.30",
+      "sha256": "8b96ccbe7fc737a2b8145a7ab99daed9b86b3508536e0ebebd3bf622b2f31eda"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/baseline-full/trace/t.31",
+      "sha256": "5458dc6c75c6ec3f321d4a384ac581432bb64bd39d4722cf03d9c710b0b75a4d"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/full-check.json",
+      "sha256": "b86475bd8b420b9007b6aead9c32346760cf8c5e57647453876d206d5c599a40"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/incremental-check.json",
+      "sha256": "08eb5c084770d95c2b077679ecb2bcd1976a56b8368605001506f611a1acb7ea"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/incremental-report.json",
+      "sha256": "60739b82852c3f1ec1f62ee8f0fcda82614de1e55e255a31a5e6192baaf551b3"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/logs/base-project-checkout.log",
+      "sha256": "967d5cc74019b36b768741208d9f277a9cd9c80823ed60eb6695401178abe149"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/logs/base-project-clone.log",
+      "sha256": "2a72150b34544266bca4c46f45b945a25ee3aa29a4ae621ef67869e5b810faf2"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/logs/base-project-resolve.log",
+      "sha256": "f767e4631fc815de9a3bd3e65b54af794cfc26498863701fbe62fa517d93050b"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/logs/target-project-checkout.log",
+      "sha256": "90d4d25295f1dc75e848ff73be2734f1ca537edcf8c14227867a95977cd30b16"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/logs/target-project-clone.log",
+      "sha256": "802a31c1d5597ba62db5a184ada0b5fdd8b77a3ba0390ece092f49e5b8bafa9b"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/logs/target-project-resolve.log",
+      "sha256": "cf7d7415a503f50dbe298cf6eaaf01b2946fe08bddf75c8fd9a22cee46218bce"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/request.json",
+      "sha256": "5b373e2f78bd965290a6bde7df55aaf93f45f07c15fd6e99d95ab478826257fb"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/actual-graph.json",
+      "sha256": "0bec5f8315bfeb12c07411ad2262e9723980d2a2ff9cd56a4d798be3def579b8"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/build-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/clean-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/clean.log",
+      "sha256": "a76da8f583000fa9357e10035a1d3064eb2b74afe0c8c102ba5850e6824ca061"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/declared-graph.json",
+      "sha256": "29a4c1591ee2aba4fc2b42486c3366a3162918a3f93df8148f5033ae74a7c8e5"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/findings.json",
+      "sha256": "f1228c2494ca284d1ca79c85e13155b1069382af3d0bbd5debe9bb10a9febbd6"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/make-db.txt",
+      "sha256": "121e9df4765c78c10050b78e5b128186ad5c6d413050bee22217fcd2f382a53a"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/processes.json",
+      "sha256": "8b55adf6898d4481d26c4d3c9106d3d23f40c56769d6067cbdd52c0512b068e6"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/project/Dockerfile.broken",
+      "sha256": "493f94f95181dd9f4cfb8f47beeed4bfd86e3395ab354742d1d201c409a3e745"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/project/Makefile",
+      "sha256": "9206301c23ce4cb93c3fc1434037e475cf69f53e132dc541f6028d05e30258b2"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/project/app",
+      "sha256": "046d971649828a7edbea9e9b47ae60d94fa0601ea524fb5cae492eaf0fb2fd6c"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/project/config.h",
+      "sha256": "ac32a92f4af359517c993d6e8583ea2d9b053c2ad171b4c602bc242894bd9696"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/project/extra.h",
+      "sha256": "5e20ae92639ee989af5638bd0308a6a86e71bdb4345f60b962ba9db7265e4f7c"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/project/helper.c",
+      "sha256": "90a60f959d215b0b91807c6dd2c94acf6684a9fe26629dc1591e9b2ea773d78c"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/project/helper.o",
+      "sha256": "961fb66c8af5b2693940ee70546c54ef44408a63fab84d441fc4ac680da6e560"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/project/main.c",
+      "sha256": "1e2e75d84a5a28f44438792dbb33ce888a09fad6597094d998ebaf34fa784312"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/project/main.o",
+      "sha256": "cf88c2521d8cc3f2a3b2c2a765cf8650204c663e820bd134be16d0a31d1583f3"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/project/unused.h",
+      "sha256": "3f7fec0991b34d614462e29b450c76638f07171936a12df337c578c2d1481b37"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/trace/t.49",
+      "sha256": "cd6ae422620578556468d568151f5debee210da16c14a303603b13220502d8cf"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/trace/t.50",
+      "sha256": "0f0853be14326b02cd0ae6421e062d4d33c950bde6ed55a1d525dcdaea0d243a"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/trace/t.51",
+      "sha256": "7622c6cdf4a49d0990a57e09c4ee30a4b840495b16907d4f56fbb1479ddb890b"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/trace/t.52",
+      "sha256": "7ad63c20e286cabf9689a3c4f4f149eb3e4a7ecc9e638b83385e0dfe4b93ffdb"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/trace/t.53",
+      "sha256": "c3fa8dcfa48c43ff3099a5fe387459796b3639e54f87cf25643a4271a300af8b"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/trace/t.54",
+      "sha256": "2224b968cf71043b650810c23ef770b51ecc9ba8879bd61740e6168bfe29a5bf"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/trace/t.55",
+      "sha256": "3e88447d811eff9a2f464fbace5cea9cceb178f2189c9fd5eaa8bbbad9ded886"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/trace/t.56",
+      "sha256": "cbd70cdf392e58c3c04b98b33dcf09f610de7e20869ab9187698ecbe1dbd0971"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/trace/t.57",
+      "sha256": "00b088992e0309dabde2045f7a259934a2a02ce3c460d191dc9c4e142585b836"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-full/trace/t.58",
+      "sha256": "28221ce29ae7531b98eae8358152ef60edc5e682fb1d524cbedce1c093a12c6e"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-project/Dockerfile.broken",
+      "sha256": "493f94f95181dd9f4cfb8f47beeed4bfd86e3395ab354742d1d201c409a3e745"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-project/Makefile",
+      "sha256": "9206301c23ce4cb93c3fc1434037e475cf69f53e132dc541f6028d05e30258b2"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-project/config.h",
+      "sha256": "ac32a92f4af359517c993d6e8583ea2d9b053c2ad171b4c602bc242894bd9696"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-project/extra.h",
+      "sha256": "5e20ae92639ee989af5638bd0308a6a86e71bdb4345f60b962ba9db7265e4f7c"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-project/helper.c",
+      "sha256": "90a60f959d215b0b91807c6dd2c94acf6684a9fe26629dc1591e9b2ea773d78c"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-project/main.c",
+      "sha256": "1e2e75d84a5a28f44438792dbb33ce888a09fad6597094d998ebaf34fa784312"
+    },
+    {
+      "manifest": "work/e11-a-01/result.json",
+      "file": "work/e11-a-01/target-project/unused.h",
+      "sha256": "3f7fec0991b34d614462e29b450c76638f07171936a12df337c578c2d1481b37"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/base-project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/base-project/Dockerfile.broken",
+      "sha256": "493f94f95181dd9f4cfb8f47beeed4bfd86e3395ab354742d1d201c409a3e745"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/base-project/Makefile",
+      "sha256": "9206301c23ce4cb93c3fc1434037e475cf69f53e132dc541f6028d05e30258b2"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/base-project/config.h",
+      "sha256": "ac32a92f4af359517c993d6e8583ea2d9b053c2ad171b4c602bc242894bd9696"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/base-project/extra.h",
+      "sha256": "5e20ae92639ee989af5638bd0308a6a86e71bdb4345f60b962ba9db7265e4f7c"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/base-project/helper.c",
+      "sha256": "90a60f959d215b0b91807c6dd2c94acf6684a9fe26629dc1591e9b2ea773d78c"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/base-project/main.c",
+      "sha256": "1e2e75d84a5a28f44438792dbb33ce888a09fad6597094d998ebaf34fa784312"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/base-project/unused.h",
+      "sha256": "3f7fec0991b34d614462e29b450c76638f07171936a12df337c578c2d1481b37"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-cache.json",
+      "sha256": "ef3b347fdf379868b8e9a1112d19830b6672456e1a9896e42db5ad299367d6c9"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/actual-graph.json",
+      "sha256": "6e03c7870a9f718d114a2c5600b156dcce8446fb9924f7cabc9006086333b64f"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/build-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/clean-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/clean.log",
+      "sha256": "a76da8f583000fa9357e10035a1d3064eb2b74afe0c8c102ba5850e6824ca061"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/declared-graph.json",
+      "sha256": "29a4c1591ee2aba4fc2b42486c3366a3162918a3f93df8148f5033ae74a7c8e5"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/findings.json",
+      "sha256": "72f8b800930934acbc291db824a016384ee02a1eb731b43ab7ecc9f7d97ab4d9"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/make-db.txt",
+      "sha256": "fede350474a0b2806b7fb92d65dffd943f021807d796c74ce24f7a9fb296bb3e"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/processes.json",
+      "sha256": "06955edba1b49efc7f8f9b11b302576497c01d266e30792cc050fb690c7733af"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/project/Dockerfile.broken",
+      "sha256": "493f94f95181dd9f4cfb8f47beeed4bfd86e3395ab354742d1d201c409a3e745"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/project/Makefile",
+      "sha256": "9206301c23ce4cb93c3fc1434037e475cf69f53e132dc541f6028d05e30258b2"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/project/app",
+      "sha256": "046d971649828a7edbea9e9b47ae60d94fa0601ea524fb5cae492eaf0fb2fd6c"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/project/config.h",
+      "sha256": "ac32a92f4af359517c993d6e8583ea2d9b053c2ad171b4c602bc242894bd9696"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/project/extra.h",
+      "sha256": "5e20ae92639ee989af5638bd0308a6a86e71bdb4345f60b962ba9db7265e4f7c"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/project/helper.c",
+      "sha256": "90a60f959d215b0b91807c6dd2c94acf6684a9fe26629dc1591e9b2ea773d78c"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/project/helper.o",
+      "sha256": "961fb66c8af5b2693940ee70546c54ef44408a63fab84d441fc4ac680da6e560"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/project/main.c",
+      "sha256": "1e2e75d84a5a28f44438792dbb33ce888a09fad6597094d998ebaf34fa784312"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/project/main.o",
+      "sha256": "cf88c2521d8cc3f2a3b2c2a765cf8650204c663e820bd134be16d0a31d1583f3"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/project/unused.h",
+      "sha256": "3f7fec0991b34d614462e29b450c76638f07171936a12df337c578c2d1481b37"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/trace/t.22",
+      "sha256": "4e40a88aa2e9dbe767a970e76e868f7f6e32d7fdf03f27cc3cf62daa436af1b6"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/trace/t.23",
+      "sha256": "6bc17a85c96664a964990d2d5fa1ac67d3a77141d8c844e5637c056e62b630ce"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/trace/t.24",
+      "sha256": "bd2aa29b299238251bf9197e4cfd7ddbb4d7f3e8b046225813f71c9a16cc525a"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/trace/t.25",
+      "sha256": "4bcb82ce2e4586c7c1c55d61f203dc697468a40d89bc7c50d9bcb50e930ba5d5"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/trace/t.26",
+      "sha256": "55dd9c78a96ee26e031feb343d40e5acb881dac811178f6205e5fa2794637f2e"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/trace/t.27",
+      "sha256": "d892d8b08273e9669804176ec95a78e7bb04efc682e31af81b02a7c598a37fff"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/trace/t.28",
+      "sha256": "9b9c31046526aedea74683c4745fa055d89f622e2546134d7cfd0e990c29fe7c"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/trace/t.29",
+      "sha256": "69155d9af0e2ff68f7e8d001efb5850e4dfc4bfd9d279da81dc5ea574a22ccca"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/trace/t.30",
+      "sha256": "3a31d3b655ec210a7d776fbf8100e4d418256f23fbab4ce7acad888e2bb3ba8b"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/baseline-full/trace/t.31",
+      "sha256": "483c74db33af8ac7993d0bc315fc2c8066fd7653a4e20fb5136fedd99dc19ad7"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/full-check.json",
+      "sha256": "d058f620c7811b03ef546e5b2c57433f3e9fd8c8363ebcad46456a436bea6d30"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/incremental-check.json",
+      "sha256": "531be085f9f655ef329cd23bc1610866a60accc9587fff7c0e7309d6e3876722"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/incremental-report.json",
+      "sha256": "b23be432617f324204f9ed559cdc53fab67c535bb008e01ae3dd24bc4441a0bf"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/logs/base-project-checkout.log",
+      "sha256": "90d4d25295f1dc75e848ff73be2734f1ca537edcf8c14227867a95977cd30b16"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/logs/base-project-clone.log",
+      "sha256": "6a943758c232f0f21ada6efb9bb00171e96261d1b8705817d33a901e066e86d5"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/logs/base-project-resolve.log",
+      "sha256": "cf7d7415a503f50dbe298cf6eaaf01b2946fe08bddf75c8fd9a22cee46218bce"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/logs/target-project-checkout.log",
+      "sha256": "3b446f0cf0bbf3627d3826408feaad5ad2f48afae9b59f2441f09920cf808509"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/logs/target-project-clone.log",
+      "sha256": "d61f2e936221ce03678968e0a66bcec2e349ba5f2bada7ece78c6a4e2b3c95e0"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/logs/target-project-resolve.log",
+      "sha256": "6d178409cccbc6d7c321fdc215bc17cf5a676cbea4f16ab0bfcc5833f35c2fe1"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/request.json",
+      "sha256": "0c3860ae127ccc3b7600306c63608e4436d960c85ba48c985f0b67f0f2ced83e"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/actual-graph.json",
+      "sha256": "38b474c277e6c6bc5e817c0aa33a9ae92bdf8c24076d92c45e1586e2bf3af72a"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/build-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/clean-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/clean.log",
+      "sha256": "a76da8f583000fa9357e10035a1d3064eb2b74afe0c8c102ba5850e6824ca061"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/declared-graph.json",
+      "sha256": "6d9cf46acf544f76c9f0b3d20e1baee25b5ebfc65be7c1dec6842501649155b8"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/findings.json",
+      "sha256": "ab0b4d8e250102adf77ed37da3dbb61a8cdd8703a33912a3541368139ec73b34"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/make-db.txt",
+      "sha256": "ab74935fde03793dc1eebc351322970bb9340887354f91bbfc4e060895dba0dd"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/processes.json",
+      "sha256": "da4801ab5a72ac372f5ae75e775849db567c966f7405b5f5cef682a5ccc9cbbd"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/project/Dockerfile.broken",
+      "sha256": "493f94f95181dd9f4cfb8f47beeed4bfd86e3395ab354742d1d201c409a3e745"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/project/Makefile",
+      "sha256": "ab35bda3d5bf1ba02394a04bddcb8ec23a2e3ba67d7be938be3e49fed9b1d5d0"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/project/app",
+      "sha256": "046d971649828a7edbea9e9b47ae60d94fa0601ea524fb5cae492eaf0fb2fd6c"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/project/config.h",
+      "sha256": "ac32a92f4af359517c993d6e8583ea2d9b053c2ad171b4c602bc242894bd9696"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/project/extra.h",
+      "sha256": "5e20ae92639ee989af5638bd0308a6a86e71bdb4345f60b962ba9db7265e4f7c"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/project/helper.c",
+      "sha256": "90a60f959d215b0b91807c6dd2c94acf6684a9fe26629dc1591e9b2ea773d78c"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/project/helper.o",
+      "sha256": "961fb66c8af5b2693940ee70546c54ef44408a63fab84d441fc4ac680da6e560"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/project/main.c",
+      "sha256": "1e2e75d84a5a28f44438792dbb33ce888a09fad6597094d998ebaf34fa784312"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/project/main.o",
+      "sha256": "cf88c2521d8cc3f2a3b2c2a765cf8650204c663e820bd134be16d0a31d1583f3"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/project/unused.h",
+      "sha256": "3f7fec0991b34d614462e29b450c76638f07171936a12df337c578c2d1481b37"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/trace/t.45",
+      "sha256": "09c59f1fdd4bbbd7195f2680e1a6a6a2a88f3276314153f5375978974c2bbbdb"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/trace/t.46",
+      "sha256": "7540a6a8150e8858ddb4b8b94bd12c84f556f4dd41af2d62e34523737b8f49a4"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/trace/t.47",
+      "sha256": "509fa5defa720d1a03227b73a46fc697278860358ef8d43c16206498f06fb3ec"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/trace/t.48",
+      "sha256": "fd6a5c372de6f86cc35a69bdfdf093ce4c48d81925efd25e498894ee31f5d980"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/trace/t.49",
+      "sha256": "09885b34c9e0df0d30bb4adc027373a70968ffc6d4e2cd82a2eaabc778a87fa4"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/trace/t.50",
+      "sha256": "c8fb4fbdd2db8b79b20e526087b7ff6dfceedbbf33ec02f538e8228787c3238b"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/trace/t.51",
+      "sha256": "0abfc81ecc000207306f865f9c415eff4597682b9edd666c2b96eca65112a39f"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/trace/t.52",
+      "sha256": "1dd2e420c4ddaf6890ecb320c61790eed12b07e0ee29b5686098366b579ef8fd"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/trace/t.53",
+      "sha256": "9e2edaf918355e0814d9b148f4d2f55c62c24cb72422ee476d1feb518671929f"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-full/trace/t.54",
+      "sha256": "bf4d726ee83cf5f7161c40aed7aa7c7d3414de3612d0c305e38fd182e5987c71"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-project/Dockerfile.broken",
+      "sha256": "493f94f95181dd9f4cfb8f47beeed4bfd86e3395ab354742d1d201c409a3e745"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-project/Makefile",
+      "sha256": "ab35bda3d5bf1ba02394a04bddcb8ec23a2e3ba67d7be938be3e49fed9b1d5d0"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-project/config.h",
+      "sha256": "ac32a92f4af359517c993d6e8583ea2d9b053c2ad171b4c602bc242894bd9696"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-project/extra.h",
+      "sha256": "5e20ae92639ee989af5638bd0308a6a86e71bdb4345f60b962ba9db7265e4f7c"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-project/helper.c",
+      "sha256": "90a60f959d215b0b91807c6dd2c94acf6684a9fe26629dc1591e9b2ea773d78c"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-project/main.c",
+      "sha256": "1e2e75d84a5a28f44438792dbb33ce888a09fad6597094d998ebaf34fa784312"
+    },
+    {
+      "manifest": "work/e11-a-reuse-01/result.json",
+      "file": "work/e11-a-reuse-01/target-project/unused.h",
+      "sha256": "3f7fec0991b34d614462e29b450c76638f07171936a12df337c578c2d1481b37"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/base-project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/base-project/Makefile",
+      "sha256": "2271aaff319691d2b2b86de036faf4d6c5a0700267ae4a5b9bd7eb4ecd0dc927"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/base-project/config.h",
+      "sha256": "ac32a92f4af359517c993d6e8583ea2d9b053c2ad171b4c602bc242894bd9696"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/base-project/helper.c",
+      "sha256": "7ad1544ff00dd1a25013685ee85be7c989385ec7b6445d6b8cce34541d39b48e"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/base-project/main.c",
+      "sha256": "4f8535dc013d26d7d3f90c2b340c9adcf7c179e3afcaf4b64d51a90d96f780c8"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/base-project/unused.h",
+      "sha256": "1e4315549ec63325a22265e33a27e3cff8940d3ceec9756d7d193e9e51b966c9"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-cache.json",
+      "sha256": "bfd9064c85270848845c87c9f646a0352f8b3316ae596c87e18771a6bd6da496"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/actual-graph.json",
+      "sha256": "63e1a0a2261c319523cfbaabf92902b1b9a59d383b66630a86ce4f166cfc0625"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/build-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/clean-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/clean.log",
+      "sha256": "e25c08181a7e4ba81cfa6a54589716c1b47332bb1c0cb98dcfe47dffce54b322"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/declared-graph.json",
+      "sha256": "bcd35eddf7ed8b63ca50ff79f9b7d27a712d1a073eefbab500aab6dd42af51f3"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/findings.json",
+      "sha256": "e1eeffe8edcd54158ab9b207d0ef621da31d50dca7d8d5eda497fd607f251d4c"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/make-db.txt",
+      "sha256": "231ec947df76f08cf5418b08487b2ac14560d8737cf40b85afd17eaf50f3178b"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/processes.json",
+      "sha256": "849789960aab6fccaba9b352eacad9b5bcd7cf0cbd0fb97ff5eedc6add71c6ea"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/project/Makefile",
+      "sha256": "2271aaff319691d2b2b86de036faf4d6c5a0700267ae4a5b9bd7eb4ecd0dc927"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/project/app",
+      "sha256": "046d971649828a7edbea9e9b47ae60d94fa0601ea524fb5cae492eaf0fb2fd6c"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/project/config.h",
+      "sha256": "ac32a92f4af359517c993d6e8583ea2d9b053c2ad171b4c602bc242894bd9696"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/project/helper.c",
+      "sha256": "7ad1544ff00dd1a25013685ee85be7c989385ec7b6445d6b8cce34541d39b48e"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/project/helper.o",
+      "sha256": "961fb66c8af5b2693940ee70546c54ef44408a63fab84d441fc4ac680da6e560"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/project/main.c",
+      "sha256": "4f8535dc013d26d7d3f90c2b340c9adcf7c179e3afcaf4b64d51a90d96f780c8"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/project/main.o",
+      "sha256": "cf88c2521d8cc3f2a3b2c2a765cf8650204c663e820bd134be16d0a31d1583f3"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/project/unused.h",
+      "sha256": "1e4315549ec63325a22265e33a27e3cff8940d3ceec9756d7d193e9e51b966c9"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/trace/t.22",
+      "sha256": "ae0c8a8ec15fda705e8f39032b565fe62301323cbb0b4a7f32c28982d0905ea5"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/trace/t.23",
+      "sha256": "aeae8952dade0567cda7ad17fbc1ef4249589d5ca547e8142b1d787c289583f0"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/trace/t.24",
+      "sha256": "e9f683ca38933ad8607d79b5ef4e834d78f26b71fd90a1ee55dc9cb856e79ce1"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/trace/t.25",
+      "sha256": "e5b571edf118fcaeaada4ec95f3ada72db9a7f49a2a4c193ade5481db3a97c36"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/trace/t.26",
+      "sha256": "b350dc1ed4fb505dbcacde1d7b6b06908c3c245e6f41bffd0f51c1dddc035278"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/trace/t.27",
+      "sha256": "e8dd2f8357126c7c136a245f7ad17130a74b9f757d00fff77265acad4fe077d0"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/trace/t.28",
+      "sha256": "970fc18fe906286382cfe4ccd9dfdd228f5e2ff0e99e525bd2be32b4a94dc92c"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/trace/t.29",
+      "sha256": "9e3bb6edfe10b402a643499914703018975924c2542f0ecbb4a73054d93a8fe9"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/trace/t.30",
+      "sha256": "707c2bdc9eb87ee3bb7838c3584b4d1a3695e7279f76f9994a0c878482b3430b"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/baseline-full/trace/t.31",
+      "sha256": "a00135b4cdf0aa5b966025d95513a8e835474491a242acc5c6a63e45f84589ad"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/full-check.json",
+      "sha256": "9ad2abb9d2568748d7ee610a67e9182e7d1150456e6a3ede528911da2bab9794"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/incremental-check.json",
+      "sha256": "6545ebd29d87a8c4cb39a403201796746cbdde2623c614c89a38f281445fc85a"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/incremental-report.json",
+      "sha256": "8c1c527b0c407714d583a8ce335bf43b03f1030ad6b90a275ddee042f506d471"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/logs/base-project-checkout.log",
+      "sha256": "2fb62a37355668f632b0f6b6062a61e70fa1814a8006d02193636fbcfee3f2fc"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/logs/base-project-clone.log",
+      "sha256": "ad3d8d5797d4731f8c364c2d8a320487ca5d46ef34a6e5560cd7215cce2e92a4"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/logs/base-project-resolve.log",
+      "sha256": "6d7daf8f563e079c1afa308990d3f3f0cb8afebb345eedaecd771103726b1140"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/logs/target-project-checkout.log",
+      "sha256": "f925e815e5a860ba47e11b0ae24e641b1afb9b27cc09a4010a80e36741e959de"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/logs/target-project-clone.log",
+      "sha256": "c0d7c725fbb5b04b5f3ac55c2243bb66518ea5b44263bb26f673e27c85905c89"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/logs/target-project-resolve.log",
+      "sha256": "98a01b866480a72c051e02f7b4320a7b1a77d639799dff6581bf8e2242c21147"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/request.json",
+      "sha256": "c85e1930d39541c7fe7d0d30e3903fcbc295a9bfa6ba65d63742dabd67ca3939"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/actual-graph.json",
+      "sha256": "34b528053adb62ea915c2aec915b2467cdc2505ef1d2c0b82455a12e782a2eb7"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/build-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/clean-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/clean.log",
+      "sha256": "e25c08181a7e4ba81cfa6a54589716c1b47332bb1c0cb98dcfe47dffce54b322"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/declared-graph.json",
+      "sha256": "bcd35eddf7ed8b63ca50ff79f9b7d27a712d1a073eefbab500aab6dd42af51f3"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/findings.json",
+      "sha256": "78f189d46852af8b7d856ad6ba24a0134db38d97b23edb61b6e639d0d9e1be2a"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/make-db.txt",
+      "sha256": "31cdeef10c7b448b66c4fbd2b2b30e013009f10dab184c897ae196a1dec27a8d"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/processes.json",
+      "sha256": "2790332f46bd76e6b24034c01c7e8fe362616843c8f37fe662b7a713c901fff7"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/project/Makefile",
+      "sha256": "2271aaff319691d2b2b86de036faf4d6c5a0700267ae4a5b9bd7eb4ecd0dc927"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/project/app",
+      "sha256": "046d971649828a7edbea9e9b47ae60d94fa0601ea524fb5cae492eaf0fb2fd6c"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/project/config.h",
+      "sha256": "ac32a92f4af359517c993d6e8583ea2d9b053c2ad171b4c602bc242894bd9696"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/project/helper.c",
+      "sha256": "7ad1544ff00dd1a25013685ee85be7c989385ec7b6445d6b8cce34541d39b48e"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/project/helper.o",
+      "sha256": "961fb66c8af5b2693940ee70546c54ef44408a63fab84d441fc4ac680da6e560"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/project/main.c",
+      "sha256": "e3de073fab80d1f489305a5da14ffcd95681a86edf2f7e370b340b624da477cb"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/project/main.o",
+      "sha256": "cf88c2521d8cc3f2a3b2c2a765cf8650204c663e820bd134be16d0a31d1583f3"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/project/unused.h",
+      "sha256": "1e4315549ec63325a22265e33a27e3cff8940d3ceec9756d7d193e9e51b966c9"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/trace/t.45",
+      "sha256": "a197e10d7f33c5c239c2ba31066e36e9f072ca652d3ebc0cbff08461df61e6d4"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/trace/t.46",
+      "sha256": "0d75526d9e73a9a620cbc2c01c16d253803cbe0842af8deab185bd9ed1a32ded"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/trace/t.47",
+      "sha256": "4b09021357488801a8919f03fbc919e18fc187dd92c9a628abc6e5391fd7e3b7"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/trace/t.48",
+      "sha256": "a3a72b1b351a853ded54f2d0173e3fb0b5b6721060ab55fd06ac544739b9a56b"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/trace/t.49",
+      "sha256": "76faca7065194af34281e609b1dad4a2fa0ecda9678bfcc94e76391631a392b5"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/trace/t.50",
+      "sha256": "1f6a61a002b18127a31465fc54624eb44d967d52d8072fb0eeaf3d212a509cd9"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/trace/t.51",
+      "sha256": "9b714f49c18d644a6048a5474f624383aa7b4b928d98231ff6e56f5def3fbc69"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/trace/t.52",
+      "sha256": "1b7b23d1d6436ae3a80eff0af89aa6962c708d01709580d0abde1bb4a46d6597"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/trace/t.53",
+      "sha256": "45eb23d0f33d083ba4d93abc48c99df4e9aabd9ac57e7080af35f5f5cc913edc"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-full/trace/t.54",
+      "sha256": "121fd9e8ae390b1cf72dc4162c0fa17c2007579be8d6214b1db01ef6cff9aed4"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-project/Makefile",
+      "sha256": "2271aaff319691d2b2b86de036faf4d6c5a0700267ae4a5b9bd7eb4ecd0dc927"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-project/config.h",
+      "sha256": "ac32a92f4af359517c993d6e8583ea2d9b053c2ad171b4c602bc242894bd9696"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-project/helper.c",
+      "sha256": "7ad1544ff00dd1a25013685ee85be7c989385ec7b6445d6b8cce34541d39b48e"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-project/main.c",
+      "sha256": "e3de073fab80d1f489305a5da14ffcd95681a86edf2f7e370b340b624da477cb"
+    },
+    {
+      "manifest": "work/e11-real-c1-01/result.json",
+      "file": "work/e11-real-c1-01/target-project/unused.h",
+      "sha256": "1e4315549ec63325a22265e33a27e3cff8940d3ceec9756d7d193e9e51b966c9"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/base-project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/base-project/Makefile",
+      "sha256": "2271aaff319691d2b2b86de036faf4d6c5a0700267ae4a5b9bd7eb4ecd0dc927"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/base-project/config.h",
+      "sha256": "ac32a92f4af359517c993d6e8583ea2d9b053c2ad171b4c602bc242894bd9696"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/base-project/helper.c",
+      "sha256": "7ad1544ff00dd1a25013685ee85be7c989385ec7b6445d6b8cce34541d39b48e"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/base-project/main.c",
+      "sha256": "4f8535dc013d26d7d3f90c2b340c9adcf7c179e3afcaf4b64d51a90d96f780c8"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/base-project/unused.h",
+      "sha256": "1e4315549ec63325a22265e33a27e3cff8940d3ceec9756d7d193e9e51b966c9"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-cache.json",
+      "sha256": "c81438dcd5d69bd2f3afe7a5b21427b3c50716ebb174365e791b03d6df3c35d2"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/actual-graph.json",
+      "sha256": "63e1a0a2261c319523cfbaabf92902b1b9a59d383b66630a86ce4f166cfc0625"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/build-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/clean-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/clean.log",
+      "sha256": "e25c08181a7e4ba81cfa6a54589716c1b47332bb1c0cb98dcfe47dffce54b322"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/declared-graph.json",
+      "sha256": "bcd35eddf7ed8b63ca50ff79f9b7d27a712d1a073eefbab500aab6dd42af51f3"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/findings.json",
+      "sha256": "0abdeb1d9cf8d9c6d7386ba337a92404e663ba439e56ab67119c5d93572a03d8"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/make-db.txt",
+      "sha256": "52d71fad23585e398f098c5213f5092c2d16f23c9bde62a71ccc0802685b81e8"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/processes.json",
+      "sha256": "849789960aab6fccaba9b352eacad9b5bcd7cf0cbd0fb97ff5eedc6add71c6ea"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/project/Makefile",
+      "sha256": "2271aaff319691d2b2b86de036faf4d6c5a0700267ae4a5b9bd7eb4ecd0dc927"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/project/app",
+      "sha256": "046d971649828a7edbea9e9b47ae60d94fa0601ea524fb5cae492eaf0fb2fd6c"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/project/config.h",
+      "sha256": "ac32a92f4af359517c993d6e8583ea2d9b053c2ad171b4c602bc242894bd9696"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/project/helper.c",
+      "sha256": "7ad1544ff00dd1a25013685ee85be7c989385ec7b6445d6b8cce34541d39b48e"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/project/helper.o",
+      "sha256": "961fb66c8af5b2693940ee70546c54ef44408a63fab84d441fc4ac680da6e560"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/project/main.c",
+      "sha256": "4f8535dc013d26d7d3f90c2b340c9adcf7c179e3afcaf4b64d51a90d96f780c8"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/project/main.o",
+      "sha256": "cf88c2521d8cc3f2a3b2c2a765cf8650204c663e820bd134be16d0a31d1583f3"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/project/unused.h",
+      "sha256": "1e4315549ec63325a22265e33a27e3cff8940d3ceec9756d7d193e9e51b966c9"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/trace/t.22",
+      "sha256": "4e722ba1f3b54ebd2af8ad53914bc431f8e82743239a18ab75a5012e8e0307a7"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/trace/t.23",
+      "sha256": "6f12efd79507da0819e2e35b56a61258eaace270883249285d68e1762fb85561"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/trace/t.24",
+      "sha256": "b094cd3e18d9ec2b5de9196c968ff665d1479e3279efe91567e8331915da02c6"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/trace/t.25",
+      "sha256": "da756ffdfd0f7ac2878749a31d2f86ee59f8cb1d74ccd9825c27ccc3d83c26d5"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/trace/t.26",
+      "sha256": "824b98a9046fb208706ded8f53f2afde2bafc42b5f72794a672fa5902c234995"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/trace/t.27",
+      "sha256": "513ef9530550d7523f61db34fc6bac6e582cbd0d77f878039e623627b2ac7d71"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/trace/t.28",
+      "sha256": "91db7053eee45c2665fdab191175b374dd56adfbd033a6f788c7304e8d8d529c"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/trace/t.29",
+      "sha256": "78e61eb5d141b60fe2b77edc43d7aa16d42d746163e1779d18096147a0578c20"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/trace/t.30",
+      "sha256": "1411d8350cb77998196fb2945908b81d0934afdc061c7abb366d25a38d405ab4"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/baseline-full/trace/t.31",
+      "sha256": "80b040f9898abe4eddc1df08b7b94c3a8aa5803b40f5fb68a0facbdba58479cf"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/full-check.json",
+      "sha256": "fc5471ee608abd5720604206b4ec3a0ec07948d7b429291f02a4acb139469bac"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/incremental-check.json",
+      "sha256": "db0607035849b4a667bb567c7e3c9d9c697cec651518e98efdb96fe653aa85f5"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/incremental-report.json",
+      "sha256": "15fcb825aabd9411dc3d91b97999b1ac6618ee33c388d2eabae3b2d5ac58fa54"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/logs/base-project-checkout.log",
+      "sha256": "2fb62a37355668f632b0f6b6062a61e70fa1814a8006d02193636fbcfee3f2fc"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/logs/base-project-clone.log",
+      "sha256": "e20b6356642264792f3f0df2ab1a6b3e1414e81ce3c7a7108d35732f7823b7bc"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/logs/base-project-resolve.log",
+      "sha256": "6d7daf8f563e079c1afa308990d3f3f0cb8afebb345eedaecd771103726b1140"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/logs/target-project-checkout.log",
+      "sha256": "95cbe65ce0aa56638c1b707cfe354130223e652c7962e9808ff51728d8e5ee3a"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/logs/target-project-clone.log",
+      "sha256": "6f944ad91870a87f6dab33153e23337bf07385f9a9c9b84a46c7ece9a041bfee"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/logs/target-project-resolve.log",
+      "sha256": "5d84b299534e817b6178813a1615db091e50394a5f34ee46087fcac17eb6ee1e"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/request.json",
+      "sha256": "df3a9055ab89b1627593f46f4aa798ebcf76cdef497dd8ef12fa5da1645de1e1"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/actual-graph.json",
+      "sha256": "2fcfc31992297dde94a1d621f31abad85978564c9108d28b04ae12407591d556"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/build-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/clean-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/clean.log",
+      "sha256": "e25c08181a7e4ba81cfa6a54589716c1b47332bb1c0cb98dcfe47dffce54b322"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/declared-graph.json",
+      "sha256": "bcd35eddf7ed8b63ca50ff79f9b7d27a712d1a073eefbab500aab6dd42af51f3"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/findings.json",
+      "sha256": "8a519e905bbb59a7e4027a7bcc9a0adcda9d66ff0af7673c943c8b2568ff5f1d"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/make-db.txt",
+      "sha256": "e94427001505547502efd85b1d631afe5580951ac758a8e751a1ae96dc2df603"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/processes.json",
+      "sha256": "cdc7e01f8092ea57fe39e8eba6ba88b04398c8e5be3162aac6b7559e6c3906d5"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/project/Makefile",
+      "sha256": "2271aaff319691d2b2b86de036faf4d6c5a0700267ae4a5b9bd7eb4ecd0dc927"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/project/app",
+      "sha256": "046d971649828a7edbea9e9b47ae60d94fa0601ea524fb5cae492eaf0fb2fd6c"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/project/config.h",
+      "sha256": "825ab23de4478b617c329e89b3c5bb4aff690fae0ff606d2c95dd94d668094f3"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/project/helper.c",
+      "sha256": "7ad1544ff00dd1a25013685ee85be7c989385ec7b6445d6b8cce34541d39b48e"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/project/helper.o",
+      "sha256": "961fb66c8af5b2693940ee70546c54ef44408a63fab84d441fc4ac680da6e560"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/project/main.c",
+      "sha256": "e3de073fab80d1f489305a5da14ffcd95681a86edf2f7e370b340b624da477cb"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/project/main.o",
+      "sha256": "cf88c2521d8cc3f2a3b2c2a765cf8650204c663e820bd134be16d0a31d1583f3"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/project/unused.h",
+      "sha256": "1e4315549ec63325a22265e33a27e3cff8940d3ceec9756d7d193e9e51b966c9"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/trace/t.49",
+      "sha256": "ccaf1df000d9fa69a8959cbbffceff70e66d55cc37e0a09b85dfd1c432ebbcf1"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/trace/t.50",
+      "sha256": "73ede8ab16a437830489d52dad2c2364c64ffa9a993d71b89e4f2e6190bef92e"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/trace/t.51",
+      "sha256": "f6e78c7fc6018956912a38c290bb4e55dbeb1d9a61983168c595467562d5decc"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/trace/t.52",
+      "sha256": "e9b2f10e2668dc7cd3b5ec946e5bb744a425b693cfbe8ce4c514ac2e0c5b60f9"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/trace/t.53",
+      "sha256": "86ea8fdaf580289ed1806f2200aece961d0bf3f0c3200008eaef241bb4c5111b"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/trace/t.54",
+      "sha256": "d05d7e17d0002dc50a7753425a3bdb9cb452ceb97dd0bb386c17b2dcc46c7a81"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/trace/t.55",
+      "sha256": "6371a69c1f08d0f7b6771ea123c6f56ebd9d69d8856cf94e7410d5a4a4b71a5a"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/trace/t.56",
+      "sha256": "37ec85f5c7c42ce4685c2979ae5d339f0c62339a7877c60930f55ab1f1fa9fe4"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/trace/t.57",
+      "sha256": "c7c1f20faf9c06de58fd0707ca959cc421822da0bedf702db1e1b00cd3e6c9d5"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-full/trace/t.58",
+      "sha256": "6c561a760877cb42d200202252b93a824d679c20c1009b29fc311b8251c8f00e"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-project/Makefile",
+      "sha256": "2271aaff319691d2b2b86de036faf4d6c5a0700267ae4a5b9bd7eb4ecd0dc927"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-project/config.h",
+      "sha256": "825ab23de4478b617c329e89b3c5bb4aff690fae0ff606d2c95dd94d668094f3"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-project/helper.c",
+      "sha256": "7ad1544ff00dd1a25013685ee85be7c989385ec7b6445d6b8cce34541d39b48e"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-project/main.c",
+      "sha256": "e3de073fab80d1f489305a5da14ffcd95681a86edf2f7e370b340b624da477cb"
+    },
+    {
+      "manifest": "work/e11-real-c2-01/result.json",
+      "file": "work/e11-real-c2-01/target-project/unused.h",
+      "sha256": "1e4315549ec63325a22265e33a27e3cff8940d3ceec9756d7d193e9e51b966c9"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/base-project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/base-project/Dockerfile.broken",
+      "sha256": "493f94f95181dd9f4cfb8f47beeed4bfd86e3395ab354742d1d201c409a3e745"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/base-project/Makefile",
+      "sha256": "9206301c23ce4cb93c3fc1434037e475cf69f53e132dc541f6028d05e30258b2"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/base-project/config.h",
+      "sha256": "ac32a92f4af359517c993d6e8583ea2d9b053c2ad171b4c602bc242894bd9696"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/base-project/extra.h",
+      "sha256": "5e20ae92639ee989af5638bd0308a6a86e71bdb4345f60b962ba9db7265e4f7c"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/base-project/helper.c",
+      "sha256": "90a60f959d215b0b91807c6dd2c94acf6684a9fe26629dc1591e9b2ea773d78c"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/base-project/main.c",
+      "sha256": "0da2f94ca7b27cfeae51e4842a4a39f527929b28a82f40b3796d308cc72c1379"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/base-project/unused.h",
+      "sha256": "3f7fec0991b34d614462e29b450c76638f07171936a12df337c578c2d1481b37"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-cache.json",
+      "sha256": "7417fbad6c54c9bb243382044a54962353512539f0aa97041cf48df4d6951354"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/actual-graph.json",
+      "sha256": "1a3e9b46cc9271d274bf11dc2c54dc7cef872976286c5d031dc800b17f49609c"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/build-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/clean-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/clean.log",
+      "sha256": "a76da8f583000fa9357e10035a1d3064eb2b74afe0c8c102ba5850e6824ca061"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/declared-graph.json",
+      "sha256": "29a4c1591ee2aba4fc2b42486c3366a3162918a3f93df8148f5033ae74a7c8e5"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/findings.json",
+      "sha256": "6ba49e2a487e24d08e0f9b3213cada66267e84f86b51c9c2899de113d3abeabc"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/make-db.txt",
+      "sha256": "e387be3178a65d7b2186f7176c272de918fcc183e5659aadbfba45c2071d6fa8"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/processes.json",
+      "sha256": "550c77d92178f1917fc55ca060103c10b6a6a51706b044644b7f300a995fedef"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/project/Dockerfile.broken",
+      "sha256": "493f94f95181dd9f4cfb8f47beeed4bfd86e3395ab354742d1d201c409a3e745"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/project/Makefile",
+      "sha256": "9206301c23ce4cb93c3fc1434037e475cf69f53e132dc541f6028d05e30258b2"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/project/app",
+      "sha256": "046d971649828a7edbea9e9b47ae60d94fa0601ea524fb5cae492eaf0fb2fd6c"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/project/config.h",
+      "sha256": "ac32a92f4af359517c993d6e8583ea2d9b053c2ad171b4c602bc242894bd9696"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/project/extra.h",
+      "sha256": "5e20ae92639ee989af5638bd0308a6a86e71bdb4345f60b962ba9db7265e4f7c"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/project/helper.c",
+      "sha256": "90a60f959d215b0b91807c6dd2c94acf6684a9fe26629dc1591e9b2ea773d78c"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/project/helper.o",
+      "sha256": "961fb66c8af5b2693940ee70546c54ef44408a63fab84d441fc4ac680da6e560"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/project/main.c",
+      "sha256": "0da2f94ca7b27cfeae51e4842a4a39f527929b28a82f40b3796d308cc72c1379"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/project/main.o",
+      "sha256": "cf88c2521d8cc3f2a3b2c2a765cf8650204c663e820bd134be16d0a31d1583f3"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/project/unused.h",
+      "sha256": "3f7fec0991b34d614462e29b450c76638f07171936a12df337c578c2d1481b37"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/trace/t.109",
+      "sha256": "ca4a6750ef2b205ea1dc4b2a34882f2eb1405e32a71c3be4b05e71d05f542d20"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/trace/t.110",
+      "sha256": "8ba1d774baff6d6d9f1d7a40937ed355671636168964600068ef976458974892"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/trace/t.111",
+      "sha256": "255f7acd64719c63dc4de1ab45bf71f9ee76b492196d85f1a468a8f5bcb448c0"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/trace/t.112",
+      "sha256": "addb62a23400d162ca044847504a317866f834d15df52cc4ff8a4db50c1849a8"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/trace/t.113",
+      "sha256": "254e0c89939430445f108035d0fb916aa7c0cc4f850631b5e5e60d4512789c05"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/trace/t.114",
+      "sha256": "dbff217f45b66a5c3d7b5b0d6192e25f094e2e20d5ab0e904c2bcb32555a5d52"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/trace/t.115",
+      "sha256": "dba91f698befbcf47d16a095308dc81c558e8e8e2d1996dde52249684c852ea8"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/trace/t.116",
+      "sha256": "4561e55a89fe0402e08b97a1d78006bc596b0cf6c55a25dd61c843ffec896127"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/trace/t.117",
+      "sha256": "88c494c0a66b330beaac1f44451f47450d739ca61535f5c540a968ee70780aa5"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/baseline-full/trace/t.118",
+      "sha256": "522712dc1c2d137e8ba799892f8545b759c0f9aa6c045c3fae9fa7405e2206c0"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/candidate.patch",
+      "sha256": "88074f66c291dcad1344c48f6a2b9ddd42d235d9d0415c85fb33310c5b7cb2af"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/draft-build/cleanup-stderr.log",
+      "sha256": "1a70360cda2d8e7a317275e26341863bca459d16c6b474460bfaf0c4f48ca6d3"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/draft-build/cleanup.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/draft-build/iter-01/Dockerfile",
+      "sha256": "d7779ef1fb4681829c7fa2dd0e4444c16742cc29feaf481330ebd86d47827a88"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/draft-build/iter-01/build-stderr.log",
+      "sha256": "02628af4c9db599937341cdb353d40ef011613037e279286d797cc366728b06a"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/draft-build/iter-01/build-stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/draft-build/iter-02/Dockerfile",
+      "sha256": "11c8f4ea574da162ab5730304b7a95c2ee37a4fd2a45e91cb9c6ab5235a7ecdf"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/draft-build/iter-02/build-stderr.log",
+      "sha256": "700ab0cc882f47b16b9dc1b0dfbebcd16850f97c04357fdca0f1ab3d230a950a"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/draft-build/iter-02/build-stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/draft-build/iter-02/image-inspect.json",
+      "sha256": "b0701df00119bc04859f828f6cc8295ce3946cb423255d2d6038bfd6054ff198"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/draft-build/iter-02/inspect-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/draft-build/project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/draft-build/project/Dockerfile.broken",
+      "sha256": "493f94f95181dd9f4cfb8f47beeed4bfd86e3395ab354742d1d201c409a3e745"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/draft-build/project/Makefile",
+      "sha256": "9206301c23ce4cb93c3fc1434037e475cf69f53e132dc541f6028d05e30258b2"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/draft-build/project/config.h",
+      "sha256": "ac32a92f4af359517c993d6e8583ea2d9b053c2ad171b4c602bc242894bd9696"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/draft-build/project/extra.h",
+      "sha256": "5e20ae92639ee989af5638bd0308a6a86e71bdb4345f60b962ba9db7265e4f7c"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/draft-build/project/helper.c",
+      "sha256": "90a60f959d215b0b91807c6dd2c94acf6684a9fe26629dc1591e9b2ea773d78c"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/draft-build/project/main.c",
+      "sha256": "1e2e75d84a5a28f44438792dbb33ce888a09fad6597094d998ebaf34fa784312"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/draft-build/project/unused.h",
+      "sha256": "3f7fec0991b34d614462e29b450c76638f07171936a12df337c578c2d1481b37"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/draft-build/result.json",
+      "sha256": "d693c835a109a517bd9ac6d163fd5c74b8eb65ace6221eed39302b46b448f6f5"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/draft-build/verify-container-id.txt",
+      "sha256": "253177b78bc600009086e383e9689096a12a551064bb94e5598229f2afab05ef"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/draft-build/verify-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/draft-build/verify.log",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/draft.json",
+      "sha256": "5d81941f948d565448d4ad25ac9da7c48449627cfb1b2c70d666e64d8511910c"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/actual-graph.json",
+      "sha256": "e354ccce0c9b46ef482c303531addacaf6f901cabcb17fe39cb4e198b97f8ded"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/build-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/clean-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/clean.log",
+      "sha256": "a76da8f583000fa9357e10035a1d3064eb2b74afe0c8c102ba5850e6824ca061"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/declared-graph.json",
+      "sha256": "a2e1a9e08f4f002f53f9158113cbf49996b27406f4c2798053ad38bbe564ffb7"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/findings.json",
+      "sha256": "3b212d6d3bf2b5661cf92553cff1024e0d7e63da205b64bc192f6b241e1d5980"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/make-db.txt",
+      "sha256": "7ed90ced1318a6975f4c33ba9131082b6c27171ec13c0eea06a2b3619ebba7d1"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/processes.json",
+      "sha256": "83b302f89a95081d5563c3078ac9fbe4f5cf5419092fb79b6129d250fa34c178"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/project/Dockerfile.broken",
+      "sha256": "493f94f95181dd9f4cfb8f47beeed4bfd86e3395ab354742d1d201c409a3e745"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/project/Makefile",
+      "sha256": "0f81bca34c5eba59329155cda11ac564ea0d05abc646badbb8ce831814805db0"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/project/app",
+      "sha256": "046d971649828a7edbea9e9b47ae60d94fa0601ea524fb5cae492eaf0fb2fd6c"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/project/config.h",
+      "sha256": "ac32a92f4af359517c993d6e8583ea2d9b053c2ad171b4c602bc242894bd9696"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/project/extra.h",
+      "sha256": "5e20ae92639ee989af5638bd0308a6a86e71bdb4345f60b962ba9db7265e4f7c"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/project/helper.c",
+      "sha256": "90a60f959d215b0b91807c6dd2c94acf6684a9fe26629dc1591e9b2ea773d78c"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/project/helper.o",
+      "sha256": "961fb66c8af5b2693940ee70546c54ef44408a63fab84d441fc4ac680da6e560"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/project/main.c",
+      "sha256": "1e2e75d84a5a28f44438792dbb33ce888a09fad6597094d998ebaf34fa784312"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/project/main.o",
+      "sha256": "cf88c2521d8cc3f2a3b2c2a765cf8650204c663e820bd134be16d0a31d1583f3"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/project/unused.h",
+      "sha256": "3f7fec0991b34d614462e29b450c76638f07171936a12df337c578c2d1481b37"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/trace/t.189",
+      "sha256": "5ff5895b08bafcb8ed18eef71b6b03d0db08eb24ccc85fd26bf690500608b189"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/trace/t.190",
+      "sha256": "c6e23ea386e95fa03ae0bbd37d5f020a1d0f26854596412e9865e6335374a43a"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/trace/t.191",
+      "sha256": "40fb9f130b79c9fb6e58c66735920774796d60853e6868bde2e52e72a8f9647f"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/trace/t.192",
+      "sha256": "17b93d54a4b81f9f3faacbf7b7aed19ee00d6962caf666a8229be0ce511258d2"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/trace/t.193",
+      "sha256": "8b70da7cc7fd54ce1f3d8ebc2d2bb65374e925abe9e646c8ae183a7d4505de88"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/trace/t.194",
+      "sha256": "eb9d53d42fefb2c7221c845820fc4775656286b97e318a7f563e81af84aa297b"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/trace/t.195",
+      "sha256": "56d7cf160ddc75938d5df19fd6f276f1a615dee932861d6ffd9bd4e2b23ccf9a"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/trace/t.196",
+      "sha256": "e0f74319735cacf2d98083597ccab3e184e4eb68d24f61688192c8e71233598b"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/trace/t.197",
+      "sha256": "c099b3e56668ca53256460246ae1ceb2951091c91bdbbad2936e43c7eea2c0bf"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/final-full/trace/t.198",
+      "sha256": "8047cfbd5e4f49ab1549f14fe6ab498d8e7586c6ca41cb9baa4046700101e892"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/full-check.json",
+      "sha256": "258082723aeab58d9ae4427c3bd083da1e2bf9b1b2cf658054e444180a57a83d"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/incremental-check.json",
+      "sha256": "e9c31f2822a3b047a58c8deaabbd310e74c68857cf9d9f0714ddc4f9d876266e"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/incremental-report.json",
+      "sha256": "e6e015318318fda9b3c35000560a069777125987a33a29daeff1ceccb6cf48f8"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/logs/base-project-checkout.log",
+      "sha256": "967d5cc74019b36b768741208d9f277a9cd9c80823ed60eb6695401178abe149"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/logs/base-project-clone.log",
+      "sha256": "cb471837fba32e508047097b93ad620c91a2c7692933333976ffbd1e5ec7cd92"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/logs/base-project-resolve.log",
+      "sha256": "f767e4631fc815de9a3bd3e65b54af794cfc26498863701fbe62fa517d93050b"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/logs/target-project-checkout.log",
+      "sha256": "90d4d25295f1dc75e848ff73be2734f1ca537edcf8c14227867a95977cd30b16"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/logs/target-project-clone.log",
+      "sha256": "d33ee0e5a7395e7d00a5624c7af526e5cbe3cc278daf964cfb29308d41b6a245"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/logs/target-project-resolve.log",
+      "sha256": "cf7d7415a503f50dbe298cf6eaaf01b2946fe08bddf75c8fd9a22cee46218bce"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/recheck.json",
+      "sha256": "9a7c76dca4000e1248b547fc18913f214bb7c6bb03bd186b409b3ce8cc6410ec"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/repair-plan.json",
+      "sha256": "76dc27c26c1c0935713f95fa702465478fcb116b054ad3ab77f873140f85a199"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/repair.json",
+      "sha256": "0d448e013487ce07a4b8137a668fd614eeb1e0ba9ef88bf890516f3c4a912bd5"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/request.json",
+      "sha256": "f00653623fca3d900779a73cadf614c02c1432cbe85ca7f4f835e405035a200b"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/actual-graph.json",
+      "sha256": "f1f49070bd832233ddef5d3d7d53b8bc1445cc52e64b4b6016c7b80f21336878"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/build-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/clean-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/clean.log",
+      "sha256": "a76da8f583000fa9357e10035a1d3064eb2b74afe0c8c102ba5850e6824ca061"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/declared-graph.json",
+      "sha256": "29a4c1591ee2aba4fc2b42486c3366a3162918a3f93df8148f5033ae74a7c8e5"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/findings.json",
+      "sha256": "d646b14f6cb363943c6f8bc02aa5d1bc7eccc5335bf7c0d6f13f7bc8b698e8c5"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/make-db.txt",
+      "sha256": "9f860f1a282e35be1294249699229841afb87a2dc72957af697671516fa219b0"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/processes.json",
+      "sha256": "8a8437d88fb4ca97c8e2cf765c79a029fb66d459718b4f79824b2de1994b7ef0"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/project/Dockerfile.broken",
+      "sha256": "493f94f95181dd9f4cfb8f47beeed4bfd86e3395ab354742d1d201c409a3e745"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/project/Makefile",
+      "sha256": "9206301c23ce4cb93c3fc1434037e475cf69f53e132dc541f6028d05e30258b2"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/project/app",
+      "sha256": "046d971649828a7edbea9e9b47ae60d94fa0601ea524fb5cae492eaf0fb2fd6c"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/project/config.h",
+      "sha256": "ac32a92f4af359517c993d6e8583ea2d9b053c2ad171b4c602bc242894bd9696"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/project/extra.h",
+      "sha256": "5e20ae92639ee989af5638bd0308a6a86e71bdb4345f60b962ba9db7265e4f7c"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/project/helper.c",
+      "sha256": "90a60f959d215b0b91807c6dd2c94acf6684a9fe26629dc1591e9b2ea773d78c"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/project/helper.o",
+      "sha256": "961fb66c8af5b2693940ee70546c54ef44408a63fab84d441fc4ac680da6e560"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/project/main.c",
+      "sha256": "1e2e75d84a5a28f44438792dbb33ce888a09fad6597094d998ebaf34fa784312"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/project/main.o",
+      "sha256": "cf88c2521d8cc3f2a3b2c2a765cf8650204c663e820bd134be16d0a31d1583f3"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/project/unused.h",
+      "sha256": "3f7fec0991b34d614462e29b450c76638f07171936a12df337c578c2d1481b37"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/trace/t.136",
+      "sha256": "aac6ac4b8ad906f680e89a547bea4df43a7071ae3f75df522867554a72ac2778"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/trace/t.137",
+      "sha256": "d59908f3cde66a405325449d80bf75a6e697a27cea7f7d7cd2facf3c92129265"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/trace/t.138",
+      "sha256": "0415efb9d164177c3ec36d1ff9d2fdce0632233d7f94169c079409dac2349af4"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/trace/t.139",
+      "sha256": "d77e55b69471504de0c5fe438ed9ebe54373fccb2f4e019eff3ad904e516e1bd"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/trace/t.140",
+      "sha256": "d377a9a2b442d8400026f7f3b3fecc969acc602f9c67d0238d5253e46416d917"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/trace/t.141",
+      "sha256": "4e22ac8fe7a85bdc4bc404b6468f581fd73fbfd6138b9ff413e7c2c072ce34e0"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/trace/t.142",
+      "sha256": "3e5436489318f29130c8bd29aa00c0104cf8b8d70816d29069fca091034b12ee"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/trace/t.143",
+      "sha256": "1c9a506b533f331190f23a08222951e2aa8923d6d35705ae99d747bc05e8c528"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/trace/t.144",
+      "sha256": "d58f9b717aaab3d03a218eaf44ae838a0c8c82d2cfad4d1ffbd06123fe71aed1"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-full/trace/t.145",
+      "sha256": "e828608008b254df24188c2391425ad9f59caf1ab2289c06d7cedc140082e882"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-project/Dockerfile.broken",
+      "sha256": "493f94f95181dd9f4cfb8f47beeed4bfd86e3395ab354742d1d201c409a3e745"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-project/Makefile",
+      "sha256": "0f81bca34c5eba59329155cda11ac564ea0d05abc646badbb8ce831814805db0"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-project/config.h",
+      "sha256": "ac32a92f4af359517c993d6e8583ea2d9b053c2ad171b4c602bc242894bd9696"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-project/extra.h",
+      "sha256": "5e20ae92639ee989af5638bd0308a6a86e71bdb4345f60b962ba9db7265e4f7c"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-project/helper.c",
+      "sha256": "90a60f959d215b0b91807c6dd2c94acf6684a9fe26629dc1591e9b2ea773d78c"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-project/main.c",
+      "sha256": "1e2e75d84a5a28f44438792dbb33ce888a09fad6597094d998ebaf34fa784312"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/target-project/unused.h",
+      "sha256": "3f7fec0991b34d614462e29b450c76638f07171936a12df337c578c2d1481b37"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/validation/build.log",
+      "sha256": "df6c3464c6f68c3bc524d4f7cbbda0eeff5247fa931347baac34a884ed79cedc"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/validation/incremental.log",
+      "sha256": "1ee4d4ecdbb3f223a8e24b1395bb0dd948280a884f7d91aa23c962404c068e7f"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/validation/recheck.json",
+      "sha256": "97d997ab8ede6eeba7f256ee331505fd2802833645588f95e5e562bb62524514"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/validation/sandbox/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/validation/sandbox/Dockerfile.broken",
+      "sha256": "493f94f95181dd9f4cfb8f47beeed4bfd86e3395ab354742d1d201c409a3e745"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/validation/sandbox/Makefile",
+      "sha256": "0f81bca34c5eba59329155cda11ac564ea0d05abc646badbb8ce831814805db0"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/validation/sandbox/app",
+      "sha256": "6a4a3450fc86affb969e7bc669337c4509452999cb2e49321a8fe40863e261e1"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/validation/sandbox/config.h",
+      "sha256": "69973c572daaea0005b15535dffa2f73cfac069a6f179fbca2ed88737355cd9b"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/validation/sandbox/extra.h",
+      "sha256": "5e20ae92639ee989af5638bd0308a6a86e71bdb4345f60b962ba9db7265e4f7c"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/validation/sandbox/helper.c",
+      "sha256": "90a60f959d215b0b91807c6dd2c94acf6684a9fe26629dc1591e9b2ea773d78c"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/validation/sandbox/helper.o",
+      "sha256": "961fb66c8af5b2693940ee70546c54ef44408a63fab84d441fc4ac680da6e560"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/validation/sandbox/main.c",
+      "sha256": "1e2e75d84a5a28f44438792dbb33ce888a09fad6597094d998ebaf34fa784312"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/validation/sandbox/main.o",
+      "sha256": "a2d01a76cec633ec5a868a1eb3e07a6b5ace3565147aa057f76c551f902241c0"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/validation/sandbox/unused.h",
+      "sha256": "3f7fec0991b34d614462e29b450c76638f07171936a12df337c578c2d1481b37"
+    },
+    {
+      "manifest": "work/e12-02/result.json",
+      "file": "work/e12-02/validation/validation.json",
+      "sha256": "0aedd844e45d87669ff3c7ad42fcb15414453a14882df2fa6335997367390c37"
+    },
+    {
+      "manifest": "work/e12-real-01/result.json",
+      "file": "work/e12-real-01/base-project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e12-real-01/result.json",
+      "file": "work/e12-real-01/base-project/Makefile",
+      "sha256": "2271aaff319691d2b2b86de036faf4d6c5a0700267ae4a5b9bd7eb4ecd0dc927"
+    },
+    {
+      "manifest": "work/e12-real-01/result.json",
+      "file": "work/e12-real-01/base-project/config.h",
+      "sha256": "ac32a92f4af359517c993d6e8583ea2d9b053c2ad171b4c602bc242894bd9696"
+    },
+    {
+      "manifest": "work/e12-real-01/result.json",
+      "file": "work/e12-real-01/base-project/helper.c",
+      "sha256": "7ad1544ff00dd1a25013685ee85be7c989385ec7b6445d6b8cce34541d39b48e"
+    },
+    {
+      "manifest": "work/e12-real-01/result.json",
+      "file": "work/e12-real-01/base-project/main.c",
+      "sha256": "4f8535dc013d26d7d3f90c2b340c9adcf7c179e3afcaf4b64d51a90d96f780c8"
+    },
+    {
+      "manifest": "work/e12-real-01/result.json",
+      "file": "work/e12-real-01/base-project/unused.h",
+      "sha256": "1e4315549ec63325a22265e33a27e3cff8940d3ceec9756d7d193e9e51b966c9"
+    },
+    {
+      "manifest": "work/e12-real-01/result.json",
+      "file": "work/e12-real-01/logs/base-project-checkout.log",
+      "sha256": "2fb62a37355668f632b0f6b6062a61e70fa1814a8006d02193636fbcfee3f2fc"
+    },
+    {
+      "manifest": "work/e12-real-01/result.json",
+      "file": "work/e12-real-01/logs/base-project-clone.log",
+      "sha256": "363ebe7804c7223b1d793ca2cd2a4e42c96847b79b0285a907580a378f1030f1"
+    },
+    {
+      "manifest": "work/e12-real-01/result.json",
+      "file": "work/e12-real-01/logs/base-project-resolve.log",
+      "sha256": "6d7daf8f563e079c1afa308990d3f3f0cb8afebb345eedaecd771103726b1140"
+    },
+    {
+      "manifest": "work/e12-real-01/result.json",
+      "file": "work/e12-real-01/logs/target-project-checkout.log",
+      "sha256": "25a1376732759d43c98d60ff22d85c12f53433765395e8c262c48461fc9c82db"
+    },
+    {
+      "manifest": "work/e12-real-01/result.json",
+      "file": "work/e12-real-01/logs/target-project-clone.log",
+      "sha256": "18c93ca6da7aa3191074c3845f52d26b9f11a7703a947dd044885b8e47d99b6c"
+    },
+    {
+      "manifest": "work/e12-real-01/result.json",
+      "file": "work/e12-real-01/logs/target-project-resolve.log",
+      "sha256": "811322b263b4697b6f17d2938400d4374d4c7a736feb86507f0a0e4837262b54"
+    },
+    {
+      "manifest": "work/e12-real-01/result.json",
+      "file": "work/e12-real-01/request.json",
+      "sha256": "832f5174a2d72f10b99ab20b5a553b2695777dc3803713114a7d5306681e7ea0"
+    },
+    {
+      "manifest": "work/e12-real-01/result.json",
+      "file": "work/e12-real-01/target-project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e12-real-01/result.json",
+      "file": "work/e12-real-01/target-project/Dockerfile.broken",
+      "sha256": "c33f2a63331ddf46d895ae9d244461b77bcf359abd1f58562d8c4162c5aa7256"
+    },
+    {
+      "manifest": "work/e12-real-01/result.json",
+      "file": "work/e12-real-01/target-project/Makefile",
+      "sha256": "2271aaff319691d2b2b86de036faf4d6c5a0700267ae4a5b9bd7eb4ecd0dc927"
+    },
+    {
+      "manifest": "work/e12-real-01/result.json",
+      "file": "work/e12-real-01/target-project/config.h",
+      "sha256": "825ab23de4478b617c329e89b3c5bb4aff690fae0ff606d2c95dd94d668094f3"
+    },
+    {
+      "manifest": "work/e12-real-01/result.json",
+      "file": "work/e12-real-01/target-project/helper.c",
+      "sha256": "7ad1544ff00dd1a25013685ee85be7c989385ec7b6445d6b8cce34541d39b48e"
+    },
+    {
+      "manifest": "work/e12-real-01/result.json",
+      "file": "work/e12-real-01/target-project/main.c",
+      "sha256": "e3de073fab80d1f489305a5da14ffcd95681a86edf2f7e370b340b624da477cb"
+    },
+    {
+      "manifest": "work/e12-real-01/result.json",
+      "file": "work/e12-real-01/target-project/unused.h",
+      "sha256": "1e4315549ec63325a22265e33a27e3cff8940d3ceec9756d7d193e9e51b966c9"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/base-project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/base-project/Makefile",
+      "sha256": "2271aaff319691d2b2b86de036faf4d6c5a0700267ae4a5b9bd7eb4ecd0dc927"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/base-project/config.h",
+      "sha256": "ac32a92f4af359517c993d6e8583ea2d9b053c2ad171b4c602bc242894bd9696"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/base-project/helper.c",
+      "sha256": "7ad1544ff00dd1a25013685ee85be7c989385ec7b6445d6b8cce34541d39b48e"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/base-project/main.c",
+      "sha256": "4f8535dc013d26d7d3f90c2b340c9adcf7c179e3afcaf4b64d51a90d96f780c8"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/base-project/unused.h",
+      "sha256": "1e4315549ec63325a22265e33a27e3cff8940d3ceec9756d7d193e9e51b966c9"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-cache.json",
+      "sha256": "be5ed52acb84ce146c0dca87e469b0bf173b940129125306430f071e4036ad03"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/actual-graph.json",
+      "sha256": "1a3e9b46cc9271d274bf11dc2c54dc7cef872976286c5d031dc800b17f49609c"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/build-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/clean-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/clean.log",
+      "sha256": "e25c08181a7e4ba81cfa6a54589716c1b47332bb1c0cb98dcfe47dffce54b322"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/declared-graph.json",
+      "sha256": "bcd35eddf7ed8b63ca50ff79f9b7d27a712d1a073eefbab500aab6dd42af51f3"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/findings.json",
+      "sha256": "7fca5a2f875b8026675f2bcd01dad68c7c18bd0631161969d427e4b18624a94c"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/make-db.txt",
+      "sha256": "87b6cbeb5d096dd7ee7e47aad13a0f76d490f8aad28a2ec0279c4a60c6b9dc61"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/processes.json",
+      "sha256": "f60fdd7b25fe2c10ed0bc224851c27269b3fa4ad3e29ad1daece1b05c227a2b5"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/project/Makefile",
+      "sha256": "2271aaff319691d2b2b86de036faf4d6c5a0700267ae4a5b9bd7eb4ecd0dc927"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/project/app",
+      "sha256": "046d971649828a7edbea9e9b47ae60d94fa0601ea524fb5cae492eaf0fb2fd6c"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/project/config.h",
+      "sha256": "ac32a92f4af359517c993d6e8583ea2d9b053c2ad171b4c602bc242894bd9696"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/project/helper.c",
+      "sha256": "7ad1544ff00dd1a25013685ee85be7c989385ec7b6445d6b8cce34541d39b48e"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/project/helper.o",
+      "sha256": "961fb66c8af5b2693940ee70546c54ef44408a63fab84d441fc4ac680da6e560"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/project/main.c",
+      "sha256": "4f8535dc013d26d7d3f90c2b340c9adcf7c179e3afcaf4b64d51a90d96f780c8"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/project/main.o",
+      "sha256": "cf88c2521d8cc3f2a3b2c2a765cf8650204c663e820bd134be16d0a31d1583f3"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/project/unused.h",
+      "sha256": "1e4315549ec63325a22265e33a27e3cff8940d3ceec9756d7d193e9e51b966c9"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/trace/t.109",
+      "sha256": "3e6a22e6bfee8b56d4f993689e8b78d6748d46f2353e94bcb1615042a7f92bbb"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/trace/t.110",
+      "sha256": "555d71bb677d80f3858381be1f5441fbfc8955e603115ae0abb8a7a2e6d070b4"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/trace/t.111",
+      "sha256": "6eb7204cab3445889a6fc642e5b55fbcc5d3f9be524960fe6b0e879f2e5ba931"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/trace/t.112",
+      "sha256": "ecba8daac6b6a02fc7484f589b86fc3cda266a5f910a49810b090fd03ad78116"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/trace/t.113",
+      "sha256": "178f4789c8fe238da401f10083ea0345304912d923d43db60da0de016c7ab2e5"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/trace/t.114",
+      "sha256": "2939de5ab748a04bbe9c7453aaa8565dcff20530c8c34becb8d4dfa54eaa7a00"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/trace/t.115",
+      "sha256": "313e9b3144cd1853c9c007402ad35c72e45ec12da91e0d19a3724e589b2a821d"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/trace/t.116",
+      "sha256": "31927e9938d20dfd5c33f72e07045c9eb201a9fcbd3d862a7e0e6d2aae6349a8"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/trace/t.117",
+      "sha256": "10b61a9dd81d4cd2faaa61dfa7ed61535a7da49b1d4f2e0d2e4438691fe451f7"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/baseline-full/trace/t.118",
+      "sha256": "b2b92a30a08f579198ca9321f9656f27ee04cacc0b060626c556e0de134962a5"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/candidate.patch",
+      "sha256": "5a362b54d74614e12ad5b4023c1a8fd8e10a050663cace47d59483ea81d6fc44"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/draft-build/cleanup-stderr.log",
+      "sha256": "b55d02665f7bb5964d0d493a07d60c3dc0bf04adf122f8c3ad26bd691f078011"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/draft-build/cleanup.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/draft-build/iter-01/Dockerfile",
+      "sha256": "c33f2a63331ddf46d895ae9d244461b77bcf359abd1f58562d8c4162c5aa7256"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/draft-build/iter-01/build-stderr.log",
+      "sha256": "66650e9ad33c2b4798c6462483daa0d0513e48d654c8f00983fcfb9fa0c2ed77"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/draft-build/iter-01/build-stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/draft-build/iter-02/Dockerfile",
+      "sha256": "51c35cd0b4937a5ed4bc514a7df880ba8461f6239196e0bb53c4f332b269b162"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/draft-build/iter-02/build-stderr.log",
+      "sha256": "a66f642ff1f6040a462c5caef3986fa49570bee8d824d8dd5cfd3d87933f5b13"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/draft-build/iter-02/build-stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/draft-build/iter-02/image-inspect.json",
+      "sha256": "2ec3642c599495d2d78cbdfb4faa99685de4deaffbe9313bae0843632993c87c"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/draft-build/iter-02/inspect-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/draft-build/project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/draft-build/project/Dockerfile.broken",
+      "sha256": "1da159abe0e892aeb676c37e905f06727f90be06391c7de9ff15083bc33711bb"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/draft-build/project/Makefile",
+      "sha256": "2271aaff319691d2b2b86de036faf4d6c5a0700267ae4a5b9bd7eb4ecd0dc927"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/draft-build/project/config.h",
+      "sha256": "825ab23de4478b617c329e89b3c5bb4aff690fae0ff606d2c95dd94d668094f3"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/draft-build/project/helper.c",
+      "sha256": "7ad1544ff00dd1a25013685ee85be7c989385ec7b6445d6b8cce34541d39b48e"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/draft-build/project/main.c",
+      "sha256": "e3de073fab80d1f489305a5da14ffcd95681a86edf2f7e370b340b624da477cb"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/draft-build/project/unused.h",
+      "sha256": "1e4315549ec63325a22265e33a27e3cff8940d3ceec9756d7d193e9e51b966c9"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/draft-build/result.json",
+      "sha256": "913a533826d7e66d8c34d67f1d83ab3033df7ff8b35645a60726de01a79809db"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/draft-build/verify-container-id.txt",
+      "sha256": "850f0c94cd07d2aee148bf8f22eceea31de2ac84c1288ffffcbc703fc906c514"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/draft-build/verify-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/draft-build/verify.log",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/draft.json",
+      "sha256": "373b10aa74966563886fe00d00c9f00b701774ae944168788bb7a2936f932dff"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/actual-graph.json",
+      "sha256": "3d1e27d2aaa03e8643bc21dde6370d7b463fbcec41c54f98111cdb3743a170c6"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/build-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/clean-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/clean.log",
+      "sha256": "e25c08181a7e4ba81cfa6a54589716c1b47332bb1c0cb98dcfe47dffce54b322"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/declared-graph.json",
+      "sha256": "2d28d97adfc7149dfc857f361dab207d50d86ea533cffea2b8e7ef21ef050760"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/findings.json",
+      "sha256": "76bd79da243d23622ac9161861ee18dd66764a8b4b2260946bd36996d5a59948"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/make-db.txt",
+      "sha256": "ac497a1a728b20fa5835d9789cac83bc4fdeb7cb9881a07f513c0c821dad1f5a"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/processes.json",
+      "sha256": "9fc85b10018cee8e5e7b92d853cff919b4f7fa424d949471b62a75122154d20c"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/project/Dockerfile.broken",
+      "sha256": "1da159abe0e892aeb676c37e905f06727f90be06391c7de9ff15083bc33711bb"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/project/Makefile",
+      "sha256": "3939822283da318f1872bd466ccff365faf5c937c02cb055a694599a0c7a3a77"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/project/app",
+      "sha256": "046d971649828a7edbea9e9b47ae60d94fa0601ea524fb5cae492eaf0fb2fd6c"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/project/config.h",
+      "sha256": "825ab23de4478b617c329e89b3c5bb4aff690fae0ff606d2c95dd94d668094f3"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/project/helper.c",
+      "sha256": "7ad1544ff00dd1a25013685ee85be7c989385ec7b6445d6b8cce34541d39b48e"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/project/helper.o",
+      "sha256": "961fb66c8af5b2693940ee70546c54ef44408a63fab84d441fc4ac680da6e560"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/project/main.c",
+      "sha256": "e3de073fab80d1f489305a5da14ffcd95681a86edf2f7e370b340b624da477cb"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/project/main.o",
+      "sha256": "cf88c2521d8cc3f2a3b2c2a765cf8650204c663e820bd134be16d0a31d1583f3"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/project/unused.h",
+      "sha256": "1e4315549ec63325a22265e33a27e3cff8940d3ceec9756d7d193e9e51b966c9"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/trace/t.189",
+      "sha256": "04db26a288fd1958cb26e12513ede6b3e6656fe474e76fc56bcd902b15fb80f9"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/trace/t.190",
+      "sha256": "4e9aadb61bb9ac265eb0842b3526f16c70ece21eea7ca212dedd194e56402022"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/trace/t.191",
+      "sha256": "ff0ffc1e9a7e6b0f12969e08661060f6cb79621680f7f044be28a7ddd17a9b78"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/trace/t.192",
+      "sha256": "464580192f1f415b51674ac0bda01a86a36fa1f2e608882b2edb8133540283be"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/trace/t.193",
+      "sha256": "61b1f309568f957f97aa389e0aa5e197d057498482ad2109951f1e0588592a8c"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/trace/t.194",
+      "sha256": "d57dbe0ef747a9bb8ac1e5708d56c266bc6ba6d9aeaf776140b9932640a7a48b"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/trace/t.195",
+      "sha256": "9f9a3eab7a0a29da12611c61ef1ddb3df673d9fd0a49a66bdea5a09b533d6418"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/trace/t.196",
+      "sha256": "cf8d25ecbf2db2f5d4e9eb4476de8dce26989fb56d42573296c459e13bd2dd88"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/trace/t.197",
+      "sha256": "d21b1f24f5485346ad39ab41a83ed7b8e0341cc2c3b54e21d8790b87049ab8b6"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/final-full/trace/t.198",
+      "sha256": "2da9e33c57270230df610e52aea865b169627c455a4730be9719c59a3b05a3a8"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/full-check.json",
+      "sha256": "4b98cc0d1bcd224a23d8df899963f2a46b2335877fff01d6e8b8a91f1684623b"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/incremental-check.json",
+      "sha256": "3c4a22916471d283e52765d40b6399422abbf9b667b73cc340bda4bccff7b839"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/incremental-report.json",
+      "sha256": "65ac13276a5dcdc59d417b2e8138d88c93e4d6baee63781be6277694f214a33a"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/logs/base-project-checkout.log",
+      "sha256": "2fb62a37355668f632b0f6b6062a61e70fa1814a8006d02193636fbcfee3f2fc"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/logs/base-project-clone.log",
+      "sha256": "784d81f409781499c2186a55c367047aecff6c6b14a3ac58d39db7683d2bb471"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/logs/base-project-resolve.log",
+      "sha256": "6d7daf8f563e079c1afa308990d3f3f0cb8afebb345eedaecd771103726b1140"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/logs/target-project-checkout.log",
+      "sha256": "ff3e8401439225c218b15027d864e31e87430812ae4dd3dbbde4707d06bfa1a2"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/logs/target-project-clone.log",
+      "sha256": "239a4e21a2fc5dfb816b4c0192b841bcf143dc77db5ac37f0c3d61c7d4922a8e"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/logs/target-project-resolve.log",
+      "sha256": "e8efe5604a1fac04871fdad8fd6819865721fde5ee5eb12d8db455cc14c9e5ce"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/recheck.json",
+      "sha256": "b2ab5fd332d6d417629d78befcf3c76569c79d3f2d5b24ff61384068250b08eb"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/repair-plan.json",
+      "sha256": "16d90a8247c9ba5e65f40e21950a5f929b997306edf52a74fba023a0cc8866e2"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/repair.json",
+      "sha256": "a75dc078d51e4cfa53baff121580147fc4af3e0dca0aeef1da0e77b513c8a90d"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/request.json",
+      "sha256": "142fc5c45de0e0578ce6bd6d39604a04b22555eb020421d185693d12836f0fa5"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/actual-graph.json",
+      "sha256": "dc79338fa9381d90711ca3420f96d1adeb35c35ec43829a89bd1c18786022801"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/build-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/clean-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/clean.log",
+      "sha256": "e25c08181a7e4ba81cfa6a54589716c1b47332bb1c0cb98dcfe47dffce54b322"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/declared-graph.json",
+      "sha256": "bcd35eddf7ed8b63ca50ff79f9b7d27a712d1a073eefbab500aab6dd42af51f3"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/findings.json",
+      "sha256": "7fc3dec6ce8d68550b0e285fbe417bdcd221672cdbb2b8580a761f4c16559103"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/make-db.txt",
+      "sha256": "e91c7bd1a028c07cf9d720c4fe50efd7e4385d67472a498bb570a011ccd744e6"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/processes.json",
+      "sha256": "ae392dbd6b228e3c3c449ce262857348f11c457bf73ef6ab868028d97caca1bb"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/project/Dockerfile.broken",
+      "sha256": "1da159abe0e892aeb676c37e905f06727f90be06391c7de9ff15083bc33711bb"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/project/Makefile",
+      "sha256": "2271aaff319691d2b2b86de036faf4d6c5a0700267ae4a5b9bd7eb4ecd0dc927"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/project/app",
+      "sha256": "046d971649828a7edbea9e9b47ae60d94fa0601ea524fb5cae492eaf0fb2fd6c"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/project/config.h",
+      "sha256": "825ab23de4478b617c329e89b3c5bb4aff690fae0ff606d2c95dd94d668094f3"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/project/helper.c",
+      "sha256": "7ad1544ff00dd1a25013685ee85be7c989385ec7b6445d6b8cce34541d39b48e"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/project/helper.o",
+      "sha256": "961fb66c8af5b2693940ee70546c54ef44408a63fab84d441fc4ac680da6e560"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/project/main.c",
+      "sha256": "e3de073fab80d1f489305a5da14ffcd95681a86edf2f7e370b340b624da477cb"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/project/main.o",
+      "sha256": "cf88c2521d8cc3f2a3b2c2a765cf8650204c663e820bd134be16d0a31d1583f3"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/project/unused.h",
+      "sha256": "1e4315549ec63325a22265e33a27e3cff8940d3ceec9756d7d193e9e51b966c9"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/trace/t.136",
+      "sha256": "df6ec8a601aaef787f8a9f2c09ace1399cb59ab24b3235be117e421da72f2fe6"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/trace/t.137",
+      "sha256": "21a7b4f9f36dde961da8d00253f90b19dff187f2ff4a0d71f83c78f3d1de12ae"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/trace/t.138",
+      "sha256": "b7fbe50b6883e580bbcb9f133630b78ad7dad1af2f56ed54e79f8d5dfb4b417c"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/trace/t.139",
+      "sha256": "4fa23a7e72320597ad82abd8d850475f5d6f9843e918bd30c95092597695f2c7"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/trace/t.140",
+      "sha256": "47e5236048af8e325eeb936b6228c7511f10c649e4219d9362858e2030250627"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/trace/t.141",
+      "sha256": "807b7ace9ccdc5fb51cda4953892b439cef44aa5adb7134e8b72ff576314064d"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/trace/t.142",
+      "sha256": "f9b6893cdf768b756f943cd9069c83e2d04846a6e2621f81fbe4e299bfd6c670"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/trace/t.143",
+      "sha256": "6b3165a35755ada9d64f9e77cf0159e5a13dba8250a65d17d62ca42a392b9ba6"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/trace/t.144",
+      "sha256": "d20b7e265ff8ef6720d6eb754c3578d6ad71452c4d436181b2628a9502bc1de8"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-full/trace/t.145",
+      "sha256": "7f5e61eb7b4ea6fdb8f7bb07a832327bab0bb2ecbc4517231f5924ba2e7dc273"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-project/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-project/Dockerfile.broken",
+      "sha256": "1da159abe0e892aeb676c37e905f06727f90be06391c7de9ff15083bc33711bb"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-project/Makefile",
+      "sha256": "3939822283da318f1872bd466ccff365faf5c937c02cb055a694599a0c7a3a77"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-project/config.h",
+      "sha256": "825ab23de4478b617c329e89b3c5bb4aff690fae0ff606d2c95dd94d668094f3"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-project/helper.c",
+      "sha256": "7ad1544ff00dd1a25013685ee85be7c989385ec7b6445d6b8cce34541d39b48e"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-project/main.c",
+      "sha256": "e3de073fab80d1f489305a5da14ffcd95681a86edf2f7e370b340b624da477cb"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/target-project/unused.h",
+      "sha256": "1e4315549ec63325a22265e33a27e3cff8940d3ceec9756d7d193e9e51b966c9"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/validation/build.log",
+      "sha256": "1c4c6b1753f707b9c8be6aa7dcdd2cec812a06a5de1809dad8e90e77f12cb24d"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/validation/incremental.log",
+      "sha256": "a742b913f8d99df042b67c98bdabbc2918c7c5914b3d4d545f4e6933fdeefd5c"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/validation/recheck.json",
+      "sha256": "d42a0b230e0d872e6c1b334180db4e6b54a53a4909581dca669983a34267f04c"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/validation/sandbox/.gitignore",
+      "sha256": "d7bfd39146ded6c9700eb81300e82345464db46cda1e775b8a114a811311bafe"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/validation/sandbox/Dockerfile.broken",
+      "sha256": "1da159abe0e892aeb676c37e905f06727f90be06391c7de9ff15083bc33711bb"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/validation/sandbox/Makefile",
+      "sha256": "3939822283da318f1872bd466ccff365faf5c937c02cb055a694599a0c7a3a77"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/validation/sandbox/app",
+      "sha256": "6a4a3450fc86affb969e7bc669337c4509452999cb2e49321a8fe40863e261e1"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/validation/sandbox/config.h",
+      "sha256": "69973c572daaea0005b15535dffa2f73cfac069a6f179fbca2ed88737355cd9b"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/validation/sandbox/helper.c",
+      "sha256": "7ad1544ff00dd1a25013685ee85be7c989385ec7b6445d6b8cce34541d39b48e"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/validation/sandbox/helper.o",
+      "sha256": "961fb66c8af5b2693940ee70546c54ef44408a63fab84d441fc4ac680da6e560"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/validation/sandbox/main.c",
+      "sha256": "e3de073fab80d1f489305a5da14ffcd95681a86edf2f7e370b340b624da477cb"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/validation/sandbox/main.o",
+      "sha256": "a2d01a76cec633ec5a868a1eb3e07a6b5ace3565147aa057f76c551f902241c0"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/validation/sandbox/unused.h",
+      "sha256": "1e4315549ec63325a22265e33a27e3cff8940d3ceec9756d7d193e9e51b966c9"
+    },
+    {
+      "manifest": "work/e12-real-02/result.json",
+      "file": "work/e12-real-02/validation/validation.json",
+      "sha256": "0aedd844e45d87669ff3c7ad42fcb15414453a14882df2fa6335997367390c37"
+    }
+  ]
+}
