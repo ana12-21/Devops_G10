@@ -6,4 +6,4 @@
 
 命令由本人在服务器或 Windows 执行并返回日志。AI 未直接登录服务器，未代表本人完成 push、PR 或 CI。报告结论依据实际输出，未执行的验收项目保留为待完成。整理时校验归档内可取得的产物哈希，不以推测替代缺失日志。
 
-主要人工核验：Docker 构建和测试退出码、E11/E12 JSON 状态、API 幂等键行为、补丁哈希、SSH health/job 响应及 Git 合并提交。提交前本人需阅读报告并核对实际操作、补充 PR/CI 链接。
+主要人工核验：Docker 构建和测试退出码、E11/E12 JSON 状态、API 幂等键行为、补丁哈希、SSH health/job 响应及 Git 合并提交。本次更新使用 GitHub API 核对 PR #13 的合并提交及 pull_request、push 两类工作流记录。
