@@ -1,0 +1,38 @@
+{
+  "provider": "B 组（GitHub: Richardo11chen/Devops_B10）",
+  "provider_repo": "https://github.com/Richardo11chen/Devops_B10",
+  "provider_path": "e3/fixtures/mdfixer",
+  "provider_base_commit": "f6b826805ed07ad19c5e4960793170dad6f45d53",
+  "provider_target_commit": "29d0cb7435994e7b6476d351b857f9bb14a2dffb",
+  "provider_target_change": "target 提交新增 extra.h，并在 main.c 顶部 #include \"extra.h\"",
+  "local_repo": "data/peer-b-original（A 组本地离线重建，内容与 B 组上游一致）",
+  "local_base_commit": "7ad66c09bb60f3ba5dc70e20b266ca3542e2591a",
+  "local_target_commit": "127619d9830e6f680e705bae6d189deec4b6f98b",
+  "note": "B 组原样代码，未做任何适配；用于记录 UNSUPPORTED_PROJECT",
+  "adaptation": {
+    "repo": "data/peer-b-adapted（A 组隔离副本）",
+    "base_commit": "68bc78d33a9638d3d0026736850bb38981526344",
+    "target_commit": "152a3d060ff272a58321e35d3fcbe1f1344f2136",
+    "changed_files": [
+      "helper.c（新增）",
+      "Makefile（CFLAGS -I. -> -O0；新增 app: main 别名；新增 helper.o 规则；clean 增加 helper.o）",
+      "ADAPTATION.md（新增）",
+      ".gitignore（新增）"
+    ],
+    "untouched": [
+      "main.c",
+      "config.h",
+      "extra.h",
+      "Dockerfile.broken",
+      "Makefile.implicit",
+      "md_report.json",
+      "reference.patch",
+      "README.md",
+      ".lab-project.json"
+    ],
+    "program_output": "v1（未改动 main.c 的 printf）",
+    "performed_by": "A 组 241880335（B 组缺席）",
+    "unsupported_first": "先用 B 原样项目运行得到 UNSUPPORTED_PROJECT，再适配",
+    "detail_doc": "data/peer-b-adapted/ADAPTATION.md"
+  }
+}
