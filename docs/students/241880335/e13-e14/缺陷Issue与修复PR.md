@@ -182,3 +182,34 @@ CI 门禁链接与审查人：无（未推送）。审查人待 B 组确认这�
 CI 门禁链接与审查人：无（未推送）。
 
 剩余风险：E12 的真实项目证据指向 `94147e8a…`，E14 指向 `b03b828…`，两者的标注必须分开。本文件和 `候选发布说明.md` 里都是分开列的。
+
+## 缺陷 5：E13–E14 文档把 C6 的演示 Key 写进仓库，触发自己的密钥门禁
+
+### Issue
+
+用例编号与发现方：E7 A quality gate 的「Scan tracked sources and Git history」步骤；发现方是 CI 本身。
+
+输入仓库及完整 SHA：`241880335/e13-e14` 的 `c380225`；同样的内容也在 `e13-e14-quality-gate` 的 `b22649e`。
+
+预期与实际：预期纯文档提交不影响 CI。实际该步骤执行 `python3 scripts/secret_scan.py . --history` 后报 `发现 10 处疑似泄露` 并 exit 1，后续「Build the service image」等步骤被跳过。
+
+失败阶段、错误码和原始日志：job `133771135197` 的第 5 步，输出为 `FOUND  git-history:...  LLM/API Key  sk-d***`，最后 `##[error]Process completed with exit code 1`。
+
+严重度与理由：阻断（门禁红灯）。它不是产品缺陷，是文档记录方式的问题：为了写清 C6 的证据，把演示用的假 Key 字面量抄进了 Markdown。
+
+最小复现步骤：`python3 scripts/secret_scan.py . --history`。
+
+是否影响其他任务：只影响 E13/E14 两个分支。
+
+### PR
+
+处理方式：
+
+1. 文档里 C6 的输入改成占位符 `sk-demo<24 位演示串>`，不再写字面量。结论、job_id、文件 SHA 全部保留。
+2. 归档的教师手册 `docs/students/241880335/e13-e14/操作手册/01_E13交叉测试与门禁.md` 里的 C6 示例命令本身就带这个演示 Key。它是教师材料，改成占位符会让照抄该命令的人复现不出 C6，因此把整个 `操作手册/` 目录移出仓库，改由课程包与交付 zip 提供。
+3. 已推送的两个分支都做了历史改写（`git filter-branch`，只替换该字面量、移除 `操作手册/` 目录），force-push 后用全新克隆复验：`secret_scan.py . --history` 在两个分支上均为 `未发现问题`、exit 0。改写后的 SHA 记录在交付索引里。
+4. 没有修改 `scripts/secret_scan.py`，门禁强度不变。
+
+顺带发现扫描器的一个缺陷，仅记录、未修改：`secret_scan.py` 用 `git ls-files` 取文件清单，没有关闭 `core.quotepath`。非 ASCII 文件名会被引号加八进制转义包起来，拼成的路径不存在，`p.stat()` 抛 `OSError` 后被静默跳过。实测本仓库 131 个跟踪文件里，`docs/` 下的中文文档从未进入工作区扫描，这次完全是靠历史扫描才被抓到。修法是在调用处加 `-c core.quotepath=false`，那样只会扫得更全、更严，不会放松门禁；因为这是课程公共脚本，其它分支也在用，留待确认后再改。
+
+剩余风险：历史改写改变了分支 SHA，先前引用了旧 SHA 的记录需要同步更新。
