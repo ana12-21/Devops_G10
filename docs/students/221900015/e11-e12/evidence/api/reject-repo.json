@@ -1,0 +1,6 @@
+{
+  "status": 400,
+  "body": {
+    "error": "repo must be under /course/data"
+  }
+}

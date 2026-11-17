@@ -1,0 +1,18 @@
+{
+  "schema_version": "e11e12-1",
+  "job_id": "job-bcf396cfe605449192261a6da0090eb9",
+  "trace_id": "trace-ca8d399893464010a56f0e1df5739986",
+  "status": "FAILED",
+  "stages": [],
+  "error": {
+    "code": "INVALID_REQUEST",
+    "message": "Repository missing"
+  },
+  "artifacts": [
+    {
+      "uri": "artifact://job-bcf396cfe605449192261a6da0090eb9/request.json",
+      "sha256": "555d4bd9a28111154294cf36bfe4eb030e0fd7073289d1aa351e5696a724f840",
+      "bytes": 427
+    }
+  ]
+}
