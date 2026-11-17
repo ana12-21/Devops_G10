@@ -1,0 +1,27 @@
+IMAGE=course-e11e12:221900015
+test_accept_current_report (test_contract.Contracts.test_accept_current_report) ... ok
+test_api_rejects_repo_outside_data (test_contract.Contracts.test_api_rejects_repo_outside_data) ... ok
+test_artifact_uses_relative_uri_and_content_hash (test_contract.Contracts.test_artifact_uses_relative_uri_and_content_hash) ... ok
+test_changed_artifact_is_rejected (test_contract.Contracts.test_changed_artifact_is_rejected) ... ok
+test_existing_evidence_not_overwritten (test_contract.Contracts.test_existing_evidence_not_overwritten) ... ok
+test_reject_failed_upstream (test_contract.Contracts.test_reject_failed_upstream) ... ok
+test_reject_old_commit (test_contract.Contracts.test_reject_old_commit) ... ok
+test_reject_schema (test_contract.Contracts.test_reject_schema) ... ok
+test_reject_wrong_artifact_kind (test_contract.Contracts.test_reject_wrong_artifact_kind) ... ok
+test_same_key_same_request_same_job (test_contract.Contracts.test_same_key_same_request_same_job) ... ok
+test_comparison_is_order_insensitive_but_content_exact (test_contract.StudentContracts.test_comparison_is_order_insensitive_but_content_exact) ... ok
+test_full_and_incremental_agree_once_projected (test_contract.StudentContracts.test_full_and_incremental_agree_once_projected) ... ok
+test_link_target_is_dropped_from_the_comparison (test_contract.StudentContracts.test_link_target_is_dropped_from_the_comparison) ... ok
+test_direct_style_patch_stays_on_the_rule_line (test_contract_221900015.StudentContract221900015.test_direct_style_patch_stays_on_the_rule_line) ... ok
+test_macro_style_patch_extends_the_variable (test_contract_221900015.StudentContract221900015.test_macro_style_patch_extends_the_variable) ... ok
+test_mixed_style_patch_keeps_the_header_variable (test_contract_221900015.StudentContract221900015.test_mixed_style_patch_keeps_the_header_variable) ... ok
+test_patch_refuses_stale_report_even_without_the_envelope_check (test_contract_221900015.StudentContract221900015.test_patch_refuses_stale_report_even_without_the_envelope_check) ... ok
+test_snapshot_refuses_projects_outside_the_profile (test_contract_221900015.StudentContract221900015.test_snapshot_refuses_projects_outside_the_profile) ... ok
+test_unsafe_dependency_is_rejected_before_writing (test_contract_221900015.StudentContract221900015.test_unsafe_dependency_is_rejected_before_writing) ... ok
+test_stale_report_rejected_before_repair (test_contract_241880515.StudentContract241880515.test_stale_report_rejected_before_repair)
+正确目标报告通过；同一报告改成旧提交后必须拒绝。 ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.156s
+
+OK
