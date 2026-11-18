@@ -9,7 +9,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 
 sys.path[:0] = ['/course/labs/e8e10', '/course/labs/e11e12/vendor', '/app']
-from lab import scan, patch, validate
+from lab import scan, patch, validate, profile
 from draft.autobuild import auto_build
 from buildchecker.fullcheck import full_check
 
@@ -47,7 +47,7 @@ def run(data):
             raise ValueError('DRAFT_' + result['status'] + ': ' + str(result.get('error')))
         return {'status': 'SUCCEEDED', 'result': result, 'artifact': str(out / 'result.json')}
     if ROLE == 'buildchecker':
-        result = full_check(project, out)
+        result = full_check(project, out, build_command='make ' + profile(project)['build_target'])
         if result['status'] != 'SUCCEEDED':
             raise ValueError('BUILDCHECKER_' + result['status'] + ': ' + str(result.get('error')))
         return {'status': 'SUCCEEDED', 'result': result, 'artifact': str(out / 'findings.json')}
@@ -58,14 +58,15 @@ def run(data):
         old = scan(base)
         graph = json.loads(baseline_graph.read_text())
         projected = {t: sorted({e['dependency'] for e in graph if e['target'] == t})
-                     for t in ('main.o', 'helper.o')}
+                     for t in (item['object'] for item in profile(base)['targets'])}
         if old['actual'] != projected:
             raise ValueError('Baseline BuildChecker/GCC graph mismatch')
         old['actual'] = projected
         current = scan(project, old)
         reference = json.loads(target_findings.read_text())
+        targets = {item['object'] for item in profile(project)['targets']}
         normalize = lambda fs: sorted((x['type'], x['target'], x['dependency']) for x in fs
-                                      if x['target'] in ('main.o', 'helper.o'))
+                                      if x['target'] in targets)
         if reference['status'] != 'SUCCEEDED' or normalize(current['findings']) != normalize(reference['findings']):
             raise ValueError('Incremental/full findings mismatch')
         out.mkdir(parents=True)

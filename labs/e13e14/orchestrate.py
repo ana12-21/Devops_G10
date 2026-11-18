@@ -3,7 +3,6 @@ import argparse
 import hashlib
 import json
 import re
-import subprocess
 import sys
 import urllib.error
 import urllib.request
@@ -12,6 +11,8 @@ from pathlib import Path
 
 PORTS = {'buildchecker': 19511, 'echecker': 19512, 'draft': 19513, 'mdfixer': 19514}
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / 'labs/e11e12'))
+from pipeline import snapshot as project_snapshot
 
 
 def save(path, data):
@@ -36,26 +37,10 @@ def host_path(value):
     return path
 
 
-def command(argv, cwd, log):
-    p = subprocess.run(argv, cwd=cwd, capture_output=True, text=True, timeout=120)
-    log.parent.mkdir(parents=True, exist_ok=True)
-    log.write_text(p.stdout + p.stderr, encoding='utf-8')
-    if p.returncode:
-        raise ValueError(f'{argv[0]} failed; inspect {log}')
-    return p.stdout.strip()
-
-
-def snapshot(repo, revision, target, logs):
+def snapshot(repo, revision, target, logs, subdir=None):
     if not re.fullmatch(r'[0-9a-f]{40}', revision):
         raise ValueError('Use a full Git commit SHA')
-    head = command(['git', 'rev-parse', '--verify', revision + '^{commit}'], repo,
-                   logs / (target.name + '-resolve.log'))
-    command(['git', 'clone', '--no-hardlinks', '--no-checkout', str(repo), str(target)], repo,
-            logs / (target.name + '-clone.log'))
-    command(['git', 'checkout', '--detach', head], target, logs / (target.name + '-checkout.log'))
-    if {p.name for p in target.glob('*.c')} != {'main.c', 'helper.c'} or not (target / 'config.h').is_file():
-        raise ValueError('Unsupported teaching project profile')
-    return head
+    return project_snapshot(repo, revision, target, logs, subdir)
 
 
 def call(role, payload, evidence):
@@ -105,8 +90,8 @@ def execute(request, out):
         base = out / 'base-project'
         target = out / 'target-project'
         logs = out / 'logs'
-        base_sha = snapshot(repo, request['base'], base, logs)
-        target_sha = snapshot(repo, request['target'], target, logs)
+        base_sha, base = snapshot(repo, request['base'], base, logs, request.get('subdir'))
+        target_sha, target = snapshot(repo, request['target'], target, logs, request.get('subdir'))
         result.update(base_commit=base_sha, target_commit=target_sha)
 
         drafted = call('draft', payload(target, out / 'draft-build',
