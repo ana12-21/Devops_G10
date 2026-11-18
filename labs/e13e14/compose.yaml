@@ -3,7 +3,7 @@ x-common: &common
   image: ${E14_IMAGE:?set E14_IMAGE}
   pull_policy: never
   restart: unless-stopped
-  user: "0:0"
+  user: "${E14_UID:-0}:${E14_GID:-0}"
   working_dir: /course
   environment:
     PYTHONPATH: /course/labs/e8e10:/course/labs/e11e12/vendor:/app
@@ -25,6 +25,7 @@ services:
   buildchecker:
     <<: *common
     environment:
+      HOME: /tmp
       E14_ROLE: buildchecker
       PYTHONDONTWRITEBYTECODE: "1"
     command: ["python3", "labs/e13e14/service.py"]
@@ -34,6 +35,7 @@ services:
   echecker:
     <<: *common
     environment:
+      HOME: /tmp
       E14_ROLE: echecker
       PYTHONDONTWRITEBYTECODE: "1"
     command: ["python3", "labs/e13e14/service.py"]
@@ -41,7 +43,9 @@ services:
 
   draft:
     <<: *common
+    group_add: ["${E14_DOCKER_GID:-0}"]
     environment:
+      HOME: /tmp
       E14_ROLE: draft
       PYTHONDONTWRITEBYTECODE: "1"
     command: ["python3", "labs/e13e14/service.py"]
@@ -53,6 +57,7 @@ services:
   mdfixer:
     <<: *common
     environment:
+      HOME: /tmp
       E14_ROLE: mdfixer
       PYTHONDONTWRITEBYTECODE: "1"
     command: ["python3", "labs/e13e14/service.py"]
