@@ -5,6 +5,10 @@ ARG DOCKER_CLI_IMAGE=docker:28.5.1-cli@sha256:9190b0613792e658a7783cf14b2d5ace59
 FROM ${DOCKER_CLI_IMAGE} AS docker-cli
 FROM ${BASE_IMAGE}
 
+ARG DEBIAN_MIRROR=https://mirrors.aliyun.com/debian
+ARG DEBIAN_SECURITY_MIRROR=https://mirrors.aliyun.com/debian-security
+ARG PYPI_INDEX=https://mirrors.aliyun.com/pypi/simple/
+
 ENV LC_ALL=C.UTF-8 \
     TZ=UTC \
     PYTHONDONTWRITEBYTECODE=1 \
@@ -12,9 +16,9 @@ ENV LC_ALL=C.UTF-8 \
 
 # 固定基础镜像采用 Debian DEB822 源配置；保留发行版及签名校验。
 RUN sed -i \
-      -e 's|https\?://deb.debian.org/debian-security|https://mirrors.aliyun.com/debian-security|g' \
-      -e 's|https\?://security.debian.org/debian-security|https://mirrors.aliyun.com/debian-security|g' \
-      -e 's|https\?://deb.debian.org/debian|https://mirrors.aliyun.com/debian|g' \
+      -e "s|https\?://deb.debian.org/debian-security|${DEBIAN_SECURITY_MIRROR}|g" \
+      -e "s|https\?://security.debian.org/debian-security|${DEBIAN_SECURITY_MIRROR}|g" \
+      -e "s|https\?://deb.debian.org/debian|${DEBIAN_MIRROR}|g" \
       /etc/apt/sources.list.d/debian.sources \
  && apt-get -o Acquire::ForceIPv4=true -o Acquire::Retries=3 update \
  && apt-get -o Acquire::ForceIPv4=true -o Acquire::Retries=3 install -y --no-install-recommends gcc make libc6-dev strace git \
@@ -25,7 +29,7 @@ RUN sed -i \
 
 COPY requirements-dev.lock /tmp/requirements-dev.lock
 RUN python3 -m pip install \
-      --index-url https://mirrors.aliyun.com/pypi/simple/ \
+      --index-url "${PYPI_INDEX}" \
       --timeout 60 --retries 3 \
       --no-cache-dir --require-hashes -r /tmp/requirements-dev.lock \
  && python3 -m pip freeze | sed 's/^/pip:/' >> /opt/toolchain.lock
