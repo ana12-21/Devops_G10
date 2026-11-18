@@ -1,0 +1,27 @@
+{
+  "C2_A_handoff": {
+    "status": "PASS",
+    "rejection": "A task belongs to another target commit",
+    "original_sha256": "a184e9cc9db71b4fe27d15decbd17e11ecfb55b2997251bf7cce7c95ecc91430"
+  },
+  "C3_A_handoff": {
+    "status": "PASS",
+    "rejection": "Artifact hash or size mismatch: incremental-check.json",
+    "original_sha256": "a184e9cc9db71b4fe27d15decbd17e11ecfb55b2997251bf7cce7c95ecc91430",
+    "changed_sha256": "f9111ff28c6d5e477ba259fa691c1b5d4597089d872bb2ab0352c1e9196ef03c"
+  },
+  "C7_A_on_B10": {
+    "status": "PASS",
+    "failed_job": "job-e63a92a277e7499f9ffc9947b8305fe9",
+    "success_job": "job-99f25dac0ba145809caa607a50f74b90",
+    "verified_artifacts": 5089
+  },
+  "C6_log_probe": {
+    "status": "PASS",
+    "hit_exit": 1,
+    "clean_exit": 0,
+    "before_sha256": "eaa23e89f5ce97902e127ab7e3131d08c5752d43b0c760a178a7dbfb83a445a0",
+    "after_sha256": "4149894cbf0da8022229bcd4b0587b0d3038606cecf175387568722155e778e7"
+  },
+  "regression_exit": 0
+}
