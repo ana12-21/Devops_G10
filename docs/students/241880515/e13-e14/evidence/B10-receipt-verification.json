@@ -1,0 +1,37 @@
+{
+  "manifest_entries": 884,
+  "errors": [],
+  "runs": [
+    {
+      "dir": "e13-B-on-G10-01",
+      "status": "FAILED",
+      "job_id": "job-3457fa98516d4cd9b5320f32ff707831",
+      "artifacts_verified": 34
+    },
+    {
+      "dir": "e13-B-on-G10-02",
+      "status": "SUCCEEDED",
+      "job_id": "job-01b9f82164ab48f898d1f6a5a3a1d5c0",
+      "artifacts_verified": 90
+    },
+    {
+      "dir": "e13-B-on-G10-03",
+      "status": "SUCCEEDED",
+      "job_id": "job-811fae5fe7e64826980925ba9a7c2679",
+      "artifacts_verified": 90
+    },
+    {
+      "dir": "e13-B-on-G10-e12-02",
+      "status": "SUCCEEDED",
+      "job_id": "job-a8d4df0746af4aed924a4a04895b65dd",
+      "artifacts_verified": 147
+    },
+    {
+      "dir": "e13-B-on-G10-e12-03",
+      "status": "SUCCEEDED",
+      "job_id": "job-a57af782df1b4eb8a5497d80b04d8379",
+      "artifacts_verified": 147
+    }
+  ],
+  "candidate_change": "only mirror domain replacement"
+}

@@ -16,11 +16,31 @@ jobs:
           docker build --build-arg DEBIAN_MIRROR=https://deb.debian.org/debian --build-arg DEBIAN_SECURITY_MIRROR=https://deb.debian.org/debian-security --build-arg PYPI_INDEX=https://pypi.org/simple --build-arg BASE_IMAGE=python:3.13-slim@sha256:f82c96458eedc847b233e582eb31336f4954b39cae020b6dcf5b3ed0e5cbcd74 -f labs/e11e12/environment/services/buildchecker/Dockerfile -t course-e11e12:999999999 labs/e11e12/environment
       - name: Contracts and integration
         run: |
+          python3 -m unittest discover -s labs/e13e14 -p "test_*.py" -v
           python3 run_e11e12.py test
           python3 run_e11e12.py prepare
           for mode in e11-a e11-b e12; do
             python3 run_e11e12.py run --request "data/integration-sample/$mode.json" --out "work/ci-$mode"
           done
+      - name: E14 four-service integration
+        env:
+          E14_IMAGE: course-e11e12:999999999
+        run: |
+          export E14_ROOT="$PWD" E14_UID="$(id -u)" E14_GID="$(id -g)" E14_DOCKER_GID="$(stat -c %g /var/run/docker.sock)"
+          trap 'docker compose -f labs/e13e14/compose.yaml -p e14-ci logs --no-color > work/e14-services.log; docker compose -f labs/e13e14/compose.yaml -p e14-ci down' EXIT
+          docker compose -f labs/e13e14/compose.yaml -p e14-ci up -d --wait
+          python3 labs/e13e14/orchestrate.py --request data/integration-sample/e12.json --out work/ci-e14
+          python3 - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          p = Path('work/ci-e14')
+          r = json.loads((p/'result.json').read_text())
+          assert r['status'] == 'SUCCEEDED'
+          assert [s['name'] for s in r['stages']] == ['draft','full-check','incremental-check','repair','recheck']
+          for item in r['artifacts']:
+              assert hashlib.sha256((p/item['uri']).read_bytes()).hexdigest() == item['sha256']
+          print('E14_CI_HASHES=PASS')
+          PY
       - uses: actions/upload-artifact@v7.0.2
         if: always()
         with:

@@ -1,0 +1,37 @@
+[
+  {
+    "file": "G10-to-B10-241880515.zip",
+    "bytes": 6753,
+    "sha256": "9c0003fbdf302564b93b117eeea1238c529794c3a4aadb3cebf5cf1e18fdc9de"
+  },
+  {
+    "file": "G10-to-B10-241880515-followup.zip",
+    "bytes": 5736990,
+    "sha256": "24eefbada2a95d4946c106061b71b325402d53c51e2d3aeb25fa3cc4756dfb15"
+  },
+  {
+    "file": "G10-A-original-241880515.tar.gz",
+    "bytes": 2792663,
+    "sha256": "00b43c8741c222a2ea0419aabf1780c0513a4462c91a8d1939f0b4c5acd9f888"
+  },
+  {
+    "file": "E14-241880515-preparation.tar.gz",
+    "bytes": 783300,
+    "sha256": "f97b2cb113b9e00ab480bb5e8e4460cee144c15bb43bb98976b29b40daae39a2"
+  },
+  {
+    "file": "E14-B10-241880515-evidence.tar.gz",
+    "bytes": 2966574,
+    "sha256": "9636d9346a5fe71b95a2a3d556291d849a02dc56a46125a1d94681a22473bbcc"
+  },
+  {
+    "file": "B10-to-G10-241880240.tar.gz",
+    "bytes": 435714,
+    "sha256": "8ee8f007e9d0b01d0699e664bab6d617567cf7295cebb9a0ebada0baaad190c6"
+  },
+  {
+    "file": "B10-to-G10-241880240-followup.tar.gz",
+    "bytes": 13265840,
+    "sha256": "0d4ec02cceb2545631aba9cfa48cf6350abf36f6e1deabca84d1e1c17e24c42f"
+  }
+]
