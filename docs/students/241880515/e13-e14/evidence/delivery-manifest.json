@@ -28,5 +28,10 @@
     "file": "B10-to-G10-241880240.tar.gz",
     "bytes": 435714,
     "sha256": "8ee8f007e9d0b01d0699e664bab6d617567cf7295cebb9a0ebada0baaad190c6"
+  },
+  {
+    "file": "B10-to-G10-241880240-followup.tar.gz",
+    "bytes": 13265840,
+    "sha256": "0d4ec02cceb2545631aba9cfa48cf6350abf36f6e1deabca84d1e1c17e24c42f"
   }
 ]
