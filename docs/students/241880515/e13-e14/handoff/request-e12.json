@@ -1,0 +1,9 @@
+{
+  "mode": "e12",
+  "repo": "/course/data/g10-from-241880515/repo",
+  "base": "f03075f14ed32fecaa1aeb69dd3fde1edc5c824c",
+  "target": "963a143b6ed8d6ba907798b356ff33752b67485a",
+  "candidate": "/course/data/g10-from-241880515/candidate.Dockerfile",
+  "expected_output": "1",
+  "build_timeout": 600
+}

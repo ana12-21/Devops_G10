@@ -11,6 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path[:0] = [str(ROOT / 'labs/e8e10'), str(ROOT / 'labs/e11e12/vendor'), '/app']
 from lab import scan, patch, validate
+from lab import profile as lab_profile
 
 class Failure(ValueError):
     def __init__(self, code, message):
@@ -49,25 +50,35 @@ def command(argv, cwd, log):
         raise Failure('COMMAND_FAILED', f'{argv[0]} failed; see {log.name}')
     return p.stdout.strip()
 
-def snapshot(repo, revision, dest, logs):
+def snapshot(repo, revision, dest, logs, subdir=None):
     sha = command(['git','rev-parse','--verify',revision+'^{commit}'], repo, logs/(dest.name+'-resolve.log'))
     command(['git','clone','--no-hardlinks','--no-checkout',str(repo),str(dest)], repo, logs/(dest.name+'-clone.log'))
     command(['git','checkout','--detach',sha], dest, logs/(dest.name+'-checkout.log'))
-    # E8-E10 profile; fail early instead of silently ignoring other targets.
-    names = {p.name for p in dest.glob('*.c')}
-    if names != {'main.c','helper.c'} or not (dest/'config.h').is_file():
-        raise Failure('UNSUPPORTED_PROJECT', 'Expected main.c/helper.c/config.h and explicit Make rules')
-    return sha
+    # 项目可位于仓库子目录；subdir 只接受克隆内部的相对路径。
+    project = dest
+    if subdir:
+        project = (dest/subdir).resolve()
+        if not project.is_relative_to(dest.resolve()) or not project.is_dir():
+            raise Failure('UNSUPPORTED_PROJECT', 'subdir escapes snapshot or missing: ' + str(subdir))
+    # 项目描述驱动：无 .lab-project.json 时等价于 E8-E10 的 main.c/helper.c 形状。
+    prof = lab_profile(project)
+    for item in prof['targets']:
+        if not (project/item['source']).is_file():
+            raise Failure('UNSUPPORTED_PROJECT', 'Missing source: ' + item['source'])
+    if not (project/prof['header']).is_file():
+        raise Failure('UNSUPPORTED_PROJECT', 'Missing header: ' + prof['header'])
+    return sha, project
 
 def full(project, folder):
     from buildchecker.fullcheck import full_check
-    report = full_check(project, folder)
+    prof = lab_profile(project)
+    report = full_check(project, folder, build_command='make ' + prof['build_target'])
     if report.get('status') != 'SUCCEEDED':
         raise Failure('FULL_CHECK_FAILED', str(report.get('error', report.get('error_code'))))
     return report
 
-def normalized(findings):
-    return sorted((f['type'],f['target'],f['dependency']) for f in findings if f['target'] in ('main.o','helper.o'))
+def normalized(findings, keep=('main.o','helper.o')):
+    return sorted((f['type'],f['target'],f['dependency']) for f in findings if f['target'] in keep)
 
 def execute(request, out, job_id=None):
     job_id = job_id or 'job-'+uuid.uuid4().hex
@@ -92,8 +103,9 @@ def execute(request, out, job_id=None):
         if not repo.is_dir():
             raise Failure('INVALID_REQUEST','Repository missing')
         base=out/'base-project'; target=out/'target-project'
-        base_sha=snapshot(repo,request['base'],base,out/'logs')
-        target_sha=snapshot(repo,request['target'],target,out/'logs')
+        subdir=request.get('subdir')
+        base_sha,base=snapshot(repo,request['base'],base,out/'logs',subdir)
+        target_sha,target=snapshot(repo,request['target'],target,out/'logs',subdir)
         result.update(base_commit=base_sha,target_commit=target_sha)
         if mode in ('e11-b','e12'):
             from draft.autobuild import auto_build
@@ -106,7 +118,8 @@ def execute(request, out, job_id=None):
             base_full=full(base,out/'baseline-full')
             old=scan(base)
             edges=json.loads((out/'baseline-full/actual-graph.json').read_text())
-            projected={t:sorted({e['dependency'] for e in edges if e['target']==t}) for t in ('main.o','helper.o')}
+            keep=[item['object'] for item in lab_profile(target)['targets']]
+            projected={t:sorted({e['dependency'] for e in edges if e['target']==t}) for t in keep}
             if projected != old['actual']:
                 raise Failure('GRAPH_MISMATCH','BuildChecker baseline differs from GCC observations')
             old['actual']=projected
@@ -116,7 +129,7 @@ def execute(request, out, job_id=None):
             current=scan(target,old)
             save(out/'incremental-report.json',current)
             reference=full(target,out/'target-full')
-            if normalized(reference['findings']) != normalized(current['findings']):
+            if normalized(reference['findings'], keep) != normalized(current['findings'], keep):
                 raise Failure('FINDINGS_MISMATCH','Incremental/full object-target findings differ')
             md_envelope=stage('incremental-check',target_sha,current,[out/'incremental-report.json',out/'target-full/findings.json'])
         else:

@@ -1,0 +1,11 @@
+{
+  "mode": "e11-b",
+  "repo": "/course/data/g10-from-241880515/repo",
+  "base": "f03075f14ed32fecaa1aeb69dd3fde1edc5c824c",
+  "target": "963a143b6ed8d6ba907798b356ff33752b67485a",
+  "candidate": "/course/data/g10-from-241880515/candidate.Dockerfile",
+  "expected_output": "1",
+  "build_timeout": 600,
+  "fixed_report": "/course/data/g10-from-241880515/fixed-md-from-e12.json",
+  "fixed_report_sha256": "8a67732d6796d91b18636fb4e93b01e2071c9146765d72d2e4d5df60a395e489"
+}

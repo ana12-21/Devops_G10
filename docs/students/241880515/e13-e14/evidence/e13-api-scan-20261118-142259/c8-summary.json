@@ -1,0 +1,12 @@
+{
+  "C8": "PASS",
+  "job_id": "job-7ab61e053fe248fd95c59c45eecf5bfc",
+  "http_codes": [
+    202,
+    202,
+    409
+  ],
+  "job_count": 1,
+  "status": "SUCCEEDED",
+  "download_sha256": "bceb45720148cd60f5c599e2b6f7d8a3d7752c3e26435a8238256452ee6fc4c5"
+}

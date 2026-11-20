@@ -1,0 +1,9 @@
+{
+  "accepted": false,
+  "checks": {
+    "patch_applies": true
+  },
+  "error": "COMMAND_FAILED ['make', 'main']\ngcc -I. -c main.c -o main.o\nmain.c:1:2: error: #error INJECTED_C5_INVALID_BUILD\n    1 | #error INJECTED_C5_INVALID_BUILD\n      |  ^~~~~\nmake: *** [Makefile:8: main.o] Error 1\n",
+  "source_unchanged": true,
+  "rollback": true
+}

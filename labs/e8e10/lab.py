@@ -31,11 +31,33 @@ def commit(p, msg):
     run(['git','add','.'],p); run(['git','commit','-m',msg],p)
     return run(['git','rev-parse','HEAD'],p).strip()
 
+DEFAULT_PROFILE={
+ 'targets':[{'object':'main.o','source':'main.c'},{'object':'helper.o','source':'helper.c'}],
+ 'program':'app','build_target':'app',
+ 'allowed_flags':['-O0','-O1','-O0 -DMODE=1'],
+ 'header':'config.h','expected_output':'1',
+ 'header_edit':{'from':'#define VALUE 1','to':'#define VALUE 2'},'header_output':'2'}
+
+def profile(p):
+    """项目描述：有 .lab-project.json 时覆盖默认值，否则等价于 E8-E10 行为。"""
+    f=Path(p)/'.lab-project.json'
+    if not f.is_file(): return {k:(v.copy() if isinstance(v,(dict,list)) else v) for k,v in DEFAULT_PROFILE.items()}
+    data=json.loads(f.read_text(encoding='utf-8'))
+    merged={k:(v.copy() if isinstance(v,(dict,list)) else v) for k,v in DEFAULT_PROFILE.items()}
+    merged.update(data)
+    if not merged['targets']: raise ValueError('EMPTY_TARGETS')
+    for t in merged['targets']:
+        if 'object' not in t or 'source' not in t: raise ValueError('MALFORMED_TARGET')
+    return merged
+
+def target_pairs(p):
+    return [(t['object'],t['source']) for t in profile(p)['targets']]
+
 def declarations(p):
     text=(p/'Makefile').read_text()
     variables=dict(re.findall(r'^(\w+)\s*=\s*(.*)$',text,re.M))
     graph={}
-    for target in ['main.o','helper.o']:
+    for target in [o for o,_ in target_pairs(p)]:
         m=re.search(r'^'+re.escape(target)+r': ([^\n]*)$',text,re.M)
         if not m: raise ValueError('UNSUPPORTED_RULE '+target)
         dep=m[1]
@@ -47,14 +69,14 @@ def declarations(p):
 
 def scan(p, old=None):
     start=time.perf_counter(); declared,flags=declarations(p)
-    if flags not in ['-O0','-O1','-O0 -DMODE=1']: raise ValueError('UNSUPPORTED_FLAGS')
+    if flags not in profile(p)['allowed_flags']: raise ValueError('UNSUPPORTED_FLAGS '+flags)
     # Conservative invalidation: all local preprocessor lines, source set and recipes.
     files={x.name:x.read_text() for x in sorted(p.glob('*')) if x.suffix in ['.c','.h']}
     key={'directives':{n:[l for l in t.splitlines() if l.lstrip().startswith('#')] for n,t in files.items()},
          'recipes':[l for l in (p/'Makefile').read_text().splitlines() if l.startswith('\t')],
          'flags':flags,'compiler':run(['gcc','--version'],p).splitlines()[0]}
     actual={}; refreshed=[]; reused=[]
-    for target,source in [('main.o','main.c'),('helper.o','helper.c')]:
+    for target,source in target_pairs(p):
         if old and old['key']==key and target in old['actual']:
             actual[target]=old['actual'][target]; reused.append(target)
         else:
@@ -95,8 +117,9 @@ def patch(p,report):
     return diff,edits
 
 def validate(p, patchfile, evidence, fail_test=False):
+    prof=profile(p)
     evidence.mkdir(parents=True); before=(p/'Makefile').read_bytes()
-    sandbox=evidence/'sandbox'; shutil.copytree(p,sandbox,ignore=shutil.ignore_patterns('.git','*.o','app'))
+    sandbox=evidence/'sandbox'; shutil.copytree(p,sandbox,ignore=shutil.ignore_patterns('.git','*.o',prof['program']))
     run(['git','init','-b','main'],sandbox)
     run(['git','config','user.name','ValidationSandbox'],sandbox)
     run(['git','config','user.email','fixture@localhost'],sandbox)
@@ -105,12 +128,16 @@ def validate(p, patchfile, evidence, fail_test=False):
     try:
         run(['git','apply','--check',str(patchfile.resolve())],sandbox); checks['patch_applies']=True
         run(['git','apply',str(patchfile.resolve())],sandbox)
-        log=run(['make','clean'],sandbox)+run(['make','app'],sandbox);(evidence/'build.log').write_text(log);checks['build']=True
-        output=run(['./app'],sandbox).strip(); checks['test']=output==('99' if fail_test else '1')
+        log=run(['make','clean'],sandbox)+run(['make',prof['build_target']],sandbox);(evidence/'build.log').write_text(log);checks['build']=True
+        output=run(['./'+prof['program']],sandbox).strip()
+        checks['test']=(output!=prof['expected_output']) if fail_test else (output==prof['expected_output'])
         # Real header-change build checks the originally broken incremental behavior.
-        time.sleep(1.05); (sandbox/'config.h').write_text('#define VALUE 2\n')
-        (evidence/'incremental.log').write_text(run(['make','app'],sandbox))
-        checks['header_change']=run(['./app'],sandbox).strip()=='2'
+        time.sleep(1.05); header=sandbox/prof['header']; text=header.read_text()
+        edit=prof['header_edit']
+        if edit['from'] not in text: raise ValueError('HEADER_EDIT_PATTERN_MISSING')
+        header.write_text(text.replace(edit['from'],edit['to'],1))
+        (evidence/'incremental.log').write_text(run(['make',prof['build_target']],sandbox))
+        checks['header_change']=run(['./'+prof['program']],sandbox).strip()==prof['header_output']
         recheck=scan(sandbox); save(evidence/'recheck.json',recheck)
         checks['no_missing']=not any(f['type']=='MISSING' for f in recheck['findings'])
     except (ValueError,subprocess.TimeoutExpired) as ex: error=str(ex)
@@ -128,7 +155,7 @@ def buildchecker(p,out):
     full_check(p,out)
     report=json.loads((out/'findings.json').read_text())
     if report['status']!='SUCCEEDED': raise ValueError('BUILDCHECKER_FAILED '+str(report))
-    projected=[f for f in report['findings'] if f['target'] in ['main.o','helper.o']]
+    projected=[f for f in report['findings'] if f['target'] in [o for o,_ in target_pairs(p)]]
     oracle=scan(p)
     norm=lambda fs: sorted((f['type'],f['target'],f['dependency']) for f in fs)
     assert norm(projected)==norm(oracle['findings']), 'BuildChecker/GCC projection mismatch'
