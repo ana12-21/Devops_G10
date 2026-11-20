@@ -1,0 +1,13 @@
+--- first build ---
+gcc -O0 -c main.c -o main.o
+gcc -O0 -c helper.c -o helper.o
+gcc main.o helper.o -o app
+--- change config.h (VALUE=2) ---
+--- rebuild after header change ---
+make: 'app' is up to date.
+--- run app (still old value if the edge is missing) ---
+1
+--- touch main.c and rebuild for contrast ---
+gcc -O0 -c main.c -o main.o
+gcc main.o helper.o -o app
+2

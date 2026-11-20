@@ -1,0 +1,7 @@
+{
+  "http_status": "HTTP/1.0 200 OK",
+  "body": {
+    "status": "ok",
+    "schema_version": "e11e12-1"
+  }
+}

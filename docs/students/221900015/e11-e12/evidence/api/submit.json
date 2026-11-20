@@ -1,0 +1,10 @@
+{
+  "status": 202,
+  "job": {
+    "schema_version": "e11e12-1",
+    "job_id": "job-17b3798bf470407381dd7008dd2f6bfa",
+    "status": "QUEUED",
+    "idempotency_key": "e12-221900015-api-1",
+    "request_hash": "3a180e965d27c1d65de475ac6a743d0aead89b70b20616d085d4a8c57826327c"
+  }
+}
