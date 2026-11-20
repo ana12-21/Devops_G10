@@ -1,0 +1,36 @@
+{
+  "archive_sha256": "0d4ec02cceb2545631aba9cfa48cf6350abf36f6e1deabca84d1e1c17e24c42f",
+  "manifest_entries": 22706,
+  "runs": [
+    {
+      "folder": "01-job-5bf610fe/e13-A-report-on-B-01",
+      "job_id": "job-5bf610fe9f854d8b8ac5f7ac0092e8e2",
+      "status": "SUCCEEDED",
+      "error_code": null,
+      "artifacts_verified": 5106
+    },
+    {
+      "folder": "01-job-5bf610fe/e13-A-report-on-B-02",
+      "job_id": "job-3d00c2fc345b4cea9b8e272cc2c97f41",
+      "status": "SUCCEEDED",
+      "error_code": null,
+      "artifacts_verified": 5106
+    },
+    {
+      "folder": "02-C2-C3/c2/e13-c2b-20261120",
+      "job_id": "job-27158b9ed00244c1a858a55c73de02e2",
+      "status": "FAILED",
+      "error_code": "STALE_REPORT",
+      "artifacts_verified": 5057
+    },
+    {
+      "folder": "02-C2-C3/c3/e13-c3-20261120",
+      "job_id": "job-0c1d5779b4f84d4c819ec48bf5f1baa5",
+      "status": "FAILED",
+      "error_code": "ARTIFACT_HASH_MISMATCH",
+      "artifacts_verified": 5057
+    }
+  ],
+  "unlisted_files": [],
+  "pipeline_sha256": "aa288bc9e16b75e0f84535043eb5774727e94f0a9d9517b49dc50748b6941cee"
+}
